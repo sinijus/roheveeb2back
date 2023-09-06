@@ -1,6 +1,6 @@
 package ee.valiit.roheveeb2back.business;
 
-import ee.valiit.roheveeb_back.infrastructure.error.ApiError;
+import ee.valiit.roheveeb2back.infrastructure.error.ApiError;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;

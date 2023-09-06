@@ -1,7 +1,7 @@
 package ee.valiit.roheveeb2back.business;
 
-import ee.valiit.roheveeb_back.domain.user.UserMapper;
-import ee.valiit.roheveeb_back.domain.user.UserService;
+import ee.valiit.roheveeb2back.domain.user.UserMapper;
+import ee.valiit.roheveeb2back.domain.user.UserService;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 

@@ -1,8 +1,8 @@
 package ee.valiit.roheveeb2back.domain.user;
 
 
-import ee.valiit.roheveeb_back.business.Status;
-import ee.valiit.roheveeb_back.validation.ValidationService;
+import ee.valiit.roheveeb2back.business.Status;
+import ee.valiit.roheveeb2back.validation.ValidationService;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 

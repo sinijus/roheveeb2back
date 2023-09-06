@@ -1,11 +1,11 @@
 package ee.valiit.roheveeb2back.validation;
 
-import ee.valiit.roheveeb_back.domain.user.User;
-import ee.valiit.roheveeb_back.infrastructure.exception.BusinessException;
+import ee.valiit.roheveeb2back.domain.user.User;
+import ee.valiit.roheveeb2back.infrastructure.exception.BusinessException;
 
 import java.util.Optional;
 
-import static ee.valiit.roheveeb_back.validation.Error.INCORRECT_CREDENTIALS;
+import static ee.valiit.roheveeb2back.validation.Error.INCORRECT_CREDENTIALS;
 
 public class ValidationService {
 
