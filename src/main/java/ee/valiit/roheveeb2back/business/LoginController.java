@@ -1,5 +1,6 @@
 package ee.valiit.roheveeb2back.business;
 
+import ee.valiit.roheveeb2back.domain.user.LoginResponse;
 import ee.valiit.roheveeb2back.infrastructure.error.ApiError;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -28,7 +29,7 @@ public class LoginController {
                     content = @Content(schema = @Schema(implementation = ApiError.class)))})
 
 
-    public void login(@RequestParam String email, @RequestParam String password) {
-        loginService.login(email, password);
+    public LoginResponse login(@RequestParam String email, @RequestParam String password) {
+        return loginService.login(email, password);
     }
 }

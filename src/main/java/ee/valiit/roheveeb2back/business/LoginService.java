@@ -1,5 +1,7 @@
 package ee.valiit.roheveeb2back.business;
 
+import ee.valiit.roheveeb2back.domain.user.LoginResponse;
+import ee.valiit.roheveeb2back.domain.user.User;
 import ee.valiit.roheveeb2back.domain.user.UserMapper;
 import ee.valiit.roheveeb2back.domain.user.UserService;
 import jakarta.annotation.Resource;
@@ -14,8 +16,9 @@ public class LoginService {
     @Resource
     private UserMapper userMapper;
 
-    public void login(String email, String password) {
-        userService.findActiveUserBy(email, password);
+    public LoginResponse login(String email, String password) {
+        User user = userService.findActiveUserBy(email, password);
+        return userMapper.loginResponse(user);
 
     }
 }
