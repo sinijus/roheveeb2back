@@ -1,14 +1,18 @@
 package ee.valiit.roheveeb2back.business;
 
-import lombok.Value;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
 /**
- * DTO for {@link ee.valiit.roheveeb_back.domain.user.User}
+ * DTO for {@link ee.valiit.roheveeb2back.domain.user.User}
  */
-@Value
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class LoginResponse implements Serializable {
-    Integer roleId;
-    String roleName;
+    private Integer id;
+    private String roleName;
 }
