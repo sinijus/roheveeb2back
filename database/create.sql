@@ -1,117 +1,77 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2023-09-06 07:05:07.605
+-- Last modification date: 2023-09-07 07:17:25.717
 
 -- tables
+
 -- Table: category
-CREATE TABLE image (
-                       id serial  NOT NULL,
-                       data bytea  NOT NULL,
-                       CONSTRAINT image_pk PRIMARY KEY (id)
+CREATE TABLE category (
+    id serial  NOT NULL,
+    name varchar(255)  NOT NULL,
+    CONSTRAINT category_pk PRIMARY KEY (id)
 );
 
-CREATE TABLE role (
-                      id serial  NOT NULL,
-                      name varchar(50)  NOT NULL,
-                      CONSTRAINT role_pk PRIMARY KEY (id)
-);
-
-
--- Table: user
-CREATE TABLE "user" (
-                        id serial  NOT NULL,
-                        role_id int  NOT NULL,
-                        email varchar(255)  NOT NULL,
-                        password varchar(255)  NOT NULL,
-                        status char(1)  NOT NULL,
-                        CONSTRAINT user_pk PRIMARY KEY (id)
-);
-
+-- Table: county
 CREATE TABLE county (
-                        id serial  NOT NULL,
-                        name varchar(255)  NOT NULL,
-                        CONSTRAINT county_pk PRIMARY KEY (id)
+id serial  NOT NULL,
+name varchar(255)  NOT NULL,
+CONSTRAINT county_pk PRIMARY KEY (id)
 );
 
+-- Table: role
+CREATE TABLE role (
+id serial  NOT NULL,
+name varchar(50)  NOT NULL,
+CONSTRAINT role_pk PRIMARY KEY (id)
+);
+
+-- Table: transport
+CREATE TABLE transport (
+id serial  NOT NULL,
+method varchar(255)  NOT NULL,
+fee int  NOT NULL,
+CONSTRAINT transport_pk PRIMARY KEY (id)
+);
+
+-- Table: image
+CREATE TABLE image (
+id serial  NOT NULL,
+data bytea  NOT NULL,
+CONSTRAINT image_pk PRIMARY KEY (id)
+);
 
 -- Table: measure_unit
-CREATE TABLE location (
-                          id serial  NOT NULL,
-                          county_id int  NOT NULL,
-                          address varchar(255)  NOT NULL,
-                          postal_code varchar(255)  NOT NULL,
-                          CONSTRAINT location_pk PRIMARY KEY (id)
-);
-
-
--- Table: user_contact
-CREATE TABLE user_contact (
-                              id serial  NOT NULL,
-                              location_id int  NOT NULL,
-                              user_id int  NOT NULL,
-                              phone_number varchar(255)  NOT NULL,
-                              first_name char(255)  NOT NULL,
-                              last_name varchar(255)  NOT NULL,
-                              CONSTRAINT user_contact_pk PRIMARY KEY (id)
-);
-
-CREATE TABLE company (
-                         id serial  NOT NULL,
-                         user_id int  NOT NULL,
-                         location_id int  NOT NULL,
-                         logo_image_id int  NULL,
-                         name varchar(255)  NOT NULL,
-                         phone_number varchar(255)  NOT NULL,
-                         register_code varchar(255)  NOT NULL,
-                         iban varchar(255)  NOT NULL,
-                         CONSTRAINT company_pk PRIMARY KEY (id)
-);
-
-CREATE TABLE category (
-                          id serial  NOT NULL,
-                          name varchar(255)  NOT NULL,
-                          CONSTRAINT category_pk PRIMARY KEY (id)
-);
-
-CREATE TABLE type (
-                      id serial  NOT NULL,
-                      category_id int  NOT NULL,
-                      name varchar(255)  NOT NULL,
-                      CONSTRAINT type_pk PRIMARY KEY (id)
-);
-
 CREATE TABLE measure_unit (
-                              id serial  NOT NULL,
-                              name varchar(255)  NOT NULL,
-                              CONSTRAINT measure_unit_pk PRIMARY KEY (id)
+id serial  NOT NULL,
+name varchar(255)  NOT NULL,
+CONSTRAINT measure_unit_pk PRIMARY KEY (id)
 );
 
-CREATE TABLE product (
-                         id serial  NOT NULL,
-                         company_id int  NOT NULL,
-                         type_id int  NOT NULL,
-                         image_id int  NULL,
-                         name varchar(255)  NOT NULL,
-                         price int  NOT NULL,
-                         stock_balance int  NOT NULL,
-                         measure_unit_id int  NOT NULL,
-                         status char(1)  NOT NULL,
-                         CONSTRAINT product_pk PRIMARY KEY (id)
+-- Table: company
+CREATE TABLE company (
+    id serial  NOT NULL,
+    user_id int  NOT NULL,
+    location_id int  NOT NULL,
+    logo_image_id int  NULL,
+    name varchar(255)  NOT NULL,
+    phone_number varchar(255)  NOT NULL,
+    register_code varchar(255)  NOT NULL,
+    iban varchar(255)  NOT NULL,
+    CONSTRAINT company_pk PRIMARY KEY (id)
 );
 
-CREATE TABLE payment (
-                         id serial  NOT NULL,
-                         method varchar(255)  NOT NULL,
-                         bank_logo_id int  NOT NULL,
-                         CONSTRAINT payment_pk PRIMARY KEY (id)
+-- Table: location
+CREATE TABLE location (
+    id serial  NOT NULL,
+    county_id int  NOT NULL,
+    address varchar(255)  NOT NULL,
+    postal_code varchar(255)  NOT NULL,
+    longitude varchar(255)  NULL,
+    latitude varchar(255)  NULL,
+    CONSTRAINT location_pk PRIMARY KEY (id)
 );
 
-CREATE TABLE transport (
-                           id serial  NOT NULL,
-                           method varchar(255)  NOT NULL,
-                           fee int  NOT NULL,
-                           CONSTRAINT transport_pk PRIMARY KEY (id)
-);
 
+-- Table: order
 CREATE TABLE "order" (
     id serial  NOT NULL,
     user_id int  NOT NULL,
@@ -119,16 +79,69 @@ CREATE TABLE "order" (
     payment_id int  NULL,
     status char(1)  NOT NULL,
     total int  NOT NULL DEFAULT 0,
+    start_time varchar(255)  NULL,
+    sent_time varchar(255)  NULL,
     CONSTRAINT order_pk PRIMARY KEY (id)
 );
 
--- Table: payment
+-- Table: order_product
 CREATE TABLE order_product (
     id serial  NOT NULL,
     order_id int  NOT NULL,
     product_id int  NOT NULL,
     quantity int  NOT NULL,
     CONSTRAINT order_product_pk PRIMARY KEY (id)
+);
+
+-- Table: payment
+CREATE TABLE payment (
+    id serial  NOT NULL,
+    method varchar(255)  NOT NULL,
+    bank_logo_id int  NOT NULL,
+    CONSTRAINT payment_pk PRIMARY KEY (id)
+);
+
+-- Table: product
+CREATE TABLE product (
+    id serial  NOT NULL,
+    company_id int  NOT NULL,
+    type_id int  NOT NULL,
+    measure_unit_id int  NOT NULL,
+    image_id int  NULL,
+    name varchar(255)  NOT NULL,
+    price int  NOT NULL,
+    stock_balance int  NOT NULL,
+    status char(1)  NOT NULL,
+    CONSTRAINT product_pk PRIMARY KEY (id)
+);
+
+-- Table: type
+CREATE TABLE type (
+    id serial  NOT NULL,
+    category_id int  NOT NULL,
+    name varchar(255)  NOT NULL,
+    CONSTRAINT type_pk PRIMARY KEY (id)
+);
+
+-- Table: user
+CREATE TABLE "user" (
+    id serial  NOT NULL,
+    role_id int  NOT NULL,
+    email varchar(255)  NOT NULL,
+    password varchar(255)  NOT NULL,
+    status char(1)  NOT NULL,
+    CONSTRAINT user_pk PRIMARY KEY (id)
+);
+
+-- Table: user_contact
+CREATE TABLE user_contact (
+    id serial  NOT NULL,
+    location_id int  NOT NULL,
+    user_id int  NOT NULL,
+    phone_number varchar(255)  NOT NULL,
+    first_name char(255)  NOT NULL,
+    last_name varchar(255)  NOT NULL,
+    CONSTRAINT user_contact_pk PRIMARY KEY (id)
 );
 
 -- foreign keys

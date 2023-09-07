@@ -1,8 +1,8 @@
 package ee.valiit.roheveeb2back.infrastructure;
 
-import ee.valiit.bank30back.infrastructure.error.ApiError;
-import ee.valiit.bank30back.infrastructure.exception.BusinessException;
-import ee.valiit.bank30back.infrastructure.exception.DataNotFoundException;
+import ee.valiit.roheveeb2back.infrastructure.error.ApiError;
+import ee.valiit.roheveeb2back.infrastructure.exception.BusinessException;
+import ee.valiit.roheveeb2back.infrastructure.exception.DataNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
