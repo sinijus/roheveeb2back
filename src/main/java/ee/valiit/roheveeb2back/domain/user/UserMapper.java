@@ -1,6 +1,6 @@
 package ee.valiit.roheveeb2back.domain.user;
 
-import ee.valiit.roheveeb_back.business.LoginResponse;
+import ee.valiit.roheveeb2back.business.LoginResponse;
 import org.mapstruct.*;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.SPRING)
