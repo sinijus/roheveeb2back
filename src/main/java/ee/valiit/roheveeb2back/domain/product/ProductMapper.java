@@ -23,6 +23,7 @@ public interface ProductMapper {
     @Mapping(source = "image.data", target = "productImageData")
     @Mapping(source = "name", target = "productName")
     @Mapping(source = "stockBalance", target = "productBalance")
+    @Mapping(source = "price", target = "price")
     ProductInfoDto toProductInfoDto(Product product);
 
 
