@@ -19,6 +19,8 @@ public interface ProductMapper {
     @Mapping(source = "type.name", target = "productTypeName")
     @Mapping(source = "measureUnit.id", target = "measureUnitId")
     @Mapping(source = "measureUnit.name", target = "measureUnitName")
+
+    // todo: here
     @Mapping(source = "image.id", target = "productImageId")
     @Mapping(source = "image.data", target = "productImageData")
     @Mapping(source = "name", target = "productName")
