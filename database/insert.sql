@@ -2,9 +2,9 @@ INSERT INTO public.role (id, name) VALUES (DEFAULT, 'admin');
 INSERT INTO public.role (id, name) VALUES (DEFAULT, 'company');
 INSERT INTO public.role (id, name) VALUES (DEFAULT, 'customer');
 
-INSERT INTO public."user" (id, role_id, email, password, status) VALUES (DEFAULT, 1, 'admin@admin.net', '123', 'A');
-INSERT INTO public."user" (id, role_id, email, password, status) VALUES (DEFAULT, 3, 'parim@klient.ee', '123', 'A');
-INSERT INTO public."user" (id, role_id, email, password, status) VALUES (DEFAULT, 2, 'mulgi@mahetalu.ee', '123', 'A');
+INSERT INTO public."user" (id, role_id, email, password, status) VALUES (DEFAULT, 1, 'admin', '123', 'A');
+INSERT INTO public."user" (id, role_id, email, password, status) VALUES (DEFAULT, 3, 'klient', '123', 'A');
+INSERT INTO public."user" (id, role_id, email, password, status) VALUES (DEFAULT, 2, 'talu', '123', 'A');
 INSERT INTO public."user" (id, role_id, email, password, status) VALUES (DEFAULT, 2, 'hiiu@talu.ee', '123', 'A');
 
 INSERT INTO public.county (id, name) VALUES (DEFAULT, 'Harjumaa');
