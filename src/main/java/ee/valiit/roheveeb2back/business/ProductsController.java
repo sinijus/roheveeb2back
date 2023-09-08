@@ -17,13 +17,13 @@ public class ProductsController {
     private ProductsService productsService;
 
     @GetMapping("/product")
-    @Operation(summary = " Kõikide toodete küsimine. Tagastab listi toote objektidega, kus on väljad ",
+    @Operation(summary = " Kõikide toodete küsimine. Tagastab listi toodetest, mis on aktiivse staatusega ",
             description = """
-                    Andmebaasist küsitakse kõigi toodete infot, kui toodete infot ei leita visatakse errorCode ???
+                    Andmebaasist küsitakse kõigi toodete infot, kui toodete infot ei leita visatakse errorCode 222
                     """)
     @ApiResponses(value= {
             @ApiResponse(responseCode = "200", description = "OK"),
-            @ApiResponse(responseCode = "403", description = "message: Vale kasutajanimi või parool koos. errorCode: 111",
+            @ApiResponse(responseCode = "403", description = "message: Ühtegi toodet ei leitud. errorCode: 222",
                     content = @Content(schema = @Schema(implementation = ApiError.class)))
     })
     public void findAllProducts() {

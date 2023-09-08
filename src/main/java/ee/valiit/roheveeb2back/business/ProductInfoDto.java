@@ -1,4 +1,4 @@
-package ee.valiit.roheveeb2back.domain.product;
+package ee.valiit.roheveeb2back.business;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -10,35 +10,31 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
- * DTO for {@link Product}
+ * DTO for {@link ee.valiit.roheveeb2back.domain.product.Product}
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProductDto implements Serializable {
-    private Integer id;
+public class ProductInfoDto implements Serializable {
+    private Integer productId;
     private Integer companyId;
+    private Integer companyLocationId;
     private Integer companyLocationCountyId;
     private String companyLocationCountyName;
     private String companyName;
-    private String companyPhoneNumber;
-    private String companyRegisterCode;
-    private String companyIban;
-    private Integer typeId;
-    private Integer typeCategoryId;
-    private String typeCategoryName;
-    private String typeName;
+    private Integer productTypeId;
+    private Integer productTypeCategoryId;
+    private String productTypeCategoryName;
+    private String productTypeName;
     private Integer measureUnitId;
     private String measureUnitName;
-    private Integer imageId;
-    private byte[] imageData;
+    private Integer productImageId;
+    private byte[] productImageData;
     @NotNull
     @Size(max = 255)
-    private String name;
+    private String productName;
     @NotNull
     private BigDecimal price;
     @NotNull
-    private Integer stockBalance;
-    @NotNull
-    private String status;
+    private Integer productBalance;
 }

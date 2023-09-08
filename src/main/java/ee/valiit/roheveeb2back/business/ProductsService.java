@@ -14,7 +14,7 @@ public class ProductsService {
     private ProductService productService;
 
     public void findAllProducts() {
-        List<Product> products = productService.getProducts();
+        List<Product> products = productService.findAllProducts();
 
     }
 }
