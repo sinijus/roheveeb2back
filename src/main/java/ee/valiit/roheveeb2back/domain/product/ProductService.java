@@ -14,7 +14,7 @@ public class ProductService {
     private ProductRepository productRepository;
 
     public List<Product> findAllProducts() {
-        List<Product> products = productRepository.findAllProductsBy(Status.ACTIVE.name());
+        List<Product> products = productRepository.findAllProductsBy(Status.ACTIVE.getLetter());
         ValidationService.validateAtLeastOneProductExists(products);
         return products;
     }

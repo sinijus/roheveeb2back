@@ -10,6 +10,8 @@ import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 public class ProductsController {
 
@@ -26,7 +28,7 @@ public class ProductsController {
             @ApiResponse(responseCode = "403", description = "message: Ühtegi toodet ei leitud. errorCode: 222",
                     content = @Content(schema = @Schema(implementation = ApiError.class)))
     })
-    public void findAllProducts() {
-        productsService.findAllProducts();
+    public List<ProductInfoDto> findAllProducts() {
+         return productsService.findAllProducts();
     }
 }
