@@ -11,6 +11,9 @@ import java.util.List;
 public class ProductService {
 
     @Resource
+    private ProductMapper productMapper;
+
+    @Resource
     private ProductRepository productRepository;
 
     public List<Product> findAllProducts() {
@@ -20,4 +23,8 @@ public class ProductService {
     }
 
 
+    public List<Product> getCategories(Integer categoryId, String categoryName) {
+        List<Product> categories = productRepository.findAllCategoriesBy(categoryId, categoryName);
+        return categories;
+    }
 }

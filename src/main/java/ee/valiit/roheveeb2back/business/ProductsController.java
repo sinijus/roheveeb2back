@@ -8,6 +8,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -18,7 +19,7 @@ public class ProductsController {
     @Resource
     private ProductsService productsService;
 
-    @GetMapping("/product")
+    @GetMapping("/products")
     @Operation(summary = " Kõikide toodete küsimine. Tagastab listi toodetest, mis on aktiivse staatusega ",
             description = """
                     Andmebaasist küsitakse kõigi toodete infot, kui toodete infot ei leita visatakse errorCode 222
@@ -29,6 +30,10 @@ public class ProductsController {
                     content = @Content(schema = @Schema(implementation = ApiError.class)))
     })
     public List<ProductInfoDto> findAllProducts() {
-         return productsService.findAllProducts();
+        return productsService.findAllProducts();
+    }
+    public List<ProductInfoDto> getCategories(@RequestParam Integer categoryId, String categoryName) {
+        List<ProductInfoDto> categories = productsService.getCategories(categoryId, categoryName);
+        return categories;
     }
 }

@@ -23,4 +23,10 @@ public class ProductsService {
         return productInfoDtos;
 
     }
+
+    public List<ProductInfoDto> getCategories(Integer categoryId, String categoryName) {
+        List<Product> categories = productService.getCategories(categoryId, categoryName);
+        List<ProductInfoDto> productInfoDtos = productMapper.toProductInfoDtos(categories);
+        return productInfoDtos;
+    }
 }
