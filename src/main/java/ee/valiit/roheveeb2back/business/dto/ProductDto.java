@@ -1,6 +1,8 @@
 package ee.valiit.roheveeb2back.business.dto;
 
+import ee.valiit.roheveeb2back.domain.image.Image;
 import ee.valiit.roheveeb2back.domain.product.Product;
+import jakarta.persistence.JoinColumn;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -21,6 +23,9 @@ public class ProductDto implements Serializable {
     private Integer typeId;
     private Integer measureUnitId;
     private Integer imageId;
+
+    @JoinColumn(name = "image.id")
+    private String imageData;
     @NotNull
     @Size(max = 255)
     private String productName;

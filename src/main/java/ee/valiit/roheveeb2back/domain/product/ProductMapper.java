@@ -8,6 +8,7 @@ import ee.valiit.roheveeb2back.domain.image.Image;
 import ee.valiit.roheveeb2back.util.ImageConverter;
 import org.mapstruct.*;
 
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.SPRING,
@@ -18,8 +19,7 @@ public interface ProductMapper {
     @Mapping(source = "companyId", target = "company.id")
     @Mapping(source = "typeId", target = "type.id")
     @Mapping(source = "measureUnitId", target = "measureUnit.id")
-    //@Mapping(source = "productImageId", target = "image.id")
-    //@Mapping(source = "productImageData", target = "image.id")
+    @Mapping(source = "imageData", target = "image", qualifiedByName = "imageDataToImageByteArray")
     @Mapping(source = "productName", target = "name")
     @Mapping(source = "stockBalance", target = "stockBalance")
     @Mapping(source = "price", target = "price")
@@ -39,16 +39,13 @@ public interface ProductMapper {
     @Mapping(source = "type.name", target = "productTypeName")
     @Mapping(source = "measureUnit.id", target = "measureUnitId")
     @Mapping(source = "measureUnit.name", target = "measureUnitName")
-
     @Mapping(source = "image.id", target = "productImageId")
-    //@Mapping(source = "image.data", target = "productImageData", qualifiedByName = "imageToImageData")
+    @Mapping(source = "image", target = "productImageData", qualifiedByName = "imageToImageData")
     //@Mapping(expression = "java(ImageConverter.imageToImageData(product.getImage())", target = "productImageData")
-
     @Mapping(source = "name", target = "productName")
     @Mapping(source = "stockBalance", target = "productBalance")
     @Mapping(source = "price", target = "price")
     ProductInfoDto toProductInfoDto(Product product);
-
 
     List<ProductInfoDto> toProductInfoDtos(List<Product> products);
 
@@ -58,17 +55,8 @@ public interface ProductMapper {
         return ImageConverter.imageToImageData(image);
     }
 
-    @Mapping(source = "productName", target = "name")
-    @Mapping(source = "imageId", target = "image.id")
-    @Mapping(source = "measureUnitId", target = "measureUnit.id")
-    @Mapping(source = "typeId", target = "type.id")
-    @Mapping(source = "companyId", target = "company.id")
-    Product toEntity(ProductDto productDto);
-
-    @InheritInverseConfiguration(name = "toEntity")
-    ProductDto toDto(Product product);
-
-    @InheritConfiguration(name = "toEntity")
-    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    Product partialUpdate(ProductDto productDto, @MappingTarget Product product);
+    @Named("imageDataToImageByteArray")
+    static Image imageDataToImageByteArray(String imageData) {
+       return ImageConverter.imageDataToImage(imageData);
+    }
 }

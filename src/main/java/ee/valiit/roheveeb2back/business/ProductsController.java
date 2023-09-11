@@ -33,7 +33,7 @@ public class ProductsController {
         return productsService.findAllProducts();
     }
 
-    @PostMapping("/product?")
+    @PostMapping("/product")
     @Operation(summary = "Uue toote lisamine")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "OK"),

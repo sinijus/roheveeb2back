@@ -33,7 +33,7 @@ public class ProductInfoDto implements Serializable {
     private Integer measureUnitId;
     private String measureUnitName;
     private Integer productImageId;
-    private byte[] productImageData;
+    private String productImageData;
     @NotNull(message = "Väli productName on kohustuslik")
     @Size(max = 255)
     private String productName;
