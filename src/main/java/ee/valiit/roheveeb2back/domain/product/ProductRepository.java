@@ -11,7 +11,8 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 
     @Query("select p from Product p where p.type.category.id = ?1 and p.type.name = ?2")
     List<Product> findAllCategoriesBy(Integer id, String name);
-    //String activeStatus
 
+    @Query("select p from Product  p where p.name = ?1 and p.status = ?2")
+    boolean productExistsBy(String productName, String letter);
 
 }
