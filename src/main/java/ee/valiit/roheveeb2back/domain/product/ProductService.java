@@ -11,9 +11,6 @@ import java.util.List;
 public class ProductService {
 
     @Resource
-    private ProductMapper productMapper;
-
-    @Resource
     private ProductRepository productRepository;
 
     public List<Product> findAllProducts() {

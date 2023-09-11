@@ -17,7 +17,7 @@ public interface ProductMapper {
     @Mapping(source = "companyId", target = "company.id")
     @Mapping(source = "typeId", target = "type.id")
     @Mapping(source = "measureUnitId", target = "measureUnit.id")
-    @Mapping(source = "imageData", target = "image", qualifiedByName = "imageDataToImageByteArray")
+    @Mapping(ignore = true, target = "image")
     @Mapping(source = "productName", target = "name")
     @Mapping(source = "stockBalance", target = "stockBalance")
     @Mapping(source = "price", target = "price")

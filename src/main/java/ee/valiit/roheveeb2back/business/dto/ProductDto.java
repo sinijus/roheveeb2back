@@ -19,20 +19,24 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProductDto implements Serializable {
+
     private Integer companyId;
+
     private Integer typeId;
+
     private Integer measureUnitId;
-    private Integer imageId;
 
     @JoinColumn(name = "image.id")
     private String imageData;
+
     @NotNull
     @Size(max = 255)
     private String productName;
+
     @NotNull
     private BigDecimal price;
+
     @NotNull
     private Integer stockBalance;
-//    @NotNull
-//    private String status;
+
 }
