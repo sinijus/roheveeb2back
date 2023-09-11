@@ -1,14 +1,13 @@
 package ee.valiit.roheveeb2back.domain.product;
 
 
+import ee.valiit.roheveeb2back.business.Status;
 import ee.valiit.roheveeb2back.business.dto.ProductDto;
 import ee.valiit.roheveeb2back.business.dto.ProductInfoDto;
-import ee.valiit.roheveeb2back.business.Status;
 import ee.valiit.roheveeb2back.domain.image.Image;
 import ee.valiit.roheveeb2back.util.ImageConverter;
 import org.mapstruct.*;
 
-import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.SPRING,
@@ -26,7 +25,6 @@ public interface ProductMapper {
     @Mapping(expression = "java(Status.ACTIVE.getLetter())", target = "status")
     Product toProduct(ProductDto request);
 
-    // todo: remove unnecessary mappings?, solve get image
     @Mapping(source = "id", target = "productId")
     @Mapping(source = "company.id", target = "companyId")
     @Mapping(source = "company.location.id", target = "companyLocationId")
