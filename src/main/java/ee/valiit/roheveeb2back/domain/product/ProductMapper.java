@@ -1,12 +1,13 @@
 package ee.valiit.roheveeb2back.domain.product;
 
-
+import ee.valiit.roheveeb2back.business.ProductInfoDto;
 import ee.valiit.roheveeb2back.business.Status;
 import ee.valiit.roheveeb2back.business.dto.ProductDto;
 import ee.valiit.roheveeb2back.business.dto.ProductInfoDto;
 import ee.valiit.roheveeb2back.domain.image.Image;
 import ee.valiit.roheveeb2back.util.ImageConverter;
 import org.mapstruct.*;
+import org.mapstruct.Named;
 
 import java.util.List;
 
@@ -44,9 +45,7 @@ public interface ProductMapper {
     @Mapping(source = "stockBalance", target = "productBalance")
     @Mapping(source = "price", target = "price")
     ProductInfoDto toProductInfoDto(Product product);
-
     List<ProductInfoDto> toProductInfoDtos(List<Product> products);
-
 
     @Named("imageToImageData")
     static String imageToImageData(Image image) {

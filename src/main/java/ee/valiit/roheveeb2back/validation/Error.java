@@ -7,7 +7,8 @@ public enum Error {
     INCORRECT_CREDENTIALS("Vale kasutajanimi või parool", 111),
     NO_LOCATION_FOUND("Ei leitud ühtegi asukohta", 444),
     NO_PRODUCT_FOUND("Ei leitud ühtegi toodet", 222),
-    PRODUCT_NAME_UNAVAILABLE("Sellise nimega toode on süsteemis juba olemas", 333);
+    NO_PRODUCT_TYPE_FOUND("Ei leitud ühtegi tootetüüpi", 555),
+    LOCATION_NAME_UNAVAILABLE("Sellise nimega pangaautomaadi asukoht on juba süsteemis olemas", 333);
 
     private final String message;
     private final int errorCode;

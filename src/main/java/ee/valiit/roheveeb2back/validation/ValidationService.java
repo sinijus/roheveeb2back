@@ -1,6 +1,7 @@
 package ee.valiit.roheveeb2back.validation;
 
 import ee.valiit.roheveeb2back.domain.product.Product;
+import ee.valiit.roheveeb2back.domain.type.Type;
 import ee.valiit.roheveeb2back.domain.user.User;
 import ee.valiit.roheveeb2back.infrastructure.exception.BusinessException;
 import ee.valiit.roheveeb2back.infrastructure.exception.DataNotFoundException;
@@ -8,8 +9,7 @@ import ee.valiit.roheveeb2back.infrastructure.exception.DataNotFoundException;
 import java.util.List;
 import java.util.Optional;
 
-import static ee.valiit.roheveeb2back.validation.Error.INCORRECT_CREDENTIALS;
-import static ee.valiit.roheveeb2back.validation.Error.NO_PRODUCT_FOUND;
+import static ee.valiit.roheveeb2back.validation.Error.*;
 
 public class ValidationService {
 
@@ -31,6 +31,11 @@ public class ValidationService {
             throw new BusinessException(
                     Error.PRODUCT_NAME_UNAVAILABLE.getMessage(),
                     Error.PRODUCT_NAME_UNAVAILABLE.getErrorCode());
+        }
+    }
+    public static void validateAtLeastOneTypeExists(List<Type> types) {
+        if (types.isEmpty()) {
+            throw new DataNotFoundException(NO_PRODUCT_TYPE_FOUND.getMessage(), NO_PRODUCT_TYPE_FOUND.getErrorCode());
         }
     }
 }

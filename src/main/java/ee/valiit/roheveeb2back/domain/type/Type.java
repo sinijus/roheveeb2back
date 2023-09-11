@@ -1,4 +1,4 @@
-package ee.valiit.roheveeb2back.domain;
+package ee.valiit.roheveeb2back.domain.type;
 
 import ee.valiit.roheveeb2back.domain.category.Category;
 import jakarta.persistence.*;

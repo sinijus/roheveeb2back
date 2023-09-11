@@ -1,5 +1,11 @@
-package ee.valiit.roheveeb2back.business;
+package ee.valiit.roheveeb2back.business.product;
 
+import ee.valiit.roheveeb2back.business.dto.CategoryDto;
+import ee.valiit.roheveeb2back.business.dto.ProductInfoDto;
+import ee.valiit.roheveeb2back.business.dto.TypeDto;
+import ee.valiit.roheveeb2back.domain.type.Type;
+import ee.valiit.roheveeb2back.domain.type.TypeMapper;
+import ee.valiit.roheveeb2back.domain.type.TypeService;
 import ee.valiit.roheveeb2back.domain.category.Category;
 import ee.valiit.roheveeb2back.domain.category.CategoryMapper;
 import ee.valiit.roheveeb2back.domain.category.CategoryService;
@@ -24,6 +30,8 @@ public class ProductsService {
 
     @Resource
     private CategoryService categoryService;
+    @Resource
+    private TypeService typeService;
 
 
     @Resource
@@ -39,6 +47,8 @@ public class ProductsService {
 
     @Resource
     private CategoryMapper categoryMapper;
+    @Resource
+    private TypeMapper typeMapper;
 
     public List<ProductInfoDto> findAllProducts() {
         List<Product> products = productService.findAllProducts();
@@ -51,6 +61,11 @@ public class ProductsService {
         List<Category> categories = categoryService.getCategories();
         List<CategoryDto> categoryDtos = categoryMapper.toCategoryDtos(categories);
         return categoryDtos;
+    }
+    public List<TypeDto> findAllTypes() {
+        List<Type> types = typeService.findAllTypes();
+        List<TypeDto> typeDtos = typeMapper.toTypeDtos(types);
+        return typeDtos;
 
 
     }

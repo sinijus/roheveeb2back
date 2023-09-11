@@ -1,4 +1,4 @@
-package ee.valiit.roheveeb2back.business;
+package ee.valiit.roheveeb2back.business.product;
 
 import ee.valiit.roheveeb2back.business.dto.ProductDto;
 import ee.valiit.roheveeb2back.business.dto.ProductInfoDto;
@@ -45,7 +45,21 @@ public class ProductsController {
     public List<CategoryDto> getCategories() {
         List<CategoryDto> categories = productsService.getCategories();
         return categories;
+    }
 
+    @GetMapping("/types")
+    @Operation(summary = " Kõikide tüüpide küsimine. Tagastab listi tüüpidest",
+            description = """
+                    Andmebaasist küsitakse kõigi tüüpide infot, kui ühegi tüübi infot ei leita, visatakse errorCode 555
+                    """)
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "OK"),
+            @ApiResponse(responseCode = "403", description = "message: Ühtegi tootetüüpi ei leitud. errorCode: 555",
+                    content = @Content(schema = @Schema(implementation = ApiError.class)))
+    })
+    public List<TypeDto> findAllTypes() {
+        List<TypeDto> types = productsService.findAllTypes();
+        return types;
     }
 
     @PostMapping("/product")

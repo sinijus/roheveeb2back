@@ -1,4 +1,4 @@
-package ee.valiit.roheveeb2back.business;
+package ee.valiit.roheveeb2back.business.login;
 
 import ee.valiit.roheveeb2back.domain.user.LoginResponse;
 import ee.valiit.roheveeb2back.domain.user.User;

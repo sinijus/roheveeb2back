@@ -15,6 +15,4 @@ public class CategoryService {
         List<Category> categories = categoryRepository.findAll();
         return categories;
     }
-
-
 }
