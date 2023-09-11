@@ -25,4 +25,12 @@ public class ValidationService {
             throw new DataNotFoundException(NO_PRODUCT_FOUND.getMessage(), NO_PRODUCT_FOUND.getErrorCode());
         }
     }
+
+    public static void validateProductNameIsAvailable(boolean productExists) {
+        if (productExists) {
+            throw new BusinessException(
+                    Error.PRODUCT_NAME_UNAVAILABLE.getMessage(),
+                    Error.PRODUCT_NAME_UNAVAILABLE.getErrorCode());
+        }
+    }
 }

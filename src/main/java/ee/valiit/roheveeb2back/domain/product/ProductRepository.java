@@ -8,7 +8,9 @@ import java.util.List;
 public interface ProductRepository extends JpaRepository<Product, Integer> {
     @Query("select p from Product p where p.status = ?1")
     List<Product> findAllProductsBy(String status);
-    //String activeStatus
+
+    @Query("select p from Product p where p.name = ?1 and p.status = ?2")
+    boolean productExistsBy(String productName, String status);
 
 
 }

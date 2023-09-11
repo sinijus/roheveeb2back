@@ -1,7 +1,7 @@
 package ee.valiit.roheveeb2back.util;
 
 
-import ee.valiit.roheveeb2back.domain.Image;
+import ee.valiit.roheveeb2back.domain.image.Image;
 
 import java.nio.charset.StandardCharsets;
 
