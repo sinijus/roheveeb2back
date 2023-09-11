@@ -1,5 +1,7 @@
 package ee.valiit.roheveeb2back.business;
 
+import ee.valiit.roheveeb2back.business.dto.ProductDto;
+import ee.valiit.roheveeb2back.business.dto.ProductInfoDto;
 import ee.valiit.roheveeb2back.infrastructure.error.ApiError;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -41,5 +43,15 @@ public class ProductsController {
         List<CategoryDto> categories = productsService.getCategories();
         return categories;
 
+    }
+
+    @PostMapping("/product")
+    @Operation(summary = "Uue toote lisamine")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "OK"),
+            @ApiResponse(responseCode = "403", description = "Sellise nimega toode on poes juba olemas",
+                    content = @Content(schema = @Schema(implementation = ApiError.class)))})
+    public void addNewProduct(@RequestBody ProductDto request) {
+        productsService.addNewProduct(request);
     }
 }

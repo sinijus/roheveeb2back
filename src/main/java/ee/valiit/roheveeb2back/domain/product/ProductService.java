@@ -23,4 +23,13 @@ public class ProductService {
     }
 
 
+    public void confirmProductNameAvailability(String productName) {
+        boolean productExists = productRepository.productExistsBy(productName, Status.ACTIVE.getLetter());
+        ValidationService.validateProductNameIsAvailable(productExists);
+
+    }
+
+    public void saveProduct(Product product) {
+        productRepository.save(product);
+    }
 }

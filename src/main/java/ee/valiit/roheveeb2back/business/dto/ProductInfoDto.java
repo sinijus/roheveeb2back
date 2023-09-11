@@ -1,4 +1,4 @@
-package ee.valiit.roheveeb2back.business;
+package ee.valiit.roheveeb2back.business.dto;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -17,24 +17,28 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 public class ProductInfoDto implements Serializable {
     private Integer productId;
+    @NotNull(message = "Väli companyId on kohustuslik")
     private Integer companyId;
     private Integer companyLocationId;
     private Integer companyLocationCountyId;
     private String companyLocationCountyName;
     private String companyName;
+    @NotNull(message = "Väli productTypeId on kohustuslik")
     private Integer productTypeId;
+    private String productTypeName;
+    @NotNull(message = "Väli productTypeCategoryId on kohustuslik")
     private Integer productTypeCategoryId;
     private String productTypeCategoryName;
-    private String productTypeName;
+    @NotNull(message = "Väli measureUnitId on kohustuslik")
     private Integer measureUnitId;
     private String measureUnitName;
     private Integer productImageId;
-    private byte[] productImageData;
-    @NotNull
+    private String productImageData;
+    @NotNull(message = "Väli productName on kohustuslik")
     @Size(max = 255)
     private String productName;
-    @NotNull
+    @NotNull(message = "Väli price on kohustuslik")
     private BigDecimal price;
-    @NotNull
+    @NotNull(message = "Väli productBalance on kohustuslik")
     private Integer productBalance;
 }
