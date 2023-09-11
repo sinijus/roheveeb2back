@@ -1,4 +1,4 @@
-package ee.valiit.roheveeb2back.domain;
+package ee.valiit.roheveeb2back.domain.category;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
