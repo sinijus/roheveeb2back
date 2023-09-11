@@ -1,7 +1,9 @@
 package ee.valiit.roheveeb2back.business.product;
 
+import ee.valiit.roheveeb2back.business.dto.CategoryDto;
 import ee.valiit.roheveeb2back.business.dto.ProductDto;
 import ee.valiit.roheveeb2back.business.dto.ProductInfoDto;
+import ee.valiit.roheveeb2back.business.dto.TypeDto;
 import ee.valiit.roheveeb2back.infrastructure.error.ApiError;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
