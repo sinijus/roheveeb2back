@@ -1,4 +1,4 @@
-package ee.valiit.roheveeb2back.business;
+package ee.valiit.roheveeb2back.business.dto;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;

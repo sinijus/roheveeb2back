@@ -1,5 +1,6 @@
-package ee.valiit.roheveeb2back.domain.company;
+package ee.valiit.roheveeb2back.business.dto;
 
+import ee.valiit.roheveeb2back.domain.company.Company;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
