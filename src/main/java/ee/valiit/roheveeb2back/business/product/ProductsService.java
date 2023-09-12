@@ -3,10 +3,12 @@ package ee.valiit.roheveeb2back.business.product;
 import ee.valiit.roheveeb2back.business.dto.CategoryDto;
 import ee.valiit.roheveeb2back.business.dto.ProductInfoDto;
 import ee.valiit.roheveeb2back.business.dto.TypeDto;
+import ee.valiit.roheveeb2back.domain.measureunit.MeasureUnit;
 import ee.valiit.roheveeb2back.domain.company.Company;
 import ee.valiit.roheveeb2back.domain.company.CompanyMapper;
 import ee.valiit.roheveeb2back.domain.company.CompanyRepository;
 import ee.valiit.roheveeb2back.domain.image.Image;
+import ee.valiit.roheveeb2back.domain.measureunit.MeasureUnitRepository;
 import ee.valiit.roheveeb2back.domain.type.Type;
 import ee.valiit.roheveeb2back.domain.type.TypeMapper;
 import ee.valiit.roheveeb2back.domain.type.TypeService;
@@ -14,11 +16,9 @@ import ee.valiit.roheveeb2back.domain.category.Category;
 import ee.valiit.roheveeb2back.domain.category.CategoryMapper;
 import ee.valiit.roheveeb2back.domain.category.CategoryService;
 import ee.valiit.roheveeb2back.business.dto.ProductDto;
-import ee.valiit.roheveeb2back.business.dto.ProductInfoDto;
 import ee.valiit.roheveeb2back.domain.image.ImageService;
 import ee.valiit.roheveeb2back.domain.product.Product;
 import ee.valiit.roheveeb2back.domain.product.ProductMapper;
-import ee.valiit.roheveeb2back.domain.product.ProductRepository;
 import ee.valiit.roheveeb2back.domain.product.ProductService;
 import ee.valiit.roheveeb2back.util.ImageConverter;
 import jakarta.annotation.Resource;
@@ -49,9 +49,12 @@ public class ProductsService {
     @Resource
     private CompanyMapper companyMapper;
     private final CompanyRepository companyRepository;
+    private final MeasureUnitRepository measureUnitRepository;
 
-    public ProductsService(CompanyRepository companyRepository) {
+    public ProductsService(CompanyRepository companyRepository,
+                           MeasureUnitRepository measureUnitRepository) {
         this.companyRepository = companyRepository;
+        this.measureUnitRepository = measureUnitRepository;
     }
 
     public List<ProductInfoDto> findAllProducts() {
@@ -81,8 +84,10 @@ public class ProductsService {
             imageService.saveImage(image);
             product.setImage(image);
         }
-        Company company = new Company();
-        companyRepository.findById(request.getCompanyId());
+        Company company = companyRepository.findById(request.getCompanyId()).get();
+        product.setCompany(company);
+        MeasureUnit measureUnit = measureUnitRepository.findById(request.getMeasureUnitId()).get();
+        product.setMeasureUnit(measureUnit);
 
 
 
