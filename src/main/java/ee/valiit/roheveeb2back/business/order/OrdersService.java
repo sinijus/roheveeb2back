@@ -1,5 +1,6 @@
 package ee.valiit.roheveeb2back.business.order;
 
+import ee.valiit.roheveeb2back.business.dto.OrderInfo;
 import ee.valiit.roheveeb2back.business.dto.PendingOrderInfo;
 import ee.valiit.roheveeb2back.domain.order.Order;
 import ee.valiit.roheveeb2back.domain.order.OrderMapper;
@@ -8,6 +9,8 @@ import ee.valiit.roheveeb2back.domain.user.User;
 import ee.valiit.roheveeb2back.domain.user.UserService;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class OrdersService {
@@ -36,5 +39,11 @@ public class OrdersService {
         PendingOrderInfo pendingOrderInfo = new PendingOrderInfo();
         pendingOrderInfo.setOrderId(order.getId());
         return pendingOrderInfo;
+    }
+
+    public List<OrderInfo> findOrders(Integer userId) {
+        List<Order> orders = orderService.findOrdersBy(userId);
+       return orderMapper.toOrdersInfo(orders);
+
     }
 }

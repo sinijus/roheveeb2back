@@ -106,7 +106,7 @@ CREATE TABLE product (
 CREATE TABLE payment (
                          id serial  NOT NULL,
                          method varchar(255)  NOT NULL,
-                         bank_logo_id int  NOT NULL,
+                         bank_logo_id int,
                          CONSTRAINT payment_pk PRIMARY KEY (id)
 );
 
@@ -114,7 +114,7 @@ CREATE TABLE payment (
 CREATE TABLE transport (
                            id serial  NOT NULL,
                            method varchar(255)  NOT NULL,
-                           fee int  NOT NULL,
+                           fee decimal(8,2)  NOT NULL,
                            CONSTRAINT transport_pk PRIMARY KEY (id)
 );
 

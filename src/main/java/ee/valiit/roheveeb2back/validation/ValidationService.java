@@ -1,5 +1,6 @@
 package ee.valiit.roheveeb2back.validation;
 
+import ee.valiit.roheveeb2back.domain.order.Order;
 import ee.valiit.roheveeb2back.domain.product.Product;
 import ee.valiit.roheveeb2back.domain.type.Type;
 import ee.valiit.roheveeb2back.domain.user.User;
@@ -36,6 +37,12 @@ public class ValidationService {
     public static void validateAtLeastOneTypeExists(List<Type> types) {
         if (types.isEmpty()) {
             throw new DataNotFoundException(NO_PRODUCT_TYPE_FOUND.getMessage(), NO_PRODUCT_TYPE_FOUND.getErrorCode());
+        }
+    }
+
+    public static void validateAtLeastOneOrderExists(List<Order> orders) {
+        if (orders.isEmpty()) {
+            throw new DataNotFoundException(NO_ORDER_FOUND.getMessage(), NO_ORDER_FOUND.getErrorCode());
         }
     }
 }
