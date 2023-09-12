@@ -3,6 +3,9 @@ package ee.valiit.roheveeb2back.business.product;
 import ee.valiit.roheveeb2back.business.dto.CategoryDto;
 import ee.valiit.roheveeb2back.business.dto.ProductInfoDto;
 import ee.valiit.roheveeb2back.business.dto.TypeDto;
+import ee.valiit.roheveeb2back.domain.company.Company;
+import ee.valiit.roheveeb2back.domain.company.CompanyMapper;
+import ee.valiit.roheveeb2back.domain.company.CompanyRepository;
 import ee.valiit.roheveeb2back.domain.image.Image;
 import ee.valiit.roheveeb2back.domain.type.Type;
 import ee.valiit.roheveeb2back.domain.type.TypeMapper;
@@ -43,6 +46,14 @@ public class ProductsService {
     @Resource
     private TypeMapper typeMapper;
 
+    @Resource
+    private CompanyMapper companyMapper;
+    private final CompanyRepository companyRepository;
+
+    public ProductsService(CompanyRepository companyRepository) {
+        this.companyRepository = companyRepository;
+    }
+
     public List<ProductInfoDto> findAllProducts() {
         List<Product> products = productService.findAllProducts();
         List<ProductInfoDto> productInfoDtos = productMapper.toProductInfoDtos(products);
@@ -70,6 +81,12 @@ public class ProductsService {
             imageService.saveImage(image);
             product.setImage(image);
         }
+        Company company = new Company();
+        companyRepository.findById(request.getCompanyId());
+
+
+
+
         productService.saveProduct(product);
 
     }

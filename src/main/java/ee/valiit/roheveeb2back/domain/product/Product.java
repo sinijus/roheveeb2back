@@ -1,6 +1,6 @@
 package ee.valiit.roheveeb2back.domain.product;
 
-import ee.valiit.roheveeb2back.domain.Company;
+import ee.valiit.roheveeb2back.domain.company.Company;
 import ee.valiit.roheveeb2back.domain.image.Image;
 import ee.valiit.roheveeb2back.domain.MeasureUnit;
 import ee.valiit.roheveeb2back.domain.type.Type;
