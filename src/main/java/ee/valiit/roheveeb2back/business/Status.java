@@ -5,7 +5,10 @@ import lombok.Getter;
 @Getter
 public enum Status {
     ACTIVE("A"),
+    PENDING("P"),
+    COMPLETED("C"),
     DELETED("D");
+
 
 
     private final String letter;

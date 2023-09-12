@@ -17,4 +17,8 @@ public class UserService {
         User user = ValidationService.getValidUser(optionalUser);
         return user;
     }
+
+    public User getUserBy(Integer userId) {
+        return userRepository.getReferenceById(userId);
+    }
 }

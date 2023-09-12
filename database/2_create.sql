@@ -127,8 +127,8 @@ CREATE TABLE "order" (
                          payment_id int  NULL,
                          status char(1)  NOT NULL,
                          total decimal(8,2)  NOT NULL DEFAULT 0,
-                         start_time varchar(255)  NULL,
-                         sent_time varchar(255)  NULL,
+                         start_time timestamp  NULL,
+                         sent_time timestamp  NULL,
                          CONSTRAINT order_pk PRIMARY KEY (id)
 );
 

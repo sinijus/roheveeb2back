@@ -1,5 +1,6 @@
 package ee.valiit.roheveeb2back.domain;
 
+import ee.valiit.roheveeb2back.domain.order.Order;
 import ee.valiit.roheveeb2back.domain.product.Product;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
