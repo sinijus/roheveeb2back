@@ -29,4 +29,8 @@ public class ProductService {
     public void saveProduct(Product product) {
         productRepository.save(product);
     }
+
+    public Product getProductBy(Integer productId) {
+        return productRepository.getReferenceById(productId);
+    }
 }

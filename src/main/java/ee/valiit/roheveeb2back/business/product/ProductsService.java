@@ -1,5 +1,6 @@
 package ee.valiit.roheveeb2back.business.product;
 
+import ee.valiit.roheveeb2back.business.Status;
 import ee.valiit.roheveeb2back.business.dto.CategoryDto;
 import ee.valiit.roheveeb2back.business.dto.ProductInfoDto;
 import ee.valiit.roheveeb2back.business.dto.TypeDto;
@@ -89,6 +90,12 @@ public class ProductsService {
         product.setMeasureUnit(measureUnit);
         Type type = typeService.getTypeBy(request.getTypeId());
         product.setType(type);
+        productService.saveProduct(product);
+    }
+
+    public void deleteProduct(Integer productId) {
+        Product product = productService.getProductBy(productId);
+        product.setStatus(Status.DELETED.getLetter());
         productService.saveProduct(product);
     }
 }
