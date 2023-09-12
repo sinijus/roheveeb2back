@@ -38,6 +38,12 @@ public class ProductsService {
     private TypeService typeService;
     @Resource
     private ImageService imageService;
+
+    @Resource
+    private CompanyService companyService;
+
+    @Resource
+    private MeasureService measureService;
     @Resource
     private ProductMapper productMapper;
 
@@ -48,14 +54,7 @@ public class ProductsService {
 
     @Resource
     private CompanyMapper companyMapper;
-    private final CompanyRepository companyRepository;
-    private final MeasureUnitRepository measureUnitRepository;
 
-    public ProductsService(CompanyRepository companyRepository,
-                           MeasureUnitRepository measureUnitRepository) {
-        this.companyRepository = companyRepository;
-        this.measureUnitRepository = measureUnitRepository;
-    }
 
     public List<ProductInfoDto> findAllProducts() {
         List<Product> products = productService.findAllProducts();
@@ -84,15 +83,12 @@ public class ProductsService {
             imageService.saveImage(image);
             product.setImage(image);
         }
-        Company company = companyRepository.findById(request.getCompanyId()).get();
+        Company company = companyService.getCompanyBy(request.getCompanyId());
         product.setCompany(company);
-        MeasureUnit measureUnit = measureUnitRepository.findById(request.getMeasureUnitId()).get();
+        MeasureUnit measureUnit = measureService.getMeasureUnitBy(request.getMeasureUnitId());
         product.setMeasureUnit(measureUnit);
-
-
-
-
+        Type type = typeService.getTypeBy(request.getTypeId());
+        product.setType(type);
         productService.saveProduct(product);
-
     }
 }
