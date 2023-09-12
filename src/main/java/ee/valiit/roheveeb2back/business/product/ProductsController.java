@@ -11,6 +11,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.annotation.Resource;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -70,7 +71,7 @@ public class ProductsController {
             @ApiResponse(responseCode = "200", description = "OK"),
             @ApiResponse(responseCode = "403", description = "Sellise nimega toode on poes juba olemas",
                     content = @Content(schema = @Schema(implementation = ApiError.class)))})
-    public void addNewProduct(@RequestBody ProductDto request) {
+    public void addNewProduct(@RequestBody @Valid ProductDto request) {
         productsService.addNewProduct(request);
     }
 }

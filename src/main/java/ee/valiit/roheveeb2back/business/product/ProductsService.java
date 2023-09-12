@@ -6,9 +6,7 @@ import ee.valiit.roheveeb2back.business.dto.TypeDto;
 import ee.valiit.roheveeb2back.domain.measureunit.MeasureUnit;
 import ee.valiit.roheveeb2back.domain.company.Company;
 import ee.valiit.roheveeb2back.domain.company.CompanyMapper;
-import ee.valiit.roheveeb2back.domain.company.CompanyRepository;
 import ee.valiit.roheveeb2back.domain.image.Image;
-import ee.valiit.roheveeb2back.domain.measureunit.MeasureUnitRepository;
 import ee.valiit.roheveeb2back.domain.type.Type;
 import ee.valiit.roheveeb2back.domain.type.TypeMapper;
 import ee.valiit.roheveeb2back.domain.type.TypeService;
@@ -77,18 +75,34 @@ public class ProductsService {
     @Transactional
     public void addNewProduct(ProductDto request) {
         productService.confirmProductNameAvailability(request.getProductName());
-        Product product = productMapper.toProduct(request);
-        if (request.getImageData() != null) {
-            Image image = ImageConverter.imageDataToImage(request.getImageData());
-            imageService.saveImage(image);
-            product.setImage(image);
-        }
-        Company company = companyService.getCompanyBy(request.getCompanyId());
-        product.setCompany(company);
-        MeasureUnit measureUnit = measureService.getMeasureUnitBy(request.getMeasureUnitId());
-        product.setMeasureUnit(measureUnit);
-        Type type = typeService.getTypeBy(request.getTypeId());
-        product.setType(type);
+        createAndSaveProduct(request);
+    }
+
+    private void createAndSaveProduct(ProductDto request) {
+        Product product = createProduct(request);
         productService.saveProduct(product);
+    }
+
+    private Product createProduct(ProductDto request) {
+        Company company = companyService.getCompanyBy(request.getCompanyId());
+        Type type = typeService.getTypeBy(request.getTypeId());
+        MeasureUnit measureUnit = measureService.getMeasureUnitBy(request.getMeasureUnitId());
+        Image image = createAndSaveImage(request.getImageData());
+
+        Product product = productMapper.toProduct(request);
+        product.setCompany(company);
+        product.setType(type);
+        product.setMeasureUnit(measureUnit);
+        product.setImage(image);
+        return product;
+    }
+
+    private Image createAndSaveImage(String imageData) {
+        if (imageData != null) {
+            Image image = ImageConverter.imageDataToImage(imageData);
+            imageService.saveImage(image);
+            return image;
+        }
+        return null;
     }
 }
