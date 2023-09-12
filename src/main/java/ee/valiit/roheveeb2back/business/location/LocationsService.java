@@ -1,6 +1,6 @@
 package ee.valiit.roheveeb2back.business.location;
 
-import ee.valiit.roheveeb2back.business.CountyDto;
+import ee.valiit.roheveeb2back.business.dto.CountyDto;
 import ee.valiit.roheveeb2back.domain.county.County;
 import ee.valiit.roheveeb2back.domain.county.CountyMapper;
 import ee.valiit.roheveeb2back.domain.county.CountyService;

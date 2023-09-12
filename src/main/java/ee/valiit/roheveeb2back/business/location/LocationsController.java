@@ -1,6 +1,6 @@
 package ee.valiit.roheveeb2back.business.location;
 
-import ee.valiit.roheveeb2back.business.CountyDto;
+import ee.valiit.roheveeb2back.business.dto.CountyDto;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.GetMapping;

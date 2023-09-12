@@ -4,6 +4,8 @@ import ee.valiit.roheveeb2back.business.dto.CategoryDto;
 import ee.valiit.roheveeb2back.business.dto.ProductDto;
 import ee.valiit.roheveeb2back.business.dto.ProductInfoDto;
 import ee.valiit.roheveeb2back.business.dto.TypeDto;
+import ee.valiit.roheveeb2back.business.dto.MeasureUnitDto;
+import ee.valiit.roheveeb2back.domain.measureunit.MeasureUnitService;
 import ee.valiit.roheveeb2back.infrastructure.error.ApiError;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -21,6 +23,9 @@ public class ProductsController {
     @Resource
     private ProductsService productsService;
 
+    @Resource
+    private MeasureUnitService measureUnitService;
+
     @GetMapping("/products")
     @Operation(summary = " Kõikide toodete küsimine. Tagastab listi toodetest, mis on aktiivse staatusega ",
             description = """
@@ -35,6 +40,7 @@ public class ProductsController {
         return productsService.findAllProducts();
     }
 
+
     @GetMapping("/categories")
     @Operation(summary = " Leiab süsteemist (andmebaasi category tabelist) kõik kategooriad.",
             description = """
@@ -44,6 +50,17 @@ public class ProductsController {
     public List<CategoryDto> getCategories() {
         List<CategoryDto> categories = productsService.getCategories();
         return categories;
+    }
+
+    @GetMapping("/measureunits")
+    @Operation(summary = "Kõikide ühikute küsimine. Tagastab kõik ühikud",
+            description = """
+            Kõikide ühikute küsimine. Tagastab kõik ühikud
+            """)
+
+    public List<MeasureUnitDto> getMeasureUnits() {
+        List<MeasureUnitDto> measureUnits = productsService.getMeasureUnits();
+        return measureUnits;
     }
 
     @GetMapping("/types")

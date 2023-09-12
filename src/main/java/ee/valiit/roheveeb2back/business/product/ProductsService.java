@@ -9,7 +9,9 @@ import ee.valiit.roheveeb2back.domain.company.Company;
 import ee.valiit.roheveeb2back.domain.company.CompanyMapper;
 import ee.valiit.roheveeb2back.domain.company.CompanyRepository;
 import ee.valiit.roheveeb2back.domain.image.Image;
-import ee.valiit.roheveeb2back.domain.measureunit.MeasureUnitRepository;
+import ee.valiit.roheveeb2back.business.dto.MeasureUnitDto;
+import ee.valiit.roheveeb2back.domain.measureunit.MeasureUnitMapper;
+import ee.valiit.roheveeb2back.domain.measureunit.MeasureUnitService;
 import ee.valiit.roheveeb2back.domain.type.Type;
 import ee.valiit.roheveeb2back.domain.type.TypeMapper;
 import ee.valiit.roheveeb2back.domain.type.TypeService;
@@ -44,7 +46,7 @@ public class ProductsService {
     private CompanyService companyService;
 
     @Resource
-    private MeasureService measureService;
+    private MeasureUnitService measureUnitService;
     @Resource
     private ProductMapper productMapper;
 
@@ -55,6 +57,9 @@ public class ProductsService {
 
     @Resource
     private CompanyMapper companyMapper;
+
+    @Resource
+    private MeasureUnitMapper measureUnitMapper;
 
 
     public List<ProductInfoDto> findAllProducts() {
@@ -86,7 +91,7 @@ public class ProductsService {
         }
         Company company = companyService.getCompanyBy(request.getCompanyId());
         product.setCompany(company);
-        MeasureUnit measureUnit = measureService.getMeasureUnitBy(request.getMeasureUnitId());
+        MeasureUnit measureUnit = measureUnitService.getMeasureUnitBy(request.getMeasureUnitId());
         product.setMeasureUnit(measureUnit);
         Type type = typeService.getTypeBy(request.getTypeId());
         product.setType(type);
@@ -97,5 +102,10 @@ public class ProductsService {
         Product product = productService.getProductBy(productId);
         product.setStatus(Status.DELETED.getLetter());
         productService.saveProduct(product);
+    }
+
+    public List<MeasureUnitDto> getMeasureUnits() {
+        List<MeasureUnit> measureUnits = measureUnitService.getMeasureUnits();
+        return measureUnitMapper.toMeasureUnits(measureUnits);
     }
 }
