@@ -6,6 +6,7 @@ import lombok.Getter;
 public enum Status {
     ACTIVE("A"),
     PENDING("P"),
+    COMPLETED("C"),
     DELETED("D");
 
 

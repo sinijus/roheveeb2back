@@ -27,4 +27,9 @@ public class OrderService {
         return order;
     }
 
+    public Order getOrderBy(User user) {
+        return orderRepository.findOrderBy(user.getId());
+
+
+    }
 }

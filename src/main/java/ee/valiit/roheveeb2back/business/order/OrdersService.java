@@ -30,9 +30,11 @@ public class OrdersService {
             PendingOrderInfo pendingOrderInfo = new PendingOrderInfo();
             pendingOrderInfo.setOrderId(order.getId());
             return pendingOrderInfo;
-
         }
-
-        return null;
+        User user = userService.getUserBy(userId);
+        Order order = orderService.getOrderBy(user);
+        PendingOrderInfo pendingOrderInfo = new PendingOrderInfo();
+        pendingOrderInfo.setOrderId(order.getId());
+        return pendingOrderInfo;
     }
 }
