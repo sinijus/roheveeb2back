@@ -1,9 +1,9 @@
 package ee.valiit.roheveeb2back.business.location;
 
 import ee.valiit.roheveeb2back.business.dto.CountyDto;
-import ee.valiit.roheveeb2back.domain.county.County;
-import ee.valiit.roheveeb2back.domain.county.CountyMapper;
-import ee.valiit.roheveeb2back.domain.county.CountyService;
+import ee.valiit.roheveeb2back.domain.location.county.County;
+import ee.valiit.roheveeb2back.domain.location.county.CountyMapper;
+import ee.valiit.roheveeb2back.domain.location.county.CountyService;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 

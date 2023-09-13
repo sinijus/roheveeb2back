@@ -1,6 +1,6 @@
 package ee.valiit.roheveeb2back.business.login;
 
-import ee.valiit.roheveeb2back.domain.user.LoginResponse;
+import ee.valiit.roheveeb2back.business.dto.LoginResponse;
 import ee.valiit.roheveeb2back.domain.user.User;
 import ee.valiit.roheveeb2back.domain.user.UserMapper;
 import ee.valiit.roheveeb2back.domain.user.UserService;

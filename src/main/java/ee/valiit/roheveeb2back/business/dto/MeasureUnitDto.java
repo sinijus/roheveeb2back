@@ -1,6 +1,6 @@
 package ee.valiit.roheveeb2back.business.dto;
 
-import ee.valiit.roheveeb2back.domain.measureunit.MeasureUnit;
+import ee.valiit.roheveeb2back.domain.product.measureunit.MeasureUnit;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;

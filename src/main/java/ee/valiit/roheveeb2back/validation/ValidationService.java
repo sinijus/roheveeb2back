@@ -2,7 +2,7 @@ package ee.valiit.roheveeb2back.validation;
 
 import ee.valiit.roheveeb2back.domain.order.Order;
 import ee.valiit.roheveeb2back.domain.product.Product;
-import ee.valiit.roheveeb2back.domain.type.Type;
+import ee.valiit.roheveeb2back.domain.product.type.Type;
 import ee.valiit.roheveeb2back.domain.user.User;
 import ee.valiit.roheveeb2back.infrastructure.exception.BusinessException;
 import ee.valiit.roheveeb2back.infrastructure.exception.DataNotFoundException;

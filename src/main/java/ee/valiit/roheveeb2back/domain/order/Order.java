@@ -1,11 +1,10 @@
 package ee.valiit.roheveeb2back.domain.order;
 
-import ee.valiit.roheveeb2back.domain.Payment;
-import ee.valiit.roheveeb2back.domain.Transport;
+import ee.valiit.roheveeb2back.domain.order.payment.Payment;
+import ee.valiit.roheveeb2back.domain.order.transport.Transport;
 import ee.valiit.roheveeb2back.domain.user.User;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 

@@ -1,7 +1,7 @@
 package ee.valiit.roheveeb2back.business.order;
 
-import ee.valiit.roheveeb2back.business.dto.OrderInfo;
-import ee.valiit.roheveeb2back.business.dto.PendingOrderInfo;
+import ee.valiit.roheveeb2back.business.order.dto.OrderInfo;
+import ee.valiit.roheveeb2back.business.order.dto.PendingOrderInfo;
 import ee.valiit.roheveeb2back.domain.order.Order;
 import ee.valiit.roheveeb2back.domain.order.OrderMapper;
 import ee.valiit.roheveeb2back.domain.order.OrderService;
