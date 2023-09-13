@@ -88,6 +88,11 @@ public class ProductsController {
         productsService.addNewProduct(request);
     }
 
+    @PutMapping("/product")
+    public void updateProductInfo(@RequestParam Integer productId  ,@RequestBody ProductDto request) {
+        productsService.updateProductInfo(productId, request);
+    }
+
     @DeleteMapping("/product")
     @Operation(summary = "Eemaldab toote info müüja poe vaates",
             description = """

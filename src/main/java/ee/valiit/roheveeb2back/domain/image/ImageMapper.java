@@ -16,3 +16,4 @@ public interface ImageMapper {
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     Image partialUpdate(ImageDto imageDto, @MappingTarget Image image);
 }
+

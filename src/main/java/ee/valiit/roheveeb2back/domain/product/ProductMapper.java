@@ -40,6 +40,11 @@ public interface ProductMapper {
     ProductInfoDto toProductInfoDto(Product product);
     List<ProductInfoDto> toProductInfoDtos(List<Product> products);
 
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    @Mapping(source = "productName", target = "name")
+    @Mapping(source = "measureUnitId", target = "id")
+    Product partialUpdate(ProductDto productDto, @MappingTarget Product product);
+
     @Named("imageToImageData")
     static String imageToImageData(Image image) {
         return ImageConverter.imageToImageData(image);
