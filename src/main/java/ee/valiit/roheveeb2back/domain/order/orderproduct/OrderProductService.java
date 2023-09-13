@@ -3,6 +3,8 @@ package ee.valiit.roheveeb2back.domain.order.orderproduct;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class OrderProductService {
 
@@ -16,8 +18,8 @@ public class OrderProductService {
         orderProductRepository.deleteById(orderProductId);
     }
 
-    public OrderProduct getOrderProductrequestBy(Integer productId) {
-        OrderProduct orderProduct = orderProductRepository.getOrderProductBy(productId);
+    public Optional<OrderProduct> getOrderProductrequestBy(Integer productId) {
+        Optional<OrderProduct> orderProduct = orderProductRepository.getOrderProductBy(productId);
         return orderProduct;
     }
 }
