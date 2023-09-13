@@ -11,4 +11,8 @@ public class OrderProductService {
     public void saveOrderProduct(OrderProduct orderProduct) {
         orderProductRepository.save(orderProduct);
     }
+
+    public void deleteOrderProductBy(Integer orderProductId) {
+        orderProductRepository.deleteById(orderProductId);
+    }
 }

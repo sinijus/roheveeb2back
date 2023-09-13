@@ -33,4 +33,9 @@ public class OrderProductsService {
         orderProduct.setQuantity(request.getProductAmount());
         orderProductService.saveOrderProduct(orderProduct);
     }
+
+    public void deleteProductFromOrder(Integer orderProductId) {
+        orderProductService.deleteOrderProductBy(orderProductId);
+
+    }
 }
