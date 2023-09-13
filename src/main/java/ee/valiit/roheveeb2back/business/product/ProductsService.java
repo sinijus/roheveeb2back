@@ -1,28 +1,23 @@
 package ee.valiit.roheveeb2back.business.product;
 
 import ee.valiit.roheveeb2back.business.Status;
-import ee.valiit.roheveeb2back.business.dto.CategoryDto;
-import ee.valiit.roheveeb2back.business.dto.ProductInfoDto;
-import ee.valiit.roheveeb2back.business.dto.TypeDto;
-import ee.valiit.roheveeb2back.domain.measureunit.MeasureUnit;
-import ee.valiit.roheveeb2back.domain.company.Company;
-import ee.valiit.roheveeb2back.domain.company.CompanyMapper;
-import ee.valiit.roheveeb2back.domain.company.CompanyRepository;
-import ee.valiit.roheveeb2back.domain.image.Image;
-import ee.valiit.roheveeb2back.business.dto.MeasureUnitDto;
-import ee.valiit.roheveeb2back.domain.measureunit.MeasureUnitMapper;
-import ee.valiit.roheveeb2back.domain.measureunit.MeasureUnitService;
-import ee.valiit.roheveeb2back.domain.type.Type;
-import ee.valiit.roheveeb2back.domain.type.TypeMapper;
-import ee.valiit.roheveeb2back.domain.type.TypeService;
+import ee.valiit.roheveeb2back.business.dto.*;
 import ee.valiit.roheveeb2back.domain.category.Category;
 import ee.valiit.roheveeb2back.domain.category.CategoryMapper;
 import ee.valiit.roheveeb2back.domain.category.CategoryService;
-import ee.valiit.roheveeb2back.business.dto.ProductDto;
+import ee.valiit.roheveeb2back.domain.company.Company;
+import ee.valiit.roheveeb2back.domain.company.CompanyMapper;
+import ee.valiit.roheveeb2back.domain.image.Image;
 import ee.valiit.roheveeb2back.domain.image.ImageService;
+import ee.valiit.roheveeb2back.domain.measureunit.MeasureUnit;
+import ee.valiit.roheveeb2back.domain.measureunit.MeasureUnitMapper;
+import ee.valiit.roheveeb2back.domain.measureunit.MeasureUnitService;
 import ee.valiit.roheveeb2back.domain.product.Product;
 import ee.valiit.roheveeb2back.domain.product.ProductMapper;
 import ee.valiit.roheveeb2back.domain.product.ProductService;
+import ee.valiit.roheveeb2back.domain.type.Type;
+import ee.valiit.roheveeb2back.domain.type.TypeMapper;
+import ee.valiit.roheveeb2back.domain.type.TypeService;
 import ee.valiit.roheveeb2back.util.ImageConverter;
 import jakarta.annotation.Resource;
 import jakarta.transaction.Transactional;
@@ -109,6 +104,7 @@ public class ProductsService {
         List<MeasureUnit> measureUnits = measureUnitService.getMeasureUnits();
         return measureUnitMapper.toMeasureUnits(measureUnits);
     }
+
     @Transactional
     public void updateProductInfo(Integer productId, ProductDto request) {
         Product product = productService.getProductBy(productId);
@@ -146,7 +142,7 @@ public class ProductsService {
     private void handleMeasureUnitIdUpdate(ProductDto request, Product product) {
         Integer measureUnitId = request.getMeasureUnitId();
         if (!requestHasSameMeasureUnitIdAsProduct(measureUnitId, product)) {
-            MeasureUnit measureUnit = measureService.getMeasureUnitBy(measureUnitId);
+            MeasureUnit measureUnit = measureUnitService.getMeasureUnitBy(measureUnitId);
             product.setMeasureUnit(measureUnit);
         }
     }
