@@ -1,8 +1,9 @@
 package ee.valiit.roheveeb2back.domain.product;
 
 import ee.valiit.roheveeb2back.business.Status;
-import ee.valiit.roheveeb2back.business.product.dto.ProductDto;
+import ee.valiit.roheveeb2back.business.product.dto.NewProduct;
 import ee.valiit.roheveeb2back.business.product.dto.ProductInfoDto;
+import ee.valiit.roheveeb2back.business.product.dto.UpdatedProduct;
 import ee.valiit.roheveeb2back.domain.image.Image;
 import ee.valiit.roheveeb2back.util.ImageConverter;
 import org.mapstruct.*;
@@ -15,7 +16,7 @@ public interface ProductMapper {
 
     @Mapping(source = "productName", target = "name")
     @Mapping(expression = "java(Status.ACTIVE.getLetter())", target = "status")
-    Product toProduct(ProductDto request);
+    Product toProduct(NewProduct request);
 
     @Mapping(source = "id", target = "productId")
     @Mapping(source = "company.id", target = "companyId")
@@ -40,8 +41,7 @@ public interface ProductMapper {
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     @Mapping(source = "productName", target = "name")
-    @Mapping(source = "measureUnitId", target = "id")
-    Product partialUpdate(ProductDto productDto, @MappingTarget Product product);
+    Product partialUpdate(UpdatedProduct newProduct, @MappingTarget Product product);
 
     @Named("imageToImageData")
     static String imageToImageData(Image image) {

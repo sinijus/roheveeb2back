@@ -2,8 +2,9 @@ package ee.valiit.roheveeb2back.business.product;
 
 import ee.valiit.roheveeb2back.business.Status;
 import ee.valiit.roheveeb2back.business.dto.*;
-import ee.valiit.roheveeb2back.business.product.dto.ProductDto;
+import ee.valiit.roheveeb2back.business.product.dto.NewProduct;
 import ee.valiit.roheveeb2back.business.product.dto.ProductInfoDto;
+import ee.valiit.roheveeb2back.business.product.dto.UpdatedProduct;
 import ee.valiit.roheveeb2back.domain.company.Company;
 import ee.valiit.roheveeb2back.domain.company.CompanyMapper;
 import ee.valiit.roheveeb2back.domain.company.CompanyService;
@@ -71,17 +72,17 @@ public class ProductsService {
     }
 
     @Transactional
-    public void addNewProduct(ProductDto request) {
+    public void addNewProduct(NewProduct request) {
         productService.confirmProductNameAvailability(request.getProductName());
         createAndSaveProduct(request);
     }
 
-    private void createAndSaveProduct(ProductDto request) {
+    private void createAndSaveProduct(NewProduct request) {
         Product product = createProduct(request);
         productService.saveProduct(product);
     }
 
-    private Product createProduct(ProductDto request) {
+    private Product createProduct(NewProduct request) {
         Company company = companyService.getCompanyBy(request.getCompanyId());
         Type type = typeService.getTypeBy(request.getTypeId());
         MeasureUnit measureUnit = measureUnitService.getMeasureUnitBy(request.getMeasureUnitId());
@@ -116,40 +117,16 @@ public class ProductsService {
     }
 
     @Transactional
-    public void updateProductInfo(Integer productId, ProductDto request) {
+    public void updateProductInfo(Integer productId, UpdatedProduct request) {
         Product product = productService.getProductBy(productId);
         productMapper.partialUpdate(request, product);
-
-        handleProductNameUpdate(request, product);
         handleMeasureUnitIdUpdate(request, product);
         handleImageUpdate(request, product);
-
-
-    }
-
-    private void handleProductNameUpdate(ProductDto request, Product product) {
-        if (request.getProductName().isEmpty()) {
-            return;
-        }
-        String name = product.getName();
-        String requestProductName = request.getProductName();
-
-        if (requestHasNewProductName(name, requestProductName)) {
-            saveAndSetNewNameToProduct(requestProductName, product);
-        }
-    }
-
-    private boolean requestHasNewProductName(String name, String requestProductName) {
-        return name == null && !requestProductName.isEmpty();
-
-    }
-
-    private void saveAndSetNewNameToProduct(String requestProductName, Product product) {
         productService.saveProduct(product);
-
     }
 
-    private void handleMeasureUnitIdUpdate(ProductDto request, Product product) {
+
+    private void handleMeasureUnitIdUpdate(UpdatedProduct request, Product product) {
         Integer measureUnitId = request.getMeasureUnitId();
         if (!requestHasSameMeasureUnitIdAsProduct(measureUnitId, product)) {
             MeasureUnit measureUnit = measureUnitService.getMeasureUnitBy(measureUnitId);
@@ -162,7 +139,7 @@ public class ProductsService {
     }
 
 
-    private void handleImageUpdate(ProductDto request, Product product) {
+    private void handleImageUpdate(UpdatedProduct request, Product product) {
         if (request.getImageData().isEmpty()) {
             return;
         }

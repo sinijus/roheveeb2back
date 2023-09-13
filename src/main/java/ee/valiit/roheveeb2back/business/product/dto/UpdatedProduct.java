@@ -1,7 +1,6 @@
 package ee.valiit.roheveeb2back.business.product.dto;
 
 import ee.valiit.roheveeb2back.domain.product.Product;
-import jakarta.persistence.JoinColumn;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -17,15 +16,7 @@ import java.math.BigDecimal;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProductDto implements Serializable {
-    @NotNull
-    private Integer companyId;
-    @NotNull
-    private Integer typeId;
-    @NotNull
-    private Integer measureUnitId;
-
-    private String imageData;
+public class UpdatedProduct implements Serializable {
 
     @NotNull
     @Size(max = 255)
@@ -36,5 +27,12 @@ public class ProductDto implements Serializable {
 
     @NotNull
     private Integer stockBalance;
+
+    @NotNull
+    private Integer measureUnitId;
+
+    private String imageData;
+
+
 
 }
