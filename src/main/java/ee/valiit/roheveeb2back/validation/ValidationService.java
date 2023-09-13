@@ -46,7 +46,7 @@ public class ValidationService {
         }
     }
 
-    public static void validateAddedAmountExists(Integer productAmount, Integer stockBalance) {
+    public static void validateAddedProductAmountExists(Integer productAmount, Integer stockBalance) {
         if (areEnoughProductsInStock(productAmount, stockBalance)) {
             throw new BusinessException(NOT_ENOUGH_PRODUCTS.getMessage(), NOT_ENOUGH_PRODUCTS.getErrorCode());
         }
