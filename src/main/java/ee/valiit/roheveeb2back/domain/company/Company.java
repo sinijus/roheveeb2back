@@ -1,6 +1,6 @@
 package ee.valiit.roheveeb2back.domain.company;
 
-import ee.valiit.roheveeb2back.domain.Location;
+import ee.valiit.roheveeb2back.domain.location.Location;
 import ee.valiit.roheveeb2back.domain.image.Image;
 import ee.valiit.roheveeb2back.domain.user.User;
 import jakarta.persistence.*;
@@ -15,6 +15,7 @@ import lombok.Setter;
 @Table(name = "company")
 public class Company {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
 

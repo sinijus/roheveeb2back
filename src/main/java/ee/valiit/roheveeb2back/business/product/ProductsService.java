@@ -2,22 +2,22 @@ package ee.valiit.roheveeb2back.business.product;
 
 import ee.valiit.roheveeb2back.business.Status;
 import ee.valiit.roheveeb2back.business.dto.*;
-import ee.valiit.roheveeb2back.domain.category.Category;
-import ee.valiit.roheveeb2back.domain.category.CategoryMapper;
-import ee.valiit.roheveeb2back.domain.category.CategoryService;
+import ee.valiit.roheveeb2back.business.product.dto.ProductDto;
+import ee.valiit.roheveeb2back.business.product.dto.ProductInfoDto;
 import ee.valiit.roheveeb2back.domain.company.Company;
 import ee.valiit.roheveeb2back.domain.company.CompanyMapper;
+import ee.valiit.roheveeb2back.domain.company.CompanyService;
 import ee.valiit.roheveeb2back.domain.image.Image;
 import ee.valiit.roheveeb2back.domain.image.ImageService;
-import ee.valiit.roheveeb2back.domain.measureunit.MeasureUnit;
-import ee.valiit.roheveeb2back.domain.measureunit.MeasureUnitMapper;
-import ee.valiit.roheveeb2back.domain.measureunit.MeasureUnitService;
+import ee.valiit.roheveeb2back.domain.product.measureunit.MeasureUnit;
+import ee.valiit.roheveeb2back.domain.product.measureunit.MeasureUnitMapper;
+import ee.valiit.roheveeb2back.domain.product.measureunit.MeasureUnitService;
 import ee.valiit.roheveeb2back.domain.product.Product;
 import ee.valiit.roheveeb2back.domain.product.ProductMapper;
 import ee.valiit.roheveeb2back.domain.product.ProductService;
-import ee.valiit.roheveeb2back.domain.type.Type;
-import ee.valiit.roheveeb2back.domain.type.TypeMapper;
-import ee.valiit.roheveeb2back.domain.type.TypeService;
+import ee.valiit.roheveeb2back.domain.product.type.Type;
+import ee.valiit.roheveeb2back.domain.product.type.TypeMapper;
+import ee.valiit.roheveeb2back.domain.product.type.TypeService;
 import ee.valiit.roheveeb2back.util.ImageConverter;
 import jakarta.annotation.Resource;
 import jakarta.transaction.Transactional;
@@ -31,8 +31,7 @@ public class ProductsService {
 
     @Resource
     private ProductService productService;
-    @Resource
-    private CategoryService categoryService;
+
     @Resource
     private TypeService typeService;
     @Resource
@@ -46,8 +45,7 @@ public class ProductsService {
     @Resource
     private ProductMapper productMapper;
 
-    @Resource
-    private CategoryMapper categoryMapper;
+
     @Resource
     private TypeMapper typeMapper;
 
@@ -64,11 +62,7 @@ public class ProductsService {
         return productInfoDtos;
     }
 
-    public List<CategoryDto> getCategories() {
-        List<Category> categories = categoryService.getCategories();
-        List<CategoryDto> categoryDtos = categoryMapper.toCategoryDtos(categories);
-        return categoryDtos;
-    }
+
 
     public List<TypeDto> findAllTypes() {
         List<Type> types = typeService.findAllTypes();

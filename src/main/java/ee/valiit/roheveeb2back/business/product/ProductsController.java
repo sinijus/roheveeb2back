@@ -1,6 +1,8 @@
 package ee.valiit.roheveeb2back.business.product;
 
 import ee.valiit.roheveeb2back.business.dto.*;
+import ee.valiit.roheveeb2back.business.product.dto.ProductDto;
+import ee.valiit.roheveeb2back.business.product.dto.ProductInfoDto;
 import ee.valiit.roheveeb2back.infrastructure.error.ApiError;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -34,14 +36,7 @@ public class ProductsController {
     }
 
 
-    @GetMapping("/categories")
-    @Operation(summary = " Leiab süsteemist (andmebaasi category tabelist) kõik kategooriad.",
-            description = """
-                     Tagastab info koos categoryId ja categoryName'ga
-                    """)
-    public List<CategoryDto> getCategories() {
-        return productsService.getCategories();
-    }
+    // TODO: 9/13/2023 Ümber tõsta
 
     @GetMapping("/measureunits")
     @Operation(summary = "Kõikide ühikute küsimine. Tagastab kõik ühikud",
@@ -53,6 +48,8 @@ public class ProductsController {
         return productsService.getMeasureUnits();
     }
 
+
+    // TODO: 9/13/2023  Ümber tõsta
     @GetMapping("/types")
     @Operation(summary = " Kõikide tüüpide küsimine. Tagastab listi tüüpidest",
             description = """

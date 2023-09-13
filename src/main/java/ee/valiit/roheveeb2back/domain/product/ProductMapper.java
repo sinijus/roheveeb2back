@@ -1,8 +1,8 @@
 package ee.valiit.roheveeb2back.domain.product;
 
 import ee.valiit.roheveeb2back.business.Status;
-import ee.valiit.roheveeb2back.business.dto.ProductDto;
-import ee.valiit.roheveeb2back.business.dto.ProductInfoDto;
+import ee.valiit.roheveeb2back.business.product.dto.ProductDto;
+import ee.valiit.roheveeb2back.business.product.dto.ProductInfoDto;
 import ee.valiit.roheveeb2back.domain.image.Image;
 import ee.valiit.roheveeb2back.util.ImageConverter;
 import org.mapstruct.*;

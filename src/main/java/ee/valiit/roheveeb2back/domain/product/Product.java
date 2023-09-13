@@ -2,8 +2,8 @@ package ee.valiit.roheveeb2back.domain.product;
 
 import ee.valiit.roheveeb2back.domain.company.Company;
 import ee.valiit.roheveeb2back.domain.image.Image;
-import ee.valiit.roheveeb2back.domain.measureunit.MeasureUnit;
-import ee.valiit.roheveeb2back.domain.type.Type;
+import ee.valiit.roheveeb2back.domain.product.measureunit.MeasureUnit;
+import ee.valiit.roheveeb2back.domain.product.type.Type;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;

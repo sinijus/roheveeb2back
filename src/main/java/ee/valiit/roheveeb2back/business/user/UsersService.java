@@ -1,10 +1,10 @@
 package ee.valiit.roheveeb2back.business.user;
 
-import ee.valiit.roheveeb2back.business.dto.UserContactInfo;
+import ee.valiit.roheveeb2back.business.user.dto.UserContactInfo;
 import ee.valiit.roheveeb2back.domain.user.UserService;
-import ee.valiit.roheveeb2back.domain.usercontact.UserContact;
-import ee.valiit.roheveeb2back.domain.usercontact.UserContactMapper;
-import ee.valiit.roheveeb2back.domain.usercontact.UserContactService;
+import ee.valiit.roheveeb2back.domain.user.usercontact.UserContact;
+import ee.valiit.roheveeb2back.domain.user.usercontact.UserContactMapper;
+import ee.valiit.roheveeb2back.domain.user.usercontact.UserContactService;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
