@@ -31,7 +31,22 @@ public class OrderProductsController {
         orderProductsService.addProductToOrder(request);
     }
 
-    @DeleteMapping("order-product")
+    @PutMapping("/order-product")
+    @Operation(summary = "Uuendab tabelisse order_product toote kogust",
+            description = """
+                    Uuendab tabelis order_product Id ja koguse muutuse alusel toote kogust kui lisatav toote kogus on olemas.
+                    """)
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "OK"),
+            @ApiResponse(responseCode = "403", description = "message: Selline toote kogus ei ole enam saadaval. errorCode: 777",
+                    content = @Content(schema = @Schema(implementation = ApiError.class)))
+    })
+    public void updateProductQuantity(@RequestParam Integer orderProductId, @RequestParam Integer changeInQuantity) {
+        orderProductsService.updateProductQuantity(orderProductId, changeInQuantity);
+    }
+
+
+    @DeleteMapping("/order-product")
     @Operation(summary = "Kustutab tabelist order_product orderProductId-ga rea",
             description = "Kustutab ostukorvist toote ehk tabelist order_product orderProductId-ga rea")
     public void deleteProductFromOrder(@RequestParam Integer orderProductId) {

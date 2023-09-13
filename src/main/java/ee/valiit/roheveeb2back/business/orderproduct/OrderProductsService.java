@@ -38,4 +38,9 @@ public class OrderProductsService {
         orderProductService.deleteOrderProductBy(orderProductId);
 
     }
+
+    public void updateProductQuantity(Integer orderProductId, Integer changeInQuantity) {
+        //TODO: go on from here
+    }
+
 }
