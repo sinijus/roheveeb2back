@@ -76,9 +76,11 @@ VALUES (DEFAULT, 2, 2, null, 'Hiline porgand "Berlicum 2', 1.50, 10, 2, 'A');
 INSERT INTO public.transport (id, method, fee) VALUES (DEFAULT, 'DPD pakiautomaat', 3.50);
 INSERT INTO public.transport (id, method, fee) VALUES (DEFAULT, 'Omniva pakiautomaat', 3.20);
 
-INSERT INTO public.payment (id, method, bank_logo_id) VALUES (DEFAULT, 'LHV', NULL)
+INSERT INTO public.payment (id, method, bank_logo_id)VALUES (DEFAULT, 'LHV', NULL);
 
 
+INSERT INTO public.user_contact (id, location_id, user_id, phone_number, first_name, last_name)
+VALUES (DEFAULT, 3, 2, '6555788', 'Mikk', 'Jalg')
 
 
 

@@ -30,11 +30,8 @@ public interface ProductMapper {
     @Mapping(source = "measureUnit.id", target = "measureUnitId")
     @Mapping(source = "measureUnit.name", target = "measureUnitName")
     @Mapping(source = "image.id", target = "productImageId")
-    @Mapping(source = "image", target = "productImageData", qualifiedByName = "imageToImageData")
-    //@Mapping(expression = "java(ImageConverter.imageToImageData(product.getImage())", target = "productImageData")
     @Mapping(source = "name", target = "productName")
     @Mapping(source = "stockBalance", target = "productBalance")
-    @Mapping(source = "price", target = "price")
     ProductInfoDto toProductInfoDto(Product product);
     List<ProductInfoDto> toProductInfoDtos(List<Product> products);
 
