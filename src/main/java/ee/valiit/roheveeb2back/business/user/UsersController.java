@@ -8,11 +8,11 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.annotation.Resource;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 public class UsersController {
 
     @Resource
@@ -25,7 +25,7 @@ public class UsersController {
                     aadress, linn/alevik/küla, postiindeks.""")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "OK"),
-            @ApiResponse(responseCode = "403", description = "message: ???. errorCode: ???",
+            @ApiResponse(responseCode = "403", description = "message: andmeid ei leitud. errorCode: ???",
                     content = @Content(schema = @Schema(implementation = ApiError.class)))})
     public UserContactInfo getUserContactInfo(@RequestParam Integer userId) {
         return usersService.getUserContactInfo(userId);
