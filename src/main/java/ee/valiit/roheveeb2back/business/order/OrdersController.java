@@ -40,9 +40,7 @@ public class OrdersController {
 
     @GetMapping("/orders/user")
     @Operation(summary = "Leiab kõik kasutaja kinnitatud tellimused",
-            description = """
-                    Leiab ja tagastab kõik kasutaja töötluses või lõpetatud tellimused.
-                    """)
+            description = "Leiab ja tagastab kõik kasutaja töötluses või lõpetatud tellimused.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "OK"),
             @ApiResponse(responseCode = "403", description = "message: Ühtegi tellimust ei leitud. errorCode: 666",
@@ -52,8 +50,7 @@ public class OrdersController {
         return ordersService.findOrders(userId);
     }
     @GetMapping("/payment")
-    @Operation(summary = "toob ära maksmisega seotud info", description = """ toob ära maksmisega seotud info
-            """)
+    @Operation(summary = "toob ära maksmisega seotud info", description = "toob ära maksmisega seotud info")
     public void getPaymentInfo(@RequestParam Integer userId) {
 
     }
