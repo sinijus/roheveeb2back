@@ -1,14 +1,13 @@
-package ee.valiit.roheveeb2back.business.product;
+package ee.valiit.roheveeb2back.domain.measureunit;
 
-import ee.valiit.roheveeb2back.domain.measureunit.MeasureUnit;
-import ee.valiit.roheveeb2back.domain.measureunit.MeasureUnitRepository;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
-public class MeasureService {
+public class MeasureUnitService {
 
     @Resource
     private MeasureUnitRepository measureUnitRepository;
@@ -16,5 +15,10 @@ public class MeasureService {
     public MeasureUnit getMeasureUnitBy(Integer measureUnitId) {
         Optional<MeasureUnit> measureUnitOptional = measureUnitRepository.findById(measureUnitId);
         return measureUnitOptional.get();
+    }
+
+    public List<MeasureUnit> getMeasureUnits() {
+        return measureUnitRepository.findAll();
+
     }
 }

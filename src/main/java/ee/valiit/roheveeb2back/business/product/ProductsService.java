@@ -7,7 +7,11 @@ import ee.valiit.roheveeb2back.business.dto.TypeDto;
 import ee.valiit.roheveeb2back.domain.measureunit.MeasureUnit;
 import ee.valiit.roheveeb2back.domain.company.Company;
 import ee.valiit.roheveeb2back.domain.company.CompanyMapper;
+import ee.valiit.roheveeb2back.domain.company.CompanyRepository;
 import ee.valiit.roheveeb2back.domain.image.Image;
+import ee.valiit.roheveeb2back.business.dto.MeasureUnitDto;
+import ee.valiit.roheveeb2back.domain.measureunit.MeasureUnitMapper;
+import ee.valiit.roheveeb2back.domain.measureunit.MeasureUnitService;
 import ee.valiit.roheveeb2back.domain.type.Type;
 import ee.valiit.roheveeb2back.domain.type.TypeMapper;
 import ee.valiit.roheveeb2back.domain.type.TypeService;
@@ -31,25 +35,32 @@ import java.util.List;
 public class ProductsService {
 
     @Resource
-    private TypeService typeService;
-    @Resource
-    private ImageService imageService;
-    @Resource
     private ProductService productService;
-    @Resource
-    private CompanyService companyService;
-    @Resource
-    private MeasureService measureService;
     @Resource
     private CategoryService categoryService;
     @Resource
-    private TypeMapper typeMapper;
+    private TypeService typeService;
+    @Resource
+    private ImageService imageService;
+
+    @Resource
+    private CompanyService companyService;
+
+    @Resource
+    private MeasureUnitService measureUnitService;
     @Resource
     private ProductMapper productMapper;
-    @Resource
-    private CompanyMapper companyMapper;
+
     @Resource
     private CategoryMapper categoryMapper;
+    @Resource
+    private TypeMapper typeMapper;
+
+    @Resource
+    private CompanyMapper companyMapper;
+
+    @Resource
+    private MeasureUnitMapper measureUnitMapper;
 
 
     public List<ProductInfoDto> findAllProducts() {
@@ -81,7 +92,7 @@ public class ProductsService {
         }
         Company company = companyService.getCompanyBy(request.getCompanyId());
         product.setCompany(company);
-        MeasureUnit measureUnit = measureService.getMeasureUnitBy(request.getMeasureUnitId());
+        MeasureUnit measureUnit = measureUnitService.getMeasureUnitBy(request.getMeasureUnitId());
         product.setMeasureUnit(measureUnit);
         Type type = typeService.getTypeBy(request.getTypeId());
         product.setType(type);
@@ -94,6 +105,10 @@ public class ProductsService {
         productService.saveProduct(product);
     }
 
+    public List<MeasureUnitDto> getMeasureUnits() {
+        List<MeasureUnit> measureUnits = measureUnitService.getMeasureUnits();
+        return measureUnitMapper.toMeasureUnits(measureUnits);
+    }
     @Transactional
     public void updateProductInfo(Integer productId, ProductDto request) {
         Product product = productService.getProductBy(productId);
@@ -186,16 +201,3 @@ public class ProductsService {
         imageService.saveImage(image);
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
