@@ -1,5 +1,6 @@
-package ee.valiit.roheveeb2back.domain;
+package ee.valiit.roheveeb2back.domain.usercontact;
 
+import ee.valiit.roheveeb2back.domain.Location;
 import ee.valiit.roheveeb2back.domain.user.User;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
