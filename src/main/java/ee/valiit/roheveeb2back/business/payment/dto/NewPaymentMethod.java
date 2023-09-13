@@ -1,4 +1,4 @@
-package ee.valiit.roheveeb2back.business.dto;
+package ee.valiit.roheveeb2back.business.payment.dto;
 
 import ee.valiit.roheveeb2back.domain.order.payment.Payment;
 import jakarta.validation.constraints.NotNull;
@@ -15,10 +15,7 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PaymentDto implements Serializable {
-    private Integer paymentId;
-    @NotNull
-    @Size(max = 255)
-    private String paymentMethod;
-    private String bankImageData;
+public class NewPaymentMethod implements Serializable {
+    private String paymentMethodName;
+    private String imageData;
 }
