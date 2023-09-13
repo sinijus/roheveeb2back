@@ -1,5 +1,6 @@
 package ee.valiit.roheveeb2back.domain.company;
 
+import ee.valiit.roheveeb2back.business.dto.CompanyDto;
 import org.mapstruct.*;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.SPRING)

@@ -4,6 +4,8 @@ import ee.valiit.roheveeb2back.business.dto.CategoryDto;
 import ee.valiit.roheveeb2back.business.dto.ProductDto;
 import ee.valiit.roheveeb2back.business.dto.ProductInfoDto;
 import ee.valiit.roheveeb2back.business.dto.TypeDto;
+import ee.valiit.roheveeb2back.business.dto.MeasureUnitDto;
+import ee.valiit.roheveeb2back.domain.measureunit.MeasureUnitService;
 import ee.valiit.roheveeb2back.infrastructure.error.ApiError;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -12,10 +14,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.annotation.Resource;
 import jakarta.validation.Valid;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -30,7 +29,7 @@ public class ProductsController {
             description = """
                     Andmebaasist küsitakse kõigi toodete infot, kui toodete infot ei leita visatakse errorCode 222
                     """)
-    @ApiResponses(value= {
+    @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "OK"),
             @ApiResponse(responseCode = "403", description = "message: Ühtegi toodet ei leitud. errorCode: 222",
                     content = @Content(schema = @Schema(implementation = ApiError.class)))
@@ -39,15 +38,27 @@ public class ProductsController {
         return productsService.findAllProducts();
     }
 
+
     @GetMapping("/categories")
     @Operation(summary = " Leiab süsteemist (andmebaasi category tabelist) kõik kategooriad.",
             description = """
-                    Tagastab info koos categoryId ja categoryName'ga
-                   """)
+                     Tagastab info koos categoryId ja categoryName'ga
+                    """)
 
     public List<CategoryDto> getCategories() {
         List<CategoryDto> categories = productsService.getCategories();
         return categories;
+    }
+
+    @GetMapping("/measureunits")
+    @Operation(summary = "Kõikide ühikute küsimine. Tagastab kõik ühikud",
+            description = """
+            Kõikide ühikute küsimine. Tagastab kõik ühikud
+            """)
+
+    public List<MeasureUnitDto> getMeasureUnits() {
+        List<MeasureUnitDto> measureUnits = productsService.getMeasureUnits();
+        return measureUnits;
     }
 
     @GetMapping("/types")
@@ -74,4 +85,21 @@ public class ProductsController {
     public void addNewProduct(@RequestBody @Valid ProductDto request) {
         productsService.addNewProduct(request);
     }
+
+    @PutMapping("/product")
+    public void updateProductInfo(@RequestParam Integer productId  ,@RequestBody ProductDto request) {
+        productsService.updateProductInfo(productId, request);
+    }
+
+    @DeleteMapping("/product")
+    @Operation(summary = "Eemaldab toote info müüja poe vaates",
+            description = """
+                    Muudab ära asukoha staatuse active --> deleted
+                    """)
+    public void deleteProduct(@RequestParam Integer productId) {
+        productsService.deleteProduct(productId);
+    }
+
+
+
 }
