@@ -28,7 +28,7 @@ public class OrderProductsController {
                     content = @Content(schema = @Schema(implementation = ApiError.class)))
     })
     public void addProductToOrder(@RequestBody @Valid OrderProductRequest request) {
-        orderProductsService.addProductToOrder(request);
+        orderProductsService.addProductToOrderProduct(request);
     }
 
     @PutMapping("/order-product")

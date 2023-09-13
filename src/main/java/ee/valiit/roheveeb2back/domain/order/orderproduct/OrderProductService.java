@@ -15,4 +15,9 @@ public class OrderProductService {
     public void deleteOrderProductBy(Integer orderProductId) {
         orderProductRepository.deleteById(orderProductId);
     }
+
+    public OrderProduct getOrderProductrequestBy(Integer productId) {
+        OrderProduct orderProduct = orderProductRepository.getOrderProductBy(productId);
+        return orderProduct;
+    }
 }

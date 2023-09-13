@@ -23,13 +23,17 @@ public class OrderProductsService {
     @Resource
     private OrderProductService orderProductService;
 
-    public void addProductToOrder(OrderProductRequest request) {
+    public void addProductToOrderProduct(OrderProductRequest request) {
+        //TODO: validate that product is not placed already first, then validate quantity or change of it
         Product product = productService.getProductBy(request.getProductId());
-        ValidationService.validateAddedProductAmountExists(request.getProductAmount(), product.getStockBalance());
+        ValidationService.validateAddedProductAmountExists(request.getProductId(), product.getStockBalance());
         Order order = orderService.getOrderBy(request.getOrderId());
-        OrderProduct orderProduct = new OrderProduct();
-        orderProduct.setProduct(product);
-        orderProduct.setOrder(order);
+        OrderProduct orderProduct = orderProductService.getOrderProductrequestBy(request.getProductId());
+        if (orderProduct == null) {
+            orderProduct = new OrderProduct();
+            orderProduct.setProduct(product);
+            orderProduct.setOrder(order);
+        }
         orderProduct.setQuantity(request.getProductAmount());
         orderProductService.saveOrderProduct(orderProduct);
     }
