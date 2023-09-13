@@ -72,6 +72,7 @@ public class ProductsController {
             @ApiResponse(responseCode = "403", description = "Sellise nimega toode on poes juba olemas",
                     content = @Content(schema = @Schema(implementation = ApiError.class)))})
     public void addNewProduct(@RequestBody @Valid NewProduct request) {
+
         productsService.addNewProduct(request);
     }
 

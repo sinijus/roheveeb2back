@@ -45,4 +45,12 @@ public class ValidationService {
             throw new DataNotFoundException(NO_ORDER_FOUND.getMessage(), NO_ORDER_FOUND.getErrorCode());
         }
     }
+
+    public static void validateCustomerEmailIsAvailable(boolean userUserEmailExists) {
+        if (userUserEmailExists) {
+            throw new BusinessException(
+                    CUSTOMER_EMAIL_UNAVAILABLE.getMessage(),
+                    CUSTOMER_EMAIL_UNAVAILABLE.getErrorCode());
+        }
+    }
 }

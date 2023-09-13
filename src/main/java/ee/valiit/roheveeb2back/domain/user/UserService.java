@@ -21,4 +21,9 @@ public class UserService {
     public User getUserBy(Integer userId) {
         return userRepository.getReferenceById(userId);
     }
+
+    public void confirmCustomerEmailAvailability(String userUserEmail) {
+        boolean userUserEmailExists = userRepository.userExistsBy(userUserEmail, Status.ACTIVE.getLetter());
+        ValidationService.validateCustomerEmailIsAvailable(userUserEmailExists);
+    }
 }
