@@ -49,10 +49,6 @@ public class OrdersController {
     public List<OrderInfo> findOrdersInfo(@RequestParam Integer userId) {
         return ordersService.findOrders(userId);
     }
-    @GetMapping("/payment")
-    @Operation(summary = "toob ära maksmisega seotud info", description = "toob ära maksmisega seotud info")
-    public void getPaymentInfo(@RequestParam Integer userId) {
 
-    }
 
 }
