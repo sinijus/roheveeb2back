@@ -4,7 +4,6 @@ import ee.valiit.roheveeb2back.business.dto.PendingOrderInfo;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -30,6 +29,13 @@ public class OrdersController {
                    """)
     public PendingOrderInfo getPendingOrderInfo(@RequestParam Integer userId) {
        return ordersService.getPendingOrderInfo(userId);
+    }
+
+    @GetMapping("/payment")
+    @Operation(summary = "toob ära maksmisega seotud info", description = """ toob ära maksmisega seotud info
+            """)
+    public void getPaymentInfo(@RequestParam Integer userId) {
+
     }
 
 }
