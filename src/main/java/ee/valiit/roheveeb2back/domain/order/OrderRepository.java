@@ -13,7 +13,7 @@ public interface OrderRepository extends JpaRepository<Order, Integer> {
     Order getOrderIdByUserId(Integer id, String status);
 
     @Query("select o from Order o where o.user.id = ?1")
-    Order findOrderBy(Integer id);
+    Order findOrderBy(Integer userId);
 
     @Query("select o from Order o where o.user.id = ?1 and o.status = ?2 or o.status = ?3")
     List<Order> findOrdersBy(Integer id, String status, String status1);

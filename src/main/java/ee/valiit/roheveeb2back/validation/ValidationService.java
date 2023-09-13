@@ -45,4 +45,14 @@ public class ValidationService {
             throw new DataNotFoundException(NO_ORDER_FOUND.getMessage(), NO_ORDER_FOUND.getErrorCode());
         }
     }
+
+    public static void validateAddedAmountExists(Integer productAmount, Integer stockBalance) {
+        if (areEnoughProductsInStock(productAmount, stockBalance)) {
+            throw new BusinessException(NOT_ENOUGH_PRODUCTS.getMessage(), NOT_ENOUGH_PRODUCTS.getErrorCode());
+        }
+    }
+
+    private static boolean areEnoughProductsInStock(Integer productAmount, Integer stockBalance) {
+        return productAmount > stockBalance;
+    }
 }
