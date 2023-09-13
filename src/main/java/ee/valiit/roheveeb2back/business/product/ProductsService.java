@@ -90,7 +90,7 @@ public class ProductsService {
     private Product createProduct(ProductDto request) {
         Company company = companyService.getCompanyBy(request.getCompanyId());
         Type type = typeService.getTypeBy(request.getTypeId());
-        MeasureUnit measureUnit = measureService.getMeasureUnitBy(request.getMeasureUnitId());
+        MeasureUnit measureUnit = measureUnitService.getMeasureUnitBy(request.getMeasureUnitId());
         Image image = createAndSaveImage(request.getImageData());
 
         Product product = productMapper.toProduct(request);
