@@ -73,9 +73,10 @@ VALUES (DEFAULT, 1, 3, null,'Lilla lillkapsas "Di Violetto"', 3.90, 3000, 1, 'A'
 INSERT INTO public.product (id, company_id, type_id, image_id, name, price, stock_balance, measure_unit_id, status)
 VALUES (DEFAULT, 2, 2, null, 'Hiline porgand "Berlicum 2', 1.50, 10, 2, 'A');
 
+INSERT INTO public.transport (id, method, fee) VALUES (DEFAULT, 'DPD pakiautomaat', 3.50);
+INSERT INTO public.transport (id, method, fee) VALUES (DEFAULT, 'Omniva pakiautomaat', 3.20);
 
-
-
+INSERT INTO public.payment (id, method, bank_logo_id) VALUES (DEFAULT, 'LHV', NULL)
 
 
 

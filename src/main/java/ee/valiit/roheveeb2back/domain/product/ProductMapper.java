@@ -14,8 +14,6 @@ import java.util.List;
 public interface ProductMapper {
 
     @Mapping(source = "productName", target = "name")
-    @Mapping(source = "stockBalance", target = "stockBalance")
-    @Mapping(source = "price", target = "price")
     @Mapping(expression = "java(Status.ACTIVE.getLetter())", target = "status")
     Product toProduct(ProductDto request);
 

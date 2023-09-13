@@ -1,11 +1,6 @@
 package ee.valiit.roheveeb2back.business.product;
 
-import ee.valiit.roheveeb2back.business.dto.CategoryDto;
-import ee.valiit.roheveeb2back.business.dto.ProductDto;
-import ee.valiit.roheveeb2back.business.dto.ProductInfoDto;
-import ee.valiit.roheveeb2back.business.dto.TypeDto;
-import ee.valiit.roheveeb2back.business.dto.MeasureUnitDto;
-import ee.valiit.roheveeb2back.domain.measureunit.MeasureUnitService;
+import ee.valiit.roheveeb2back.business.dto.*;
 import ee.valiit.roheveeb2back.infrastructure.error.ApiError;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -13,6 +8,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.annotation.Resource;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,9 +18,6 @@ public class ProductsController {
 
     @Resource
     private ProductsService productsService;
-
-    @Resource
-    private MeasureUnitService measureUnitService;
 
     @GetMapping("/products")
     @Operation(summary = " Kõikide toodete küsimine. Tagastab listi toodetest, mis on aktiivse staatusega ",
@@ -46,10 +39,8 @@ public class ProductsController {
             description = """
                      Tagastab info koos categoryId ja categoryName'ga
                     """)
-
     public List<CategoryDto> getCategories() {
-        List<CategoryDto> categories = productsService.getCategories();
-        return categories;
+        return productsService.getCategories();
     }
 
     @GetMapping("/measureunits")
@@ -59,8 +50,7 @@ public class ProductsController {
             """)
 
     public List<MeasureUnitDto> getMeasureUnits() {
-        List<MeasureUnitDto> measureUnits = productsService.getMeasureUnits();
-        return measureUnits;
+        return productsService.getMeasureUnits();
     }
 
     @GetMapping("/types")
@@ -74,8 +64,7 @@ public class ProductsController {
                     content = @Content(schema = @Schema(implementation = ApiError.class)))
     })
     public List<TypeDto> findAllTypes() {
-        List<TypeDto> types = productsService.findAllTypes();
-        return types;
+        return productsService.findAllTypes();
     }
 
     @PostMapping("/product")
@@ -84,7 +73,7 @@ public class ProductsController {
             @ApiResponse(responseCode = "200", description = "OK"),
             @ApiResponse(responseCode = "403", description = "Sellise nimega toode on poes juba olemas",
                     content = @Content(schema = @Schema(implementation = ApiError.class)))})
-    public void addNewProduct(@RequestBody ProductDto request) {
+    public void addNewProduct(@RequestBody @Valid ProductDto request) {
         productsService.addNewProduct(request);
     }
 

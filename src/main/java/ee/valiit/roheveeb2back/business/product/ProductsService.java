@@ -79,19 +79,35 @@ public class ProductsService {
     @Transactional
     public void addNewProduct(ProductDto request) {
         productService.confirmProductNameAvailability(request.getProductName());
-        Product product = productMapper.toProduct(request);
-        if (request.getImageData() != null) {
-            Image image = ImageConverter.imageDataToImage(request.getImageData());
-            imageService.saveImage(image);
-            product.setImage(image);
-        }
-        Company company = companyService.getCompanyBy(request.getCompanyId());
-        product.setCompany(company);
-        MeasureUnit measureUnit = measureUnitService.getMeasureUnitBy(request.getMeasureUnitId());
-        product.setMeasureUnit(measureUnit);
-        Type type = typeService.getTypeBy(request.getTypeId());
-        product.setType(type);
+        createAndSaveProduct(request);
+    }
+
+    private void createAndSaveProduct(ProductDto request) {
+        Product product = createProduct(request);
         productService.saveProduct(product);
+    }
+
+    private Product createProduct(ProductDto request) {
+        Company company = companyService.getCompanyBy(request.getCompanyId());
+        Type type = typeService.getTypeBy(request.getTypeId());
+        MeasureUnit measureUnit = measureUnitService.getMeasureUnitBy(request.getMeasureUnitId());
+        Image image = createAndSaveImage(request.getImageData());
+
+        Product product = productMapper.toProduct(request);
+        product.setCompany(company);
+        product.setType(type);
+        product.setMeasureUnit(measureUnit);
+        product.setImage(image);
+        return product;
+    }
+
+    private Image createAndSaveImage(String imageData) {
+        if (imageData != null) {
+            Image image = ImageConverter.imageDataToImage(imageData);
+            imageService.saveImage(image);
+            return image;
+        }
+        return null;
     }
 
     public void deleteProduct(Integer productId) {
