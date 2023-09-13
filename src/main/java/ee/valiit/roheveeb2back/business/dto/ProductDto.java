@@ -26,7 +26,6 @@ public class ProductDto implements Serializable {
 
     private Integer measureUnitId;
 
-    @JoinColumn(name = "image.id")
     private String imageData;
 
     @NotNull
