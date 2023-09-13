@@ -59,8 +59,7 @@ public class ProductsService {
 
     public List<ProductInfoDto> findAllProducts() {
         List<Product> products = productService.findAllProducts();
-        List<ProductInfoDto> productInfoDtos = productMapper.toProductInfoDtos(products);
-        return productInfoDtos;
+        return productMapper.toProductInfoDtos(products);
     }
 
 

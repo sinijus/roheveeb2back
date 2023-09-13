@@ -9,6 +9,8 @@ public enum Error {
     NO_PRODUCT_FOUND("Ei leitud ühtegi toodet", 222),
     NO_PRODUCT_TYPE_FOUND("Ei leitud ühtegi tootetüüpi", 555),
     PRODUCT_NAME_UNAVAILABLE("Sellise nimega toode on juba süsteemis olemas", 333),
+    NO_ORDER_FOUND("Ei leitud ühtegi tellimust", 666),
+    NOT_ENOUGH_PRODUCTS("Selline toote kogus ei ole enam saadaval", 777);
     CUSTOMER_EMAIL_UNAVAILABLE("Sellise emailiga kasutaja on meie süsteemis juba olemas", 777),
     NO_ORDER_FOUND("Ei leitud ühtegi tellimust", 666);
 

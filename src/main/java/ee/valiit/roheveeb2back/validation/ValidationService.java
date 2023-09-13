@@ -53,4 +53,14 @@ public class ValidationService {
                     CUSTOMER_EMAIL_UNAVAILABLE.getErrorCode());
         }
     }
+
+    public static void validateAddedProductAmountExists(Integer productAmount, Integer stockBalance) {
+        if (areEnoughProductsInStock(productAmount, stockBalance)) {
+            throw new BusinessException(NOT_ENOUGH_PRODUCTS.getMessage(), NOT_ENOUGH_PRODUCTS.getErrorCode());
+        }
+    }
+
+    private static boolean areEnoughProductsInStock(Integer productAmount, Integer stockBalance) {
+        return productAmount > stockBalance;
+    }
 }

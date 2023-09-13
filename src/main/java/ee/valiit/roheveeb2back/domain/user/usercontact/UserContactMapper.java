@@ -6,14 +6,17 @@ import org.mapstruct.*;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.SPRING)
 public interface UserContactMapper {
-    @Mapping(source = "userEmail", target = "user.email")
-    @Mapping(source = "userLocationPostalCode", target = "location.postalCode")
-    @Mapping(source = "userLocationAddress", target = "location.address")
-    @Mapping(source = "userLocationCountyName", target = "location.county.name")
-    @Mapping(source = "userLocationCountyId", target = "location.county.id")
-    @Mapping(source = "userLocationId", target = "location.id")
-    @Mapping(source = "userContactId", target = "id")
-    UserContact toEntity(UserContactInfo userContactInfo);
+
+
+
+    @Mapping(source = "user.email", target = "userEmail")
+    @Mapping(source = "location.postalCode", target = "userLocationPostalCode")
+    @Mapping(source = "location.address", target = "userLocationAddress")
+    @Mapping(source = "location.county.name", target = "userLocationCountyName")
+    @Mapping(source = "location.county.id", target = "userLocationCountyId")
+    @Mapping(source = "location.id", target = "userLocationId")
+    @Mapping(source = "id", target = "userContactId")
+    UserContactInfo toUserContactInfo(UserContact userContact);
 
     @InheritInverseConfiguration(name = "toEntity")
     UserContactInfo toUserContactInfo(UserContact userContact);
