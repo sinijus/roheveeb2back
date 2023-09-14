@@ -32,6 +32,7 @@ public class OrderProductsService {
     private void ValidateAndSetOrderProduct(OrderProductRequest request, OrderProduct orderProduct) {
         Product product = productService.getProductBy(request.getProductId());
         ValidationService.calculateAndValidateAddedProductAmountExists(orderProduct.getQuantity(), request.getProductAmount(), product.getStockBalance());
+        ValidationService.calculateAndValidateAddedProductAmountExists(orderProduct.getQuantity(), request.getProductAmount(), product.getStockBalance());
         Order order = orderService.getOrderBy(request.getOrderId());
         orderProduct.setProduct(product);
         orderProduct.setOrder(order);
@@ -43,8 +44,16 @@ public class OrderProductsService {
 
     }
 
-    public void updateProductQuantity(Integer orderProductId, Integer changeInQuantity) {
-        //TODO: go on from here
+    public void updateOrderProductQuantity(Integer orderProductId, Integer changeInQuantity) {
+        OrderProduct orderProduct = orderProductService.getOrderProduct(orderProductId);
+        Integer stockBalance = orderProduct.getProduct().getStockBalance();
+        ValidationService.validateChangeInQuantity(orderProduct.getQuantity(), changeInQuantity, stockBalance);
+        ValidationService.calculateAndValidateAddedProductAmountExists(orderProduct.getQuantity(), changeInQuantity, stockBalance);
+        Order order = orderService.getOrderBy(orderProduct);
+//        Product product = productService.getProductBy(orderProduct);
+//        orderProduct.setProduct(product);
+        orderProduct.setOrder(order);
+        orderProduct.setQuantity(orderProduct.getQuantity() + changeInQuantity);
     }
 
 }

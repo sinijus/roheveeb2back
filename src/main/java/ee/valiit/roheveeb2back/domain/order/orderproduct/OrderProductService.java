@@ -21,11 +21,12 @@ public class OrderProductService {
 
     public OrderProduct findOrCreateOrderPorduct(Integer productId) {
         Optional<OrderProduct> orderProductOptional = orderProductRepository.getOrderProductBy(productId);
-        if (orderProductOptional.isEmpty()) {
-            return new OrderProduct();
-        }
-        return orderProductOptional.get();
+        return orderProductOptional.orElseGet(OrderProduct::new);
+    }
 
+    public OrderProduct getOrderProduct(Integer orderProductId) {
+        Optional<OrderProduct> orderProduct = orderProductRepository.findById(orderProductId);
+        return orderProduct.get();
     }
 }
 

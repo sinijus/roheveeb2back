@@ -6,7 +6,6 @@ import ee.valiit.roheveeb2back.domain.product.type.Type;
 import ee.valiit.roheveeb2back.domain.user.User;
 import ee.valiit.roheveeb2back.infrastructure.exception.BusinessException;
 import ee.valiit.roheveeb2back.infrastructure.exception.DataNotFoundException;
-import jakarta.validation.constraints.NotNull;
 
 import java.util.List;
 import java.util.Optional;
@@ -59,5 +58,14 @@ public class ValidationService {
 
     private static boolean IsThereEnoughProductsInStock(Integer orderProductQuantity, Integer requestToAdd, Integer productStockBalance) {
         return orderProductQuantity + requestToAdd > productStockBalance;
+    }
+
+    public static void validateChangeInQuantity(Integer quantity, Integer changeInQuantity, Integer stockBalance) {
+        if (changeInQuantityLessThanOneOrBiggerThanStockBalance(quantity, changeInQuantity, stockBalance)) {
+            throw new IllegalArgumentException(ILLEGAL_INPUT.getMessage());
+        }
+    }
+    private static boolean changeInQuantityLessThanOneOrBiggerThanStockBalance(Integer quantity, Integer changeInQuantity, Integer stockBalance) {
+        return quantity + changeInQuantity <= 0 && quantity + changeInQuantity > stockBalance;
     }
 }

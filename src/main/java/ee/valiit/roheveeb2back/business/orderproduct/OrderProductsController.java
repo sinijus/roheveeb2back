@@ -42,7 +42,7 @@ public class OrderProductsController {
                     content = @Content(schema = @Schema(implementation = ApiError.class)))
     })
     public void updateProductQuantity(@RequestParam Integer orderProductId, @RequestParam Integer changeInQuantity) {
-        orderProductsService.updateProductQuantity(orderProductId, changeInQuantity);
+        orderProductsService.updateOrderProductQuantity(orderProductId, changeInQuantity);
     }
 
 

@@ -1,6 +1,7 @@
 package ee.valiit.roheveeb2back.domain.order;
 
 import ee.valiit.roheveeb2back.business.Status;
+import ee.valiit.roheveeb2back.domain.order.orderproduct.OrderProduct;
 import ee.valiit.roheveeb2back.domain.user.User;
 import ee.valiit.roheveeb2back.validation.ValidationService;
 import jakarta.annotation.Resource;
@@ -38,15 +39,17 @@ public class OrderService {
 
     public Order getOrderBy(Integer orderId) {
         Optional<Order> orderOptional = orderRepository.findById(orderId);
-        if (orderOptional.isEmpty()) {
-            return null;
-        }
-        return orderOptional.get();
+        return orderOptional.orElse(null);
     }
 
     public List<Order> findOrdersBy(Integer userId) {
         List<Order> orders = orderRepository.findOrdersBy(userId, Status.PENDING.getLetter(), Status.IN_PROCESS.getLetter());
         ValidationService.validateAtLeastOneOrderExists(orders);
         return orders;
+    }
+
+    public Order getOrderBy(OrderProduct orderProduct) {
+
+
     }
 }
