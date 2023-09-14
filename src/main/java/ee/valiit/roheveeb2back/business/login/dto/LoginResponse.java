@@ -1,4 +1,4 @@
-package ee.valiit.roheveeb2back.business.dto;
+package ee.valiit.roheveeb2back.business.login.dto;
 
 import ee.valiit.roheveeb2back.domain.user.User;
 import lombok.AllArgsConstructor;

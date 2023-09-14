@@ -12,4 +12,8 @@ public class UserContactService {
     public UserContact getUserContactInfoBy(Integer userId) {
         return userContactRepository.getUserContactInfoBy(userId);
     }
+
+    public UserContact saveUserContact(UserContact userContact) {
+        return userContactRepository.save(userContact);
+    }
 }

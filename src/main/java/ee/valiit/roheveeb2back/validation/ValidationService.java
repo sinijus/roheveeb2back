@@ -46,11 +46,9 @@ public class ValidationService {
         }
     }
 
-    public static void validateCustomerEmailIsAvailable(boolean userUserEmailExists) {
-        if (userUserEmailExists) {
-            throw new BusinessException(
-                    CUSTOMER_EMAIL_UNAVAILABLE.getMessage(),
-                    CUSTOMER_EMAIL_UNAVAILABLE.getErrorCode());
+    public static void validateEmailIsAvailable(boolean emailExists) {
+        if (emailExists) {
+            throw new BusinessException(EMAIL_UNAVAILABLE.getMessage(),EMAIL_UNAVAILABLE.getErrorCode());
         }
     }
 

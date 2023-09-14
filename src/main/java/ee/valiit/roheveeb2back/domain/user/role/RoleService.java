@@ -12,9 +12,7 @@ public class RoleService {
     @Resource
     private RoleRepository roleRepository;
 
-    public NewCustomer getRoleCustomer(Integer customerRoleId) {
-        NewCustomer customer = roleRepository.findCustomerById(customerRoleId);
-        return customer;
+    public Role getRoleCustomer() {
+        return roleRepository.getReferenceById(3);
     }
-
 }

@@ -1,6 +1,6 @@
 package ee.valiit.roheveeb2back.business.login;
 
-import ee.valiit.roheveeb2back.business.dto.LoginResponse;
+import ee.valiit.roheveeb2back.business.login.dto.LoginResponse;
 import ee.valiit.roheveeb2back.infrastructure.error.ApiError;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;

@@ -1,6 +1,6 @@
 package ee.valiit.roheveeb2back.domain.product.type;
 
-import ee.valiit.roheveeb2back.business.dto.TypeDto;
+import ee.valiit.roheveeb2back.business.type.dto.TypeDto;
 import org.mapstruct.*;
 
 import java.util.List;

@@ -1,6 +1,6 @@
 package ee.valiit.roheveeb2back.domain.location.county;
 
-import ee.valiit.roheveeb2back.business.dto.CountyDto;
+import ee.valiit.roheveeb2back.business.county.dto.CountyDto;
 import org.mapstruct.*;
 
 import java.util.List;

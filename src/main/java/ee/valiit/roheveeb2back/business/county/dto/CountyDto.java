@@ -1,4 +1,4 @@
-package ee.valiit.roheveeb2back.business.dto;
+package ee.valiit.roheveeb2back.business.county.dto;
 
 import ee.valiit.roheveeb2back.domain.location.county.County;
 import jakarta.validation.constraints.NotNull;

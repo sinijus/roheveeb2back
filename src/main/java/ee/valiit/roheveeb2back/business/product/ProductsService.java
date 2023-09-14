@@ -1,7 +1,6 @@
 package ee.valiit.roheveeb2back.business.product;
 
 import ee.valiit.roheveeb2back.business.Status;
-import ee.valiit.roheveeb2back.business.dto.*;
 import ee.valiit.roheveeb2back.business.product.dto.NewProduct;
 import ee.valiit.roheveeb2back.business.product.dto.ProductInfoDto;
 import ee.valiit.roheveeb2back.business.product.dto.UpdatedProduct;
@@ -10,12 +9,11 @@ import ee.valiit.roheveeb2back.domain.company.CompanyMapper;
 import ee.valiit.roheveeb2back.domain.company.CompanyService;
 import ee.valiit.roheveeb2back.domain.image.Image;
 import ee.valiit.roheveeb2back.domain.image.ImageService;
-import ee.valiit.roheveeb2back.domain.product.measureunit.MeasureUnit;
-import ee.valiit.roheveeb2back.domain.product.measureunit.MeasureUnitMapper;
-import ee.valiit.roheveeb2back.domain.product.measureunit.MeasureUnitService;
 import ee.valiit.roheveeb2back.domain.product.Product;
 import ee.valiit.roheveeb2back.domain.product.ProductMapper;
 import ee.valiit.roheveeb2back.domain.product.ProductService;
+import ee.valiit.roheveeb2back.domain.product.measureunit.MeasureUnit;
+import ee.valiit.roheveeb2back.domain.product.measureunit.MeasureUnitService;
 import ee.valiit.roheveeb2back.domain.product.type.Type;
 import ee.valiit.roheveeb2back.domain.product.type.TypeMapper;
 import ee.valiit.roheveeb2back.domain.product.type.TypeService;
@@ -32,42 +30,24 @@ public class ProductsService {
 
     @Resource
     private ProductService productService;
-
     @Resource
     private TypeService typeService;
     @Resource
     private ImageService imageService;
-
     @Resource
     private CompanyService companyService;
-
     @Resource
     private MeasureUnitService measureUnitService;
     @Resource
     private ProductMapper productMapper;
-
-
     @Resource
     private TypeMapper typeMapper;
-
     @Resource
     private CompanyMapper companyMapper;
-
-    @Resource
-    private MeasureUnitMapper measureUnitMapper;
-
 
     public List<ProductInfoDto> findAllProducts() {
         List<Product> products = productService.findAllProducts();
         return productMapper.toProductInfoDtos(products);
-    }
-
-
-
-    public List<TypeDto> findAllTypes() {
-        List<Type> types = typeService.findAllTypes();
-        List<TypeDto> typeDtos = typeMapper.toTypeDtos(types);
-        return typeDtos;
     }
 
     @Transactional
@@ -108,11 +88,6 @@ public class ProductsService {
         Product product = productService.getProductBy(productId);
         product.setStatus(Status.DELETED.getLetter());
         productService.saveProduct(product);
-    }
-
-    public List<MeasureUnitDto> getMeasureUnits() {
-        List<MeasureUnit> measureUnits = measureUnitService.getMeasureUnits();
-        return measureUnitMapper.toMeasureUnits(measureUnits);
     }
 
     @Transactional

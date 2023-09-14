@@ -1,6 +1,6 @@
-package ee.valiit.roheveeb2back.business.location;
+package ee.valiit.roheveeb2back.business.county;
 
-import ee.valiit.roheveeb2back.business.dto.CountyDto;
+import ee.valiit.roheveeb2back.business.county.dto.CountyDto;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,15 +11,15 @@ import java.util.List;
 @RestController
 
 
-public class LocationsController {
+public class CountiesController {
     @Resource
-    private LocationsService locationsService;
+    private CountiesService countiesService;
     @GetMapping("/counties")
     @Operation(summary = "leiab süsteemist kõik maakonnad.",
-    description = """
+            description = """
     tagastab info koos countyId ja countyNamega
 """)
     public List<CountyDto> getCounties() {
-        return locationsService.getCounties();
+        return countiesService.getCounties();
     }
 }

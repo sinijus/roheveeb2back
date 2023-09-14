@@ -8,7 +8,6 @@ import org.mapstruct.*;
 public interface UserContactMapper {
 
 
-
     @Mapping(source = "user.email", target = "userEmail")
     @Mapping(source = "location.postalCode", target = "userLocationPostalCode")
     @Mapping(source = "location.address", target = "userLocationAddress")
@@ -18,30 +17,18 @@ public interface UserContactMapper {
     @Mapping(source = "id", target = "userContactId")
     UserContactInfo toUserContactInfo(UserContact userContact);
 
-    @InheritInverseConfiguration(name = "toEntity")
-    UserContactInfo toUserContactInfo(UserContact userContact);
 
     @InheritConfiguration(name = "toEntity")
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     UserContact partialUpdate(UserContactInfo userContactInfo, @MappingTarget UserContact userContact);
 
-    @Mapping(source = "customerLastName", target = "lastName")
-    @Mapping(source = "customerFirstName", target = "firstName")
+
+
     @Mapping(source = "customerPhoneNumber", target = "phoneNumber")
-    @Mapping(source = "customerPassword", target = "user.password")
-    @Mapping(source = "customerEmail", target = "user.email")
-    @Mapping(source = "customerRoleId", target = "id")
-    @Mapping(source = "customerLocationLatitude", target = "location.latitude")
-    @Mapping(source = "customerLocationLongitude", target = "location.longitude")
-    @Mapping(source = "customerLocationPostalCode", target = "location.postalCode")
-    @Mapping(source = "customerLocationAddress", target = "location.address")
-    @Mapping(source = "customerLocationCountyId", target = "id")
-    UserContact toEntity(NewCustomer newCustomer);
+    @Mapping(source = "customerFirstName", target = "firstName")
+    @Mapping(source = "customerLastName", target = "lastName")
+    UserContact toUserContact(NewCustomer newCustomer);
 
-    @InheritInverseConfiguration(name = "toEntity")
-    NewCustomer toDto(UserContact userContact);
 
-    @InheritConfiguration(name = "toEntity")
-    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    UserContact partialUpdate(NewCustomer newCustomer, @MappingTarget UserContact userContact);
+
 }

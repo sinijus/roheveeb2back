@@ -4,6 +4,7 @@ import ee.valiit.roheveeb2back.business.dto.*;
 import ee.valiit.roheveeb2back.business.product.dto.NewProduct;
 import ee.valiit.roheveeb2back.business.product.dto.ProductInfoDto;
 import ee.valiit.roheveeb2back.business.product.dto.UpdatedProduct;
+import ee.valiit.roheveeb2back.business.type.dto.TypeDto;
 import ee.valiit.roheveeb2back.infrastructure.error.ApiError;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -34,35 +35,6 @@ public class ProductsController {
     })
     public List<ProductInfoDto> findAllProducts() {
         return productsService.findAllProducts();
-    }
-
-
-    // TODO: 9/13/2023 Ümber tõsta
-
-    @GetMapping("/measureunits")
-    @Operation(summary = "Kõikide ühikute küsimine. Tagastab kõik ühikud",
-            description = """
-            Kõikide ühikute küsimine. Tagastab kõik ühikud
-            """)
-
-    public List<MeasureUnitDto> getMeasureUnits() {
-        return productsService.getMeasureUnits();
-    }
-
-
-    // TODO: 9/13/2023  Ümber tõsta
-    @GetMapping("/types")
-    @Operation(summary = " Kõikide tüüpide küsimine. Tagastab listi tüüpidest",
-            description = """
-                    Andmebaasist küsitakse kõigi tüüpide infot, kui ühegi tüübi infot ei leita, visatakse errorCode 555
-                    """)
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "OK"),
-            @ApiResponse(responseCode = "403", description = "message: Ühtegi tootetüüpi ei leitud. errorCode: 555",
-                    content = @Content(schema = @Schema(implementation = ApiError.class)))
-    })
-    public List<TypeDto> findAllTypes() {
-        return productsService.findAllTypes();
     }
 
     @PostMapping("/product")
