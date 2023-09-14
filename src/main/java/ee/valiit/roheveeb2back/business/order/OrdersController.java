@@ -29,11 +29,11 @@ public class OrdersController {
     @GetMapping("/order/pending")
     @Operation(summary = "Kontrollib kas order on tehtud",
             description = """
-                    Kui order on tehtud, siis tagastab orderId ja numberOfProducts.
-                    Kui order ei ole tehtud, siis teeb orderi ja tagastab orderId ja numberOfProducts.
-                   """)
+                     Kui order on tehtud, siis tagastab orderId ja numberOfProducts.
+                     Kui order ei ole tehtud, siis teeb orderi ja tagastab orderId ja numberOfProducts.
+                    """)
     public PendingOrderInfo getPendingOrderInfo(@RequestParam Integer userId) {
-       return ordersService.getPendingOrderInfo(userId);
+        return ordersService.getPendingOrderInfo(userId);
     }
 
     @GetMapping("/orders/user")
@@ -56,10 +56,8 @@ public class OrdersController {
                     Lisab orderile staatuse In Proccessing, ostukorvi lõpliku summaja tellimuse numbri.
                     """)
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "OK"),
-            @ApiResponse(responseCode = "403", description = "message: Ühtegi tellimust ei leitud. errorCode: 666",
-                    content = @Content(schema = @Schema(implementation = ApiError.class)))})
-    public void confirmOrder(@RequestBody @Valid ConfirmOrderRequest request) {
+            @ApiResponse(responseCode = "200", description = "OK")})
+    public void confirmOrder(@RequestBody ConfirmOrderRequest request) {
         ordersService.confirmOrder(request);
     }
 

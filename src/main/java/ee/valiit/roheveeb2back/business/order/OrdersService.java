@@ -15,7 +15,6 @@ import ee.valiit.roheveeb2back.domain.user.User;
 import ee.valiit.roheveeb2back.domain.user.UserService;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
-
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.List;
@@ -30,10 +29,8 @@ public class OrdersService {
     private OrderMapper orderMapper;
     @Resource
     private OrderProductService orderProductService;
-
     @Resource
     private OrderTransportService orderTransportService;
-
     @Resource
     private PaymentService paymentService;
 
@@ -61,15 +58,16 @@ public class OrdersService {
     }
 
     public void confirmOrder(ConfirmOrderRequest request) {
-        Order order = orderService.getOrderBy(request.getOrderId());
-        order.setUser(userService.getUserBy(request.getUserId()));
-        order.setTransport(orderTransportService.getTransportBy(request.getTransportId()));
-        order.setPayment(paymentService.getPaymentBy(request.getPaymentId()));
-        order.setStatus(Status.IN_PROCESS.getLetter());
-        order.setSentTime(Instant.now());
-        order.setOrderNumber(generateOrderNumber(order.getStartTime(), order.getId()));
-        order.setTotal(calculateValueOfAllOrderProducts(request.getOrderId()));
-        orderService.saveOrder(order);
+//        Order order = orderMapper.toOrder(request);
+//        //Order order = orderService.getOrderBy(request.getOrderId());
+//        order.setUser(userService.getUserBy(request.getUserId()));
+//        order.setTransport(orderTransportService.getTransportBy(request.getTransportId()));
+//        order.setPayment(paymentService.getPaymentBy(request.getPaymentId()));
+//        order.setStatus(Status.IN_PROCESS.getLetter());
+//        order.setSentTime(Instant.now());
+//        order.setOrderNumber(generateOrderNumber(order.getStartTime(), order.getId()));
+//        order.setTotal(calculateValueOfAllOrderProducts(request.getOrderId()));
+//        orderService.saveOrder(order);
     }
 
     private String generateOrderNumber(Instant startTime, Integer id) {
