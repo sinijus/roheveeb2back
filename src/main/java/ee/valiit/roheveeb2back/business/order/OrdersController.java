@@ -1,15 +1,19 @@
 package ee.valiit.roheveeb2back.business.order;
 
+import ee.valiit.roheveeb2back.business.order.dto.ConfirmOrderRequest;
 import ee.valiit.roheveeb2back.business.order.dto.OrderInfo;
 import ee.valiit.roheveeb2back.business.order.dto.PendingOrderInfo;
 import ee.valiit.roheveeb2back.infrastructure.error.ApiError;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.annotation.Resource;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,12 +25,6 @@ public class OrdersController {
 
     @Resource
     private OrdersService ordersService;
-
-
-//    @PostMapping("/order")
-//    public void addProductOrder(@RequestParam Integer orderId, @RequestParam Integer productId) {
-//        ordersService.addProductOrder(orderId, productId);
-//    }
 
     @GetMapping("/order/pending")
     @Operation(summary = "Kontrollib kas order on tehtud",
@@ -50,6 +48,19 @@ public class OrdersController {
     })
     public List<OrderInfo> findOrdersInfo(@RequestParam Integer userId) {
         return ordersService.findOrders(userId);
+    }
+
+    @PostMapping("/order")
+    @Operation(summary = "Kinnitab tellimuse",
+            description = """
+                    Lisab orderile staatuse In Proccessing, ostukorvi lõpliku summaja tellimuse numbri.
+                    """)
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "OK"),
+            @ApiResponse(responseCode = "403", description = "message: Ühtegi tellimust ei leitud. errorCode: 666",
+                    content = @Content(schema = @Schema(implementation = ApiError.class)))})
+    public void confirmOrder(@RequestBody @Valid ConfirmOrderRequest request) {
+        ordersService.confirmOrder(request);
     }
 
 }

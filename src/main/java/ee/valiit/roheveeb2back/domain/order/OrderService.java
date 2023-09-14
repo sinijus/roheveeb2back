@@ -1,7 +1,6 @@
 package ee.valiit.roheveeb2back.domain.order;
 
 import ee.valiit.roheveeb2back.business.Status;
-import ee.valiit.roheveeb2back.domain.order.orderproduct.OrderProduct;
 import ee.valiit.roheveeb2back.domain.user.User;
 import ee.valiit.roheveeb2back.validation.ValidationService;
 import jakarta.annotation.Resource;
@@ -48,4 +47,7 @@ public class OrderService {
         return orders;
     }
 
+    public void saveOrder(Order order) {
+        orderRepository.save(order);
+    }
 }

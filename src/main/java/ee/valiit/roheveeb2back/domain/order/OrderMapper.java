@@ -1,8 +1,7 @@
 package ee.valiit.roheveeb2back.domain.order;
 
+import ee.valiit.roheveeb2back.business.order.dto.ConfirmOrderRequest;
 import ee.valiit.roheveeb2back.business.order.dto.OrderInfo;
-import ee.valiit.roheveeb2back.domain.image.Image;
-import ee.valiit.roheveeb2back.util.ImageConverter;
 import org.mapstruct.*;
 
 import java.util.List;
@@ -18,12 +17,13 @@ public interface OrderMapper {
     @Mapping(source = "payment.id", target = "paymentId")
     @Mapping(source = "payment.method", target = "paymentMethod")
     OrderInfo toOrderInfo(Order order);
+
     List<OrderInfo> toOrdersInfo(List<Order> orders);
 
-    @Named("ImagetoImageData")
-    static String ImagetoImageData(Image image) {
-        return ImageConverter.imageToImageData(image);
-    }
-
+    @Mapping(source = "paymentId", target = "payment.id")
+    @Mapping(source = "transportId", target = "transport.id")
+    @Mapping(source = "userId", target = "user.id")
+    @Mapping(source = "orderId", target = "id")
+    Order toOrder(ConfirmOrderRequest confirmOrderRequest);
 
 }
