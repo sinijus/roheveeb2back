@@ -43,17 +43,4 @@ public class OrderProductsService {
         orderProductService.deleteOrderProductBy(orderProductId);
 
     }
-
-    public void updateOrderProductQuantity(Integer orderProductId, Integer changeInQuantity) {
-        OrderProduct orderProduct = orderProductService.getOrderProduct(orderProductId);
-        Integer stockBalance = orderProduct.getProduct().getStockBalance();
-        ValidationService.validateChangeInQuantity(orderProduct.getQuantity(), changeInQuantity, stockBalance);
-        ValidationService.calculateAndValidateAddedProductAmountExists(orderProduct.getQuantity(), changeInQuantity, stockBalance);
-//        Order order = orderService.getOrderBy(orderProduct);
-////        Product product = productService.getProductBy(orderProduct);
-////        orderProduct.setProduct(product);
-//        orderProduct.setOrder(order);
-        orderProduct.setQuantity(orderProduct.getQuantity() + changeInQuantity);
-    }
-
 }

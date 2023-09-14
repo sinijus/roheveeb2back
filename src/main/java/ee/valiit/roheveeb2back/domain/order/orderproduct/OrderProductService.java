@@ -24,9 +24,5 @@ public class OrderProductService {
         return orderProductOptional.orElseGet(OrderProduct::new);
     }
 
-    public OrderProduct getOrderProduct(Integer orderProductId) {
-        Optional<OrderProduct> orderProduct = orderProductRepository.findById(orderProductId);
-        return orderProduct.get();
-    }
 }
 
