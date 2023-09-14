@@ -1,6 +1,7 @@
 package ee.valiit.roheveeb2back.business.register;
 
 import ee.valiit.roheveeb2back.business.register.dto.NewCustomer;
+import ee.valiit.roheveeb2back.domain.company.NewCompany;
 import ee.valiit.roheveeb2back.infrastructure.error.ApiError;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -10,7 +11,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.annotation.Resource;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,5 +28,14 @@ public class RegisterController {
                     content = @Content(schema = @Schema(implementation = ApiError.class)))})
     public void registerNewCustomer(@RequestBody @Valid NewCustomer request) {
         registerService.registerNewCustomer(request);
+    }
+    @PostMapping("/register/company")
+    @Operation(summary = "Uue müüja lisamine")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "OK"),
+            @ApiResponse(responseCode = "403", description = "Sellise e-mailiga müüja on meie süsteemis juba olemas",
+                    content = @Content(schema = @Schema(implementation = ApiError.class)))})
+    public void RegisterNewCompany(@RequestBody @Valid NewCompany request) {
+        registerService.registerNewCompany(request);
     }
 }

@@ -21,7 +21,7 @@ public class NewCustomer implements Serializable {
     private String postalCode;
     private String longitude;
     private String latitude;
-    private String customerEmail;
+    private String email;
     private String customerPassword;
     @NotNull
     @Size(max = 255)

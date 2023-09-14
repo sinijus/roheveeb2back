@@ -15,4 +15,9 @@ public class CompanyService {
         Optional<Company> companyOptional = companyRepository.findById(companyId);
         return companyOptional.get();
     }
+
+    public Company saveNewCompany(Company newCompany) {
+        return companyRepository.save(newCompany);
+
+    }
 }

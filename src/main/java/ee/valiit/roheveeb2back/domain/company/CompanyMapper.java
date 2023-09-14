@@ -1,6 +1,8 @@
 package ee.valiit.roheveeb2back.domain.company;
 
 import ee.valiit.roheveeb2back.business.dto.CompanyDto;
+import ee.valiit.roheveeb2back.domain.image.Image;
+import ee.valiit.roheveeb2back.util.ImageConverter;
 import org.mapstruct.*;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.SPRING)
@@ -12,5 +14,14 @@ public interface CompanyMapper {
     @Mapping(source = "companyId", target = "id")
     Company toCompany(CompanyDto companyDto);
 
+
+
+    @Mapping(source = "companyName", target = "name")
+    Company toNewCompany(NewCompany newCompany);
+
+    @Named("ImageDataToImage")
+    static Image ImageDataToImage(String image) {
+        return ImageConverter.imageDataToImage(image);
+    }
 }
 
