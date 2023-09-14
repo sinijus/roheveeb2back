@@ -129,6 +129,7 @@ CREATE TABLE "order" (
                          total decimal(8,2)  NOT NULL DEFAULT 0,
                          start_time timestamp  NULL,
                          sent_time timestamp  NULL,
+                         order_number varchar NULL,
                          CONSTRAINT order_pk PRIMARY KEY (id)
 );
 
