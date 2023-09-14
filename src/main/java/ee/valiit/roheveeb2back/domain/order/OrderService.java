@@ -1,6 +1,7 @@
 package ee.valiit.roheveeb2back.domain.order;
 
 import ee.valiit.roheveeb2back.business.Status;
+import ee.valiit.roheveeb2back.domain.order.orderproduct.OrderProduct;
 import ee.valiit.roheveeb2back.domain.user.User;
 import ee.valiit.roheveeb2back.validation.ValidationService;
 import jakarta.annotation.Resource;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class OrderService {
@@ -34,8 +36,10 @@ public class OrderService {
 
 
     }
+
     public Order getOrderBy(Integer orderId) {
-        return orderRepository.findOrderBy(orderId);
+        Optional<Order> orderOptional = orderRepository.findById(orderId);
+        return orderOptional.orElse(null);
     }
 
     public List<Order> findOrdersBy(Integer userId) {
@@ -43,4 +47,5 @@ public class OrderService {
         ValidationService.validateAtLeastOneOrderExists(orders);
         return orders;
     }
+
 }

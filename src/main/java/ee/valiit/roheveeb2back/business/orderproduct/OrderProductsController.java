@@ -9,9 +9,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.annotation.Resource;
 import jakarta.validation.Valid;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class OrderProductsController {
@@ -30,7 +28,14 @@ public class OrderProductsController {
                     content = @Content(schema = @Schema(implementation = ApiError.class)))
     })
     public void addProductToOrder(@RequestBody @Valid OrderProductRequest request) {
-        orderProductsService.addProductToOrder(request);
+        orderProductsService.addProductToOrderProduct(request);
+    }
+
+    @DeleteMapping("/order-product")
+    @Operation(summary = "Kustutab tabelist order_product orderProductId-ga rea",
+            description = "Kustutab ostukorvist toote ehk tabelist order_product orderProductId-ga rea")
+    public void deleteProductFromOrder(@RequestParam Integer orderProductId) {
+        orderProductsService.deleteProductFromOrder(orderProductId);
     }
 
 }

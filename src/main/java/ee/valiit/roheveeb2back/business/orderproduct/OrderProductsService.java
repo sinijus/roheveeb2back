@@ -23,14 +23,24 @@ public class OrderProductsService {
     @Resource
     private OrderProductService orderProductService;
 
-    public void addProductToOrder(OrderProductRequest request) {
+    public void addProductToOrderProduct(OrderProductRequest request) {
+        OrderProduct orderProduct = orderProductService.findOrCreateOrderPorduct(request.getProductId());
+        ValidateAndSetOrderProduct(request, orderProduct);
+        orderProductService.saveOrderProduct(orderProduct);
+    }
+
+    private void ValidateAndSetOrderProduct(OrderProductRequest request, OrderProduct orderProduct) {
         Product product = productService.getProductBy(request.getProductId());
-        ValidationService.validateAddedProductAmountExists(request.getProductAmount(), product.getStockBalance());
+        ValidationService.calculateAndValidateAddedProductAmountExists(orderProduct.getQuantity(), request.getProductAmount(), product.getStockBalance());
+        ValidationService.calculateAndValidateAddedProductAmountExists(orderProduct.getQuantity(), request.getProductAmount(), product.getStockBalance());
         Order order = orderService.getOrderBy(request.getOrderId());
-        OrderProduct orderProduct = new OrderProduct();
         orderProduct.setProduct(product);
         orderProduct.setOrder(order);
-        orderProduct.setQuantity(request.getProductAmount());
-        orderProductService.saveOrderProduct(orderProduct);
+        orderProduct.setQuantity(orderProduct.getQuantity() + request.getProductAmount());
+    }
+
+    public void deleteProductFromOrder(Integer orderProductId) {
+        orderProductService.deleteOrderProductBy(orderProductId);
+
     }
 }

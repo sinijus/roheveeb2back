@@ -52,13 +52,25 @@ public class ValidationService {
         }
     }
 
-    public static void validateAddedProductAmountExists(Integer productAmount, Integer stockBalance) {
-        if (areEnoughProductsInStock(productAmount, stockBalance)) {
-            throw new BusinessException(NOT_ENOUGH_PRODUCTS.getMessage(), NOT_ENOUGH_PRODUCTS.getErrorCode());
+
+
+    public static void calculateAndValidateAddedProductAmountExists(Integer orderProductQuantity, Integer requestToAdd, Integer productStockBalance) {
+        if (IsThereEnoughProductsInStock(orderProductQuantity, requestToAdd, productStockBalance)) {
+            int availableAmount = productStockBalance - orderProductQuantity;
+            throw new BusinessException(NOT_ENOUGH_PRODUCTS.getMessage() + availableAmount, NOT_ENOUGH_PRODUCTS.getErrorCode());
         }
     }
 
-    private static boolean areEnoughProductsInStock(Integer productAmount, Integer stockBalance) {
-        return productAmount > stockBalance;
+    private static boolean IsThereEnoughProductsInStock(Integer orderProductQuantity, Integer requestToAdd, Integer productStockBalance) {
+        return orderProductQuantity + requestToAdd > productStockBalance;
+    }
+
+    public static void validateChangeInQuantity(Integer quantity, Integer changeInQuantity, Integer stockBalance) {
+        if (changeInQuantityLessThanOneOrBiggerThanStockBalance(quantity, changeInQuantity, stockBalance)) {
+            throw new IllegalArgumentException(ILLEGAL_INPUT.getMessage());
+        }
+    }
+    private static boolean changeInQuantityLessThanOneOrBiggerThanStockBalance(Integer quantity, Integer changeInQuantity, Integer stockBalance) {
+        return quantity + changeInQuantity <= 0 && quantity + changeInQuantity > stockBalance;
     }
 }
