@@ -48,8 +48,4 @@ public class OrderService {
         return orders;
     }
 
-    public Order getOrderBy(OrderProduct orderProduct) {
-
-
-    }
 }
