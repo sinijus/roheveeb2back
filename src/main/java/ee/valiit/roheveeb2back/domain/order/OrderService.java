@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class OrderService {
@@ -34,8 +35,13 @@ public class OrderService {
 
 
     }
+
     public Order getOrderBy(Integer orderId) {
-        return orderRepository.findOrderBy(orderId);
+        Optional<Order> orderOptional = orderRepository.findById(orderId);
+        if (orderOptional.isEmpty()) {
+            return null;
+        }
+        return orderOptional.get();
     }
 
     public List<Order> findOrdersBy(Integer userId) {

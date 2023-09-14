@@ -6,6 +6,7 @@ import ee.valiit.roheveeb2back.domain.product.type.Type;
 import ee.valiit.roheveeb2back.domain.user.User;
 import ee.valiit.roheveeb2back.infrastructure.exception.BusinessException;
 import ee.valiit.roheveeb2back.infrastructure.exception.DataNotFoundException;
+import jakarta.validation.constraints.NotNull;
 
 import java.util.List;
 import java.util.Optional;
@@ -34,6 +35,7 @@ public class ValidationService {
                     Error.PRODUCT_NAME_UNAVAILABLE.getErrorCode());
         }
     }
+
     public static void validateAtLeastOneTypeExists(List<Type> types) {
         if (types.isEmpty()) {
             throw new DataNotFoundException(NO_PRODUCT_TYPE_FOUND.getMessage(), NO_PRODUCT_TYPE_FOUND.getErrorCode());
@@ -46,13 +48,16 @@ public class ValidationService {
         }
     }
 
-    public static void validateAddedProductAmountExists(Integer productAmount, Integer stockBalance) {
-        if (areEnoughProductsInStock(productAmount, stockBalance)) {
-            throw new BusinessException(NOT_ENOUGH_PRODUCTS.getMessage(), NOT_ENOUGH_PRODUCTS.getErrorCode());
+
+    public static void calculateAndValidateAddedProductAmountExists(Integer orderProductQuantity, Integer requestToAdd, Integer productStockBalance) {
+        if (IsThereEnoughProductsInStock(orderProductQuantity, requestToAdd, productStockBalance)) {
+            int availableAmount = productStockBalance - orderProductQuantity;
+            throw new BusinessException(NOT_ENOUGH_PRODUCTS.getMessage() + availableAmount, NOT_ENOUGH_PRODUCTS.getErrorCode());
         }
+
     }
 
-    private static boolean areEnoughProductsInStock(Integer productAmount, Integer stockBalance) {
-        return productAmount > stockBalance;
+    private static boolean IsThereEnoughProductsInStock(Integer orderProductQuantity, Integer requestToAdd, Integer productStockBalance) {
+        return orderProductQuantity + requestToAdd > productStockBalance;
     }
 }

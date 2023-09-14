@@ -10,6 +10,7 @@ public class OrderProductService {
 
     @Resource
     private OrderProductRepository orderProductRepository;
+
     public void saveOrderProduct(OrderProduct orderProduct) {
         orderProductRepository.save(orderProduct);
     }
@@ -18,8 +19,13 @@ public class OrderProductService {
         orderProductRepository.deleteById(orderProductId);
     }
 
-    public Optional<OrderProduct> getOrderProductrequestBy(Integer productId) {
-        Optional<OrderProduct> orderProduct = orderProductRepository.getOrderProductBy(productId);
-        return orderProduct;
+    public OrderProduct findOrCreateOrderPorduct(Integer productId) {
+        Optional<OrderProduct> orderProductOptional = orderProductRepository.getOrderProductBy(productId);
+        if (orderProductOptional.isEmpty()) {
+            return new OrderProduct();
+        }
+        return orderProductOptional.get();
+
     }
 }
+
