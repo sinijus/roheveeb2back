@@ -14,4 +14,5 @@ public class PaymentService {
         List<Payment> payments = paymentRepository.findAll();
         return payments;
     }
+
 }

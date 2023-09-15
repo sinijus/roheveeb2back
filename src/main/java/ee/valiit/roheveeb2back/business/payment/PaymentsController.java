@@ -28,5 +28,7 @@ public class PaymentsController {
     @Operation(summary = "lisab maksmisega seotud info", description = "toob ära maksmisega seotud info")
     public void addPaymentMethod(@RequestBody NewPaymentMethod request) {
         paymentsService.addPaymentMethod(request);
+        String imageData = request.getImageData();
+        return ;
     }
 }
