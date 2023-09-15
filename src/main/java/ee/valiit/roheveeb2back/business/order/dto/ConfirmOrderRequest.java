@@ -18,8 +18,6 @@ public class ConfirmOrderRequest implements Serializable {
     @NotNull
     private Integer orderId;
     @NotNull
-    private Integer userId;
-    @NotNull
     private Integer transportId;
     @NotNull
     private Integer paymentId;

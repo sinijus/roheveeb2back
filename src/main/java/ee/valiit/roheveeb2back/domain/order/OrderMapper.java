@@ -22,7 +22,6 @@ public interface OrderMapper {
 
     @Mapping(source = "paymentId", target = "payment.id")
     @Mapping(source = "transportId", target = "transport.id")
-    @Mapping(source = "userId", target = "user.id")
     @Mapping(source = "orderId", target = "id")
     Order toOrder(ConfirmOrderRequest confirmOrderRequest);
 

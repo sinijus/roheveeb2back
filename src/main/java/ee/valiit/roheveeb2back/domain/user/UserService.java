@@ -12,15 +12,16 @@ import java.util.Optional;
 public class UserService {
     @Resource
     private UserRepository userRepository;
+
     public User findActiveUserBy(String email, String password) {
         Optional<User> optionalUser = userRepository.findUserBy(email, password, Status.ACTIVE.getLetter());
-        User user = ValidationService.getValidUser(optionalUser);
-        return user;
+        return ValidationService.getValidUser(optionalUser);
     }
 
     public User getUserBy(Integer userId) {
         return userRepository.getReferenceById(userId);
     }
+
 
     public void confirmEmailAvailability(String email) {
         boolean emailExists = userRepository.userExistsBy(email);
