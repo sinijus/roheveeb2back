@@ -42,7 +42,7 @@ public class OrderService {
     }
 
     public List<Order> findOrdersBy(Integer userId) {
-        List<Order> orders = orderRepository.findOrdersBy(userId, Status.PENDING.getLetter(), Status.IN_PROCESS.getLetter());
+        List<Order> orders = orderRepository.findOrdersBy(userId, Status.COMPLETED.getLetter(), Status.IN_PROCESS.getLetter());
         ValidationService.validateAtLeastOneOrderExists(orders);
         return orders;
     }

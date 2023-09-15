@@ -70,7 +70,17 @@ public class ValidationService {
             throw new IllegalArgumentException(ILLEGAL_INPUT.getMessage());
         }
     }
-    private static boolean changeInQuantityLessThanOneOrBiggerThanStockBalance(Integer quantity, Integer changeInQuantity, Integer stockBalance) {
+    private static boolean changeInQuantityLessThanOneOrBiggerThanStockBalance(Integer quantity,
+                                                                               Integer changeInQuantity,
+                                                                               Integer stockBalance) {
         return quantity + changeInQuantity <= 0 && quantity + changeInQuantity > stockBalance;
+    }
+
+    public static void validateTypeNameIsAvailable(boolean typeNameExists) {
+        if (typeNameExists) {
+            throw new BusinessException(
+                    PRODUCT_TYPE_NAME_UNAVAILABLE.getMessage(),
+                    PRODUCT_TYPE_NAME_UNAVAILABLE.getErrorCode());
+        }
     }
 }

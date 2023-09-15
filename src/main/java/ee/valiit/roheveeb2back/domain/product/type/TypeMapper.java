@@ -1,6 +1,7 @@
 package ee.valiit.roheveeb2back.domain.product.type;
 
 import ee.valiit.roheveeb2back.business.type.dto.TypeDto;
+import ee.valiit.roheveeb2back.business.type.dto.TypeRequest;
 import org.mapstruct.*;
 
 import java.util.List;
@@ -13,4 +14,9 @@ public interface TypeMapper {
     TypeDto toTypeDto(Type type);
 
     List<TypeDto> toTypeDtos(List<Type> types);
+
+    @Mapping(source = "typeName", target = "name")
+    @Mapping(source = "categoryId", target = "category.id")
+    Type toType(TypeRequest typeRequest);
+
 }

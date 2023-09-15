@@ -15,9 +15,7 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class TypeDto implements Serializable {
-
-    private Integer typeId;
+public class TypeRequest implements Serializable {
     private Integer categoryId;
     @NotNull
     @Size(max = 255)

@@ -24,4 +24,13 @@ public class TypeService {
         return typeOptional.get();
 
     }
+
+    public void validateTypeNameIsAvailable(String typeName) {
+        boolean typeNameExists = typeRepository.typeExistsBy(typeName);
+        ValidationService.validateTypeNameIsAvailable(typeNameExists);
+    }
+
+    public void saveType(Type type) {
+        typeRepository.save(type);
+    }
 }
