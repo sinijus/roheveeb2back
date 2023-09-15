@@ -4,6 +4,7 @@ import ee.valiit.roheveeb2back.business.Status;
 import ee.valiit.roheveeb2back.business.order.dto.ConfirmOrderRequest;
 import ee.valiit.roheveeb2back.business.order.dto.OrderInfo;
 import ee.valiit.roheveeb2back.business.order.dto.PendingOrderInfo;
+import ee.valiit.roheveeb2back.domain.company.CompanyService;
 import ee.valiit.roheveeb2back.domain.order.Order;
 import ee.valiit.roheveeb2back.domain.order.OrderMapper;
 import ee.valiit.roheveeb2back.domain.order.OrderService;
@@ -11,6 +12,8 @@ import ee.valiit.roheveeb2back.domain.order.orderproduct.OrderProduct;
 import ee.valiit.roheveeb2back.domain.order.orderproduct.OrderProductService;
 import ee.valiit.roheveeb2back.domain.order.payment.PaymentService;
 import ee.valiit.roheveeb2back.domain.order.transport.OrderTransportService;
+import ee.valiit.roheveeb2back.domain.product.Product;
+import ee.valiit.roheveeb2back.domain.product.ProductService;
 import ee.valiit.roheveeb2back.domain.user.User;
 import ee.valiit.roheveeb2back.domain.user.UserService;
 import jakarta.annotation.Resource;
@@ -19,6 +22,7 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -35,6 +39,25 @@ public class OrdersService {
     private OrderTransportService orderTransportService;
     @Resource
     private PaymentService paymentService;
+
+    @Resource
+    private ProductService productService;
+
+    @Resource
+    private CompanyService companyService;
+
+    public List<OrderInfo> findCompanyOrdersInfo(Integer companyId) {
+        List<Product> products = productService.findProductByCompanyId(companyId);
+        List<OrderProduct> orderProducts = new ArrayList<>();
+        for (Product product : products) { //
+          orderProducts.add(orderProductService.getOrderProductByProductId(product.getId()));
+        }
+        List<Order> orders = new ArrayList<>();
+        for (OrderProduct orderProduct : orderProducts) {
+            orders.add(orderProduct.getOrder());
+        }
+        return orderMapper.toOrdersInfo(orders);
+    }
 
     public PendingOrderInfo getPendingOrderInfo(Integer userId) {
         boolean pendingOrderExists = orderService.validateIfPendingOrderExists(userId);

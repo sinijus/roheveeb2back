@@ -1,5 +1,6 @@
 package ee.valiit.roheveeb2back.business.user;
 
+import ee.valiit.roheveeb2back.business.user.dto.CompanyInfo;
 import ee.valiit.roheveeb2back.business.user.dto.UserContactInfo;
 import ee.valiit.roheveeb2back.infrastructure.error.ApiError;
 import io.swagger.v3.oas.annotations.Operation;
@@ -30,5 +31,14 @@ public class UsersController {
     public UserContactInfo getUserContactInfo(@RequestParam Integer userId) {
         return usersService.getUserContactInfo(userId);
     }
+
+    @GetMapping("/profile/company")
+    @Operation(summary = "Company profile andmete otsimine companyID alusel läbi company tabeli.",
+            description = "Company profile andmete otsimine companyID alusel läbi company tabeli.")
+    public CompanyInfo getCompanyInfo(@RequestParam Integer companyId) {
+        return usersService.getCompanyInfo(companyId);
+    }
+
+
 
 }

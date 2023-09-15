@@ -18,6 +18,10 @@ public class CompanyService {
 
     public Company saveNewCompany(Company newCompany) {
         return companyRepository.save(newCompany);
+    }
+
+    public Company getCompanyInfo(Integer companyId) {
+        return companyRepository.findById(companyId).get();
 
     }
 }

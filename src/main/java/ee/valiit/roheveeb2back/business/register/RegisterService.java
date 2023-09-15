@@ -4,7 +4,7 @@ import ee.valiit.roheveeb2back.business.register.dto.NewCustomer;
 import ee.valiit.roheveeb2back.domain.company.Company;
 import ee.valiit.roheveeb2back.domain.company.CompanyMapper;
 import ee.valiit.roheveeb2back.domain.company.CompanyService;
-import ee.valiit.roheveeb2back.domain.company.NewCompany;
+import ee.valiit.roheveeb2back.business.user.dto.NewCompany;
 import ee.valiit.roheveeb2back.domain.image.Image;
 import ee.valiit.roheveeb2back.domain.image.ImageService;
 import ee.valiit.roheveeb2back.domain.location.Location;

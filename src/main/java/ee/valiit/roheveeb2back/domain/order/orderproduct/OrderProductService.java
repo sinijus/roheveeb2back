@@ -29,5 +29,9 @@ public class OrderProductService {
         return orderProductRepository.getOrderProductsBy(orderId);
 
     }
+
+    public OrderProduct getOrderProductByProductId(Integer productId) {
+        return orderProductRepository.findByProduct_Id(productId);
+    }
 }
 

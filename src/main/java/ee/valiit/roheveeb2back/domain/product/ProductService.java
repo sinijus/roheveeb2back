@@ -35,4 +35,9 @@ public class ProductService {
     }
 
 
+    public List<Product> findProductByCompanyId(Integer companyId) {
+        List<Product> products = productRepository.findProductsByCompanyId(companyId);
+        return products;
+
+    }
 }

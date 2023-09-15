@@ -21,14 +21,11 @@ public class PaymentsController {
     @GetMapping("/payment-methods")
     @Operation(summary = "toob ära maksmisega seotud info", description = "toob ära maksmisega seotud info")
     public List<PaymentInfo> getPaymentMethods() {
-        List<PaymentInfo> paymentMethods = paymentsService.getPaymentMethods();
-        return paymentMethods;
+        return paymentsService.getPaymentMethods();
     }
     @PostMapping("/payment-method")
     @Operation(summary = "lisab maksmisega seotud info", description = "toob ära maksmisega seotud info")
     public void addPaymentMethod(@RequestBody NewPaymentMethod request) {
         paymentsService.addPaymentMethod(request);
-        String imageData = request.getImageData();
-        return ;
     }
 }

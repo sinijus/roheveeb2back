@@ -43,6 +43,12 @@ public class OrdersController {
     public List<OrderInfo> findOrdersInfo(@RequestParam Integer userId) {
         return ordersService.findOrders(userId);
     }
+
+    @GetMapping("/orders/company")
+    public List<OrderInfo> findOrdersCompanyInfo(@RequestParam Integer companyId) {
+        return ordersService.findCompanyOrdersInfo(companyId);
+    }
+
     @PostMapping("/order")
     @Operation(summary = "Kinnitab tellimuse",
             description = """
@@ -51,6 +57,8 @@ public class OrdersController {
     public void confirmOrder(@RequestBody @Valid ConfirmOrderRequest request) {
         ordersService.confirmOrder(request);
     }
+
+
 
 
 }

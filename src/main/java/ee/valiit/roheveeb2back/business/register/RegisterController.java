@@ -1,7 +1,7 @@
 package ee.valiit.roheveeb2back.business.register;
 
 import ee.valiit.roheveeb2back.business.register.dto.NewCustomer;
-import ee.valiit.roheveeb2back.domain.company.NewCompany;
+import ee.valiit.roheveeb2back.business.user.dto.NewCompany;
 import ee.valiit.roheveeb2back.infrastructure.error.ApiError;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;

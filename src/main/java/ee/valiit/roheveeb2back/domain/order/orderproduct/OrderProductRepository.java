@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface OrderProductRepository extends JpaRepository<OrderProduct, Integer> {
+    OrderProduct findByProduct_Id(Integer id);
     @Query("select o from OrderProduct o where o.product.id = ?1")
     Optional<OrderProduct> getOrderProductBy(Integer productId);
 

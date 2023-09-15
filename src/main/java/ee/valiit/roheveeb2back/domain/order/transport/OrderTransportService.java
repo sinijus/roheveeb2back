@@ -3,6 +3,7 @@ package ee.valiit.roheveeb2back.domain.order.transport;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -14,5 +15,9 @@ public class OrderTransportService {
     public Transport getTransportBy(Integer transportId) {
         Optional<Transport> transportOptional = transportRepository.findById(transportId);
         return transportOptional.orElseGet(null);
+    }
+
+    public List<Transport> getTransportInfo() {
+        return transportRepository.findAll();
     }
 }
