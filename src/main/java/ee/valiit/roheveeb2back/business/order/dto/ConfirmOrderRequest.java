@@ -7,8 +7,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
-import java.time.Instant;
 
 /**
  * DTO for {@link Order}
@@ -16,19 +14,11 @@ import java.time.Instant;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class OrderInfo implements Serializable {
+public class ConfirmOrderRequest implements Serializable {
+    @NotNull
     private Integer orderId;
+    @NotNull
     private Integer transportId;
-    private String transportMethod;
-    private Integer transportFee;
+    @NotNull
     private Integer paymentId;
-    private String paymentMethod;
-
-    @NotNull
-    private String status;
-    @NotNull
-    private BigDecimal total;
-    private Instant sentTime;
-    private String orderNumber;
-
 }

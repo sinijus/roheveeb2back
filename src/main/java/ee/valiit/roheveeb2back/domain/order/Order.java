@@ -49,4 +49,7 @@ public class Order {
     @Column(name = "sent_time")
     private Instant sentTime;
 
+    @Column(name = "order_number", length = Integer.MAX_VALUE)
+    private String orderNumber;
+
 }

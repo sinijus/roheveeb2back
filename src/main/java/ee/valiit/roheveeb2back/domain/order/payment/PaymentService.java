@@ -14,5 +14,8 @@ public class PaymentService {
         List<Payment> payments = paymentRepository.findAll();
         return payments;
     }
+    public Payment getPaymentBy(Integer paymentId) {
+        return paymentRepository.findById(paymentId).get();
+    }
 
 }

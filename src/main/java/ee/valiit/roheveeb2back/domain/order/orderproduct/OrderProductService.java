@@ -3,6 +3,7 @@ package ee.valiit.roheveeb2back.domain.order.orderproduct;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -24,5 +25,9 @@ public class OrderProductService {
         return orderProductOptional.orElseGet(OrderProduct::new);
     }
 
+    public List<OrderProduct> getOrderProductsBy(Integer orderId) {
+        return orderProductRepository.getOrderProductsBy(orderId);
+
+    }
 }
 
