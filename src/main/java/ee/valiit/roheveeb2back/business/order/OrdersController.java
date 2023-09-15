@@ -35,14 +35,12 @@ public class OrdersController {
                     Kui order ei ole tehtud, siis teeb orderi ja tagastab orderId ja numberOfProducts.
                    """)
     public PendingOrderInfo getPendingOrderInfo(@RequestParam Integer userId) {
-       return ordersService.getPendingOrderInfo(userId);
+        return ordersService.getPendingOrderInfo(userId);
     }
 
     @GetMapping("/orders/user")
     @Operation(summary = "Leiab kõik kasutaja kinnitatud tellimused",
-            description = """
-                    Leiab ja tagastab kõik kasutaja töötluses või lõpetatud tellimused.
-                    """)
+            description = "Leiab ja tagastab kõik kasutaja töötluses või lõpetatud tellimused.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "OK"),
             @ApiResponse(responseCode = "403", description = "message: Ühtegi tellimust ei leitud. errorCode: 666",
@@ -51,5 +49,6 @@ public class OrdersController {
     public List<OrderInfo> findOrdersInfo(@RequestParam Integer userId) {
         return ordersService.findOrders(userId);
     }
+
 
 }
