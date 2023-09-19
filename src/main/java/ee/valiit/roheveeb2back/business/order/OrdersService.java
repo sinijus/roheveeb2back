@@ -63,15 +63,18 @@ public class OrdersService {
         boolean pendingOrderExists = orderService.validateIfPendingOrderExists(userId);
         if (!pendingOrderExists) {
             User user = userService.getUserBy(userId);
-
             Order order = orderService.createAndSaveNewPendingOrder(user);
+            List<OrderProduct> orderProducts = orderProductService.getOrderProductsBy(order.getId());
             PendingOrderInfo pendingOrderInfo = new PendingOrderInfo();
+            pendingOrderInfo.setNumberOfProducts(orderProducts.toArray().length);
             pendingOrderInfo.setOrderId(order.getId());
             return pendingOrderInfo;
         }
         User user = userService.getUserBy(userId);
         Order order = orderService.getOrderBy(user);
+        List<OrderProduct> orderProducts = orderProductService.getOrderProductsBy(order.getId());
         PendingOrderInfo pendingOrderInfo = new PendingOrderInfo();
+        pendingOrderInfo.setNumberOfProducts(orderProducts.toArray().length);
         pendingOrderInfo.setOrderId(order.getId());
         return pendingOrderInfo;
     }
