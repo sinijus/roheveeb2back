@@ -1,4 +1,4 @@
-package ee.valiit.roheveeb2back.business.user.dto;
+package ee.valiit.roheveeb2back.business.profile.dto;
 
 import ee.valiit.roheveeb2back.domain.company.Company;
 import jakarta.validation.constraints.NotNull;
@@ -15,20 +15,15 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class NewCompany implements Serializable {
-    //    private Integer userId;
-//    private Integer userRoleId;
-    private String email;
-    private String companyPassword;
-    //    private String status;
-//    private Integer locationId;
-    private Integer countyId;
-    private String address;
-    private String postalCode;
-    private String longitude;
-    private String latitude;
-    //    private Integer logoImageId;
-    private String logoImagedata;
+public class CompanyInfo implements Serializable {
+    private String userEmail;
+    private String userPassword;
+    private String locationCountyName;
+    private String locationAddress;
+    private String locationPostalCode;
+    private String locationLongitude;
+    private String locationLatitude;
+    private byte[] logoImageData;
     @NotNull
     @Size(max = 255)
     private String companyName;

@@ -1,8 +1,8 @@
 package ee.valiit.roheveeb2back.domain.company;
 
 import ee.valiit.roheveeb2back.business.dto.CompanyDto;
-import ee.valiit.roheveeb2back.business.user.dto.CompanyInfo;
-import ee.valiit.roheveeb2back.business.user.dto.NewCompany;
+import ee.valiit.roheveeb2back.business.profile.dto.CompanyInfo;
+import ee.valiit.roheveeb2back.business.profile.dto.NewCompany;
 import ee.valiit.roheveeb2back.domain.image.Image;
 import ee.valiit.roheveeb2back.util.ImageConverter;
 import org.mapstruct.*;

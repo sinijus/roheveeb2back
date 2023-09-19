@@ -1,4 +1,4 @@
-package ee.valiit.roheveeb2back.business.user.dto;
+package ee.valiit.roheveeb2back.business.profile.dto;
 
 import ee.valiit.roheveeb2back.domain.user.usercontact.UserContact;
 import jakarta.validation.constraints.NotNull;

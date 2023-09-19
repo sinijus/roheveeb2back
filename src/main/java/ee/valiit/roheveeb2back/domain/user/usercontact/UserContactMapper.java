@@ -1,7 +1,7 @@
 package ee.valiit.roheveeb2back.domain.user.usercontact;
 
 import ee.valiit.roheveeb2back.business.register.dto.NewCustomer;
-import ee.valiit.roheveeb2back.business.user.dto.UserContactInfo;
+import ee.valiit.roheveeb2back.business.profile.dto.UserContactInfo;
 import org.mapstruct.*;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.SPRING)
