@@ -142,7 +142,7 @@ VALUES (DEFAULT, 3, 2, '6555788', 'Mikk', 'Jalg');
 INSERT INTO public.order (id, user_id, transport_id, payment_id, status, total, start_time, sent_time)
 VALUES (DEFAULT, 2, null, null, 'P', DEFAULT, '2019-01-21T05:47:29.886Z', null);
 
-INSERT INTO public.order_product (id, order_id, product_id, quantity) VALUES (DEFAULT, 1, 1, 3)
+INSERT INTO public.order_product (id, order_id, product_id, quantity) VALUES (DEFAULT, 1, 1, 3);
 
 
 

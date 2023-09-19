@@ -24,18 +24,21 @@ public class OrderProductsService {
     private OrderProductService orderProductService;
 
     public void addProductToOrderProduct(OrderProductRequest request) {
-        OrderProduct orderProduct = orderProductService.findOrCreateOrderPorduct(request.getProductId());
-        ValidateAndSetOrderProduct(request, orderProduct);
+        OrderProduct orderProduct = orderProductService.findOrCreateOrderPorduct(request);
+        validateAndSetOrderProduct(request, orderProduct);
         orderProductService.saveOrderProduct(orderProduct);
     }
 
-    private void ValidateAndSetOrderProduct(OrderProductRequest request, OrderProduct orderProduct) {
+    private void validateAndSetOrderProduct(OrderProductRequest request, OrderProduct orderProduct) {
         Product product = productService.getProductBy(request.getProductId());
-        ValidationService.calculateAndValidateAddedProductAmountExists(orderProduct.getQuantity(), request.getProductAmount(), product.getStockBalance());
-        ValidationService.calculateAndValidateAddedProductAmountExists(orderProduct.getQuantity(), request.getProductAmount(), product.getStockBalance());
         Order order = orderService.getOrderBy(request.getOrderId());
         orderProduct.setProduct(product);
         orderProduct.setOrder(order);
+        if (orderProduct.getQuantity() == null) {
+            orderProduct.setQuantity(0);
+        }
+        ValidationService.calculateAndValidateAddedProductAmountExists(orderProduct.getQuantity(), request.getProductAmount(), product.getStockBalance());
+        ValidationService.calculateAndValidateAddedProductAmountExists(orderProduct.getQuantity(), request.getProductAmount(), product.getStockBalance());
         orderProduct.setQuantity(orderProduct.getQuantity() + request.getProductAmount());
     }
 

@@ -1,5 +1,6 @@
 package ee.valiit.roheveeb2back.domain.order.orderproduct;
 
+import ee.valiit.roheveeb2back.business.orderproduct.dto.OrderProductRequest;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
@@ -20,8 +21,8 @@ public class OrderProductService {
         orderProductRepository.deleteById(orderProductId);
     }
 
-    public OrderProduct findOrCreateOrderPorduct(Integer productId) {
-        Optional<OrderProduct> orderProductOptional = orderProductRepository.getOrderProductBy(productId);
+    public OrderProduct findOrCreateOrderPorduct(OrderProductRequest request) {
+        Optional<OrderProduct> orderProductOptional = orderProductRepository.getOrderProductBy(request.getProductId());
         return orderProductOptional.orElseGet(OrderProduct::new);
     }
 

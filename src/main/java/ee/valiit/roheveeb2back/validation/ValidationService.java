@@ -55,13 +55,13 @@ public class ValidationService {
 
 
     public static void calculateAndValidateAddedProductAmountExists(Integer orderProductQuantity, Integer requestToAdd, Integer productStockBalance) {
-        if (IsThereEnoughProductsInStock(orderProductQuantity, requestToAdd, productStockBalance)) {
+        if (isThereEnoughProductsInStock(orderProductQuantity, requestToAdd, productStockBalance)) {
             int availableAmount = productStockBalance - orderProductQuantity;
             throw new BusinessException(NOT_ENOUGH_PRODUCTS.getMessage() + availableAmount, NOT_ENOUGH_PRODUCTS.getErrorCode());
         }
     }
 
-    private static boolean IsThereEnoughProductsInStock(Integer orderProductQuantity, Integer requestToAdd, Integer productStockBalance) {
+    private static boolean isThereEnoughProductsInStock(Integer orderProductQuantity, Integer requestToAdd, Integer productStockBalance) {
         return orderProductQuantity + requestToAdd > productStockBalance;
     }
 
