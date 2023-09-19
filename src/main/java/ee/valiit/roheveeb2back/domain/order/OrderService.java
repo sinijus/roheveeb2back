@@ -31,7 +31,7 @@ public class OrderService {
     }
 
     public Order getOrderBy(User user) {
-        return orderRepository.findOrderBy(user.getId());
+        return orderRepository.findOrderBy(user.getId(),Status.PENDING.getLetter());
 
 
     }
