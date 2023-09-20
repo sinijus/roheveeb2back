@@ -12,7 +12,7 @@ public interface OrderProductRepository extends JpaRepository<OrderProduct, Inte
     Optional<OrderProduct> getOrderProductBy(Integer productId);
 
     @Query("select o from OrderProduct o where o.order.id = ?1")
-    List<OrderProduct> getOrderProductsBy(Integer id);
+    List<OrderProduct> getOrderProductsBy(Integer orderId);
 
 
 

@@ -39,4 +39,8 @@ public class ProductService {
         return productRepository.findProductsByCompanyId(companyId);
 
     }
+
+    public Product getProductsBy(Integer productId) {
+        return productRepository.findById(productId).get();
+    }
 }

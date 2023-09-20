@@ -38,4 +38,16 @@ public class OrderProductsController {
         orderProductsService.deleteProductFromOrder(orderProductId);
     }
 
+    @GetMapping("/cart")
+    @Operation(summary = "Toob ära kogu ostukorvi sisu",
+            description = " Toob ära toote nime, koguse, hinna, müüja nime ja -logo")
+//    @ApiResponses(value = {
+//            @ApiResponse(responseCode = "200", description = "OK"),
+//            @ApiResponse(responseCode = "403", description = "message: Selline toote kogus ei ole enam saadaval. errorCode: 777",
+//                    content = @Content(schema = @Schema(implementation = ApiError.class)))
+//    })
+    public void getCustomerCartContent(@RequestParam Integer orderId) {
+            orderProductsService.getCustomerCartContent(orderId);
+    }
+
 }

@@ -5,11 +5,15 @@ import ee.valiit.roheveeb2back.domain.order.Order;
 import ee.valiit.roheveeb2back.domain.order.OrderService;
 import ee.valiit.roheveeb2back.domain.order.orderproduct.OrderProduct;
 import ee.valiit.roheveeb2back.domain.order.orderproduct.OrderProductService;
+import ee.valiit.roheveeb2back.business.product.dto.CartProductsInfo;
 import ee.valiit.roheveeb2back.domain.product.Product;
 import ee.valiit.roheveeb2back.domain.product.ProductService;
 import ee.valiit.roheveeb2back.validation.ValidationService;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class OrderProductsService {
@@ -22,6 +26,7 @@ public class OrderProductsService {
 
     @Resource
     private OrderProductService orderProductService;
+
 
     public void addProductToOrderProduct(OrderProductRequest request) {
         OrderProduct orderProduct = orderProductService.findOrCreateOrderPorduct(request);
@@ -45,5 +50,15 @@ public class OrderProductsService {
     public void deleteProductFromOrder(Integer orderProductId) {
         orderProductService.deleteOrderProductBy(orderProductId);
 
+    }
+
+    public void getCustomerCartContent(Integer orderId) {
+        List<OrderProduct> orderProducts = orderProductService.findAllOrderProducts(orderId);
+        List<Product> products = new ArrayList<>();
+        for (OrderProduct orderProduct : orderProducts) {
+            products.add(productService.getProductsBy(orderProduct.getProduct().getId()));
+        }
+        //todo: mapper
+        new CartProductsInfo();
     }
 }

@@ -34,4 +34,9 @@ public class LoginService {
 
         return loginResponse;
     }
+
+    public Integer findCompanyId(Integer userId) {
+        Company company = companyService.findCompanyByUserId(userId);
+        return company.getId();
+    }
 }
