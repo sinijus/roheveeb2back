@@ -125,29 +125,29 @@ INSERT INTO public.measure_unit (id, name)
 VALUES (DEFAULT, 'tk');
 
 INSERT INTO public.product (id, company_id, type_id, image_id, name, price, stock_balance, measure_unit_id, status)
-VALUES (DEFAULT, 2, 1, null, 'Kartul Gala 20 kg', 15, 4, 3, 'A');
+VALUES (DEFAULT, 2, 1, 1, 'Kartul Gala 20 kg', 15, 4, 3, 'A');
 INSERT INTO public.product (id, company_id, type_id, image_id, name, price, stock_balance, measure_unit_id, status)
-VALUES (DEFAULT, 1, 3, null, 'Lillkapsas "Scarlet', 3.90, 3000, 3, 'A');
+VALUES (DEFAULT, 1, 3, 2, 'Lillkapsas "Scarlet', 3.90, 3000, 3, 'A');
 INSERT INTO public.product (id, company_id, type_id, image_id, name, price, stock_balance, measure_unit_id, status)
-VALUES (DEFAULT, 2, 2, null, 'Varajane porgand', 1.50, 10, 2, 'A');
+VALUES (DEFAULT, 2, 2, 3, 'Varajane porgand', 1.50, 10, 2, 'A');
 INSERT INTO public.product (id, company_id, type_id, image_id, name, price, stock_balance, measure_unit_id, status)
-VALUES (DEFAULT, 1, 7, null, 'Tomat "Malle', 3.90, 16, 2, 'A');
+VALUES (DEFAULT, 1, 7, 4, 'Tomat "Malle', 3.90, 16, 2, 'A');
 INSERT INTO public.product (id, company_id, type_id, image_id, name, price, stock_balance, measure_unit_id, status)
-VALUES (DEFAULT, 2, 12, null, 'Vaarikas "Golden Queen" 150g', 3.99, 200, 3, 'A');
+VALUES (DEFAULT, 2, 12, 5, 'Vaarikas "Golden Queen" 150g', 3.99, 200, 3, 'A');
 INSERT INTO public.product (id, company_id, type_id, image_id, name, price, stock_balance, measure_unit_id, status)
-VALUES (DEFAULT, 1, 16, null, 'Võisalat 200g', 2.50, 400, 3, 'A');
+VALUES (DEFAULT, 1, 16, 6, 'Võisalat 200g', 2.50, 400, 3, 'A');
 INSERT INTO public.product (id, company_id, type_id, image_id, name, price, stock_balance, measure_unit_id, status)
-VALUES (DEFAULT, 1, 14, null, 'Kultuurmustikas"Tume musi" 500g', 4.50, 100, 3, 'A');
+VALUES (DEFAULT, 1, 14, 7, 'Kultuurmustikas"Tume musi" 500g', 4.50, 100, 3, 'A');
 INSERT INTO public.product (id, company_id, type_id, image_id, name, price, stock_balance, measure_unit_id, status)
-VALUES (DEFAULT, 1, 12, null, 'Vaarikas "Aita" 150g', 3.50, 150, 3, 'A');
+VALUES (DEFAULT, 1, 12, 8, 'Vaarikas "Aita" 150g', 3.50, 150, 3, 'A');
 INSERT INTO public.product (id, company_id, type_id, image_id, name, price, stock_balance, measure_unit_id, status)
-VALUES (DEFAULT, 1, 11, null, 'Ploom "Golden plum"', 2.40, 50, 2, 'A');
+VALUES (DEFAULT, 1, 11, 9, 'Ploom "Golden plum"', 2.40, 50, 2, 'A');
 INSERT INTO public.product (id, company_id, type_id, image_id, name, price, stock_balance, measure_unit_id, status)
-VALUES (DEFAULT, 1, 10, null, 'Õun "Kuldrenett"', 2.10, 90, 2, 'A');
+VALUES (DEFAULT, 1, 10, 10, 'Õun "Kuldrenett"', 2.10, 90, 2, 'A');
 INSERT INTO public.product (id, company_id, type_id, image_id, name, price, stock_balance, measure_unit_id, status)
-VALUES (DEFAULT, 1, 18, null, 'Tüümian 100g', 1.30, 50, 3, 'A');
+VALUES (DEFAULT, 1, 18, 11, 'Tüümian 100g', 1.30, 50, 3, 'A');
 INSERT INTO public.product (id, company_id, type_id, image_id, name, price, stock_balance, measure_unit_id, status)
-VALUES (DEFAULT, 1, 13, null, 'Maasikas"Polka"', 5, 90, 2, 'A');
+VALUES (DEFAULT, 1, 13, 12, 'Maasikas"Polka"', 5, 90, 2, 'A');
 
 
 INSERT INTO public.transport (id, method, fee)
