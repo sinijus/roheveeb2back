@@ -11,7 +11,7 @@ public class CompanyService {
     @Resource
     private CompanyRepository companyRepository;
 
-    public Company getCompanyBy(Integer companyId) {
+    public Company getCompanyByCompanyId(Integer companyId) {
         Optional<Company> companyOptional = companyRepository.findById(companyId);
         return companyOptional.get();
     }
@@ -23,5 +23,9 @@ public class CompanyService {
     public Company getCompanyInfo(Integer companyId) {
         return companyRepository.findById(companyId).get();
 
+    }
+
+    public Company getCompanyByUserId(Integer userId) {
+        return companyRepository.getCompanyBy(userId);
     }
 }

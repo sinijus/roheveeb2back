@@ -27,8 +27,6 @@ public interface CompanyMapper {
 
 
     @Mapping(source = "name", target = "companyName")
-    @Mapping(source = "logoImage.data", target = "logoImageData")
-    @Mapping(source = "location.latitude", target = "locationLatitude")
     @Mapping(source = "location.longitude", target = "locationLongitude")
     @Mapping(source = "location.postalCode", target = "locationPostalCode")
     @Mapping(source = "location.address", target = "locationAddress")

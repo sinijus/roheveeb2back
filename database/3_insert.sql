@@ -59,6 +59,8 @@ INSERT INTO public.company (id, user_id, location_id, logo_image_id, name, phone
 VALUES (DEFAULT, 4, 1, null, 'Hiiu mahetalu', '55666777', '10125090', 'EE909999665544335567');
 INSERT INTO public.company (id, user_id, location_id, logo_image_id, name, phone_number, register_code, iban)
 VALUES (DEFAULT, 2, 2, null, 'Mulgi mahetalu', '52000111', '10127340', 'EE909999665000005567');
+INSERT INTO public.company (id, user_id, location_id, logo_image_id, name, phone_number, register_code, iban)
+VALUES (DEFAULT, 3, 2, null, 'talu', '52000111', '10127340', 'EE909999665000005567');
 
 
 INSERT INTO public.category (id, name)
@@ -123,9 +125,28 @@ VALUES (DEFAULT, 'tk');
 INSERT INTO public.product (id, company_id, type_id, image_id, name, price, stock_balance, measure_unit_id, status)
 VALUES (DEFAULT, 2, 1, null, 'Kartul Gala 20 kg', 15, 4, 3, 'A');
 INSERT INTO public.product (id, company_id, type_id, image_id, name, price, stock_balance, measure_unit_id, status)
-VALUES (DEFAULT, 1, 3, null, 'Lilla lillkapsas "Di Violetto"', 3.90, 3000, 1, 'A');
+VALUES (DEFAULT, 1, 3, null, 'Lillkapsas "Scarlet', 3.90, 3000, 3, 'A');
 INSERT INTO public.product (id, company_id, type_id, image_id, name, price, stock_balance, measure_unit_id, status)
-VALUES (DEFAULT, 2, 2, null, 'Hiline porgand "Berlicum 2', 1.50, 10, 2, 'A');
+VALUES (DEFAULT, 2, 2, null, 'Varajane porgand', 1.50, 10, 2, 'A');
+INSERT INTO public.product (id, company_id, type_id, image_id, name, price, stock_balance, measure_unit_id, status)
+VALUES (DEFAULT, 1, 7, null, 'Tomat "Malle', 3.90, 16, 2, 'A');
+INSERT INTO public.product (id, company_id, type_id, image_id, name, price, stock_balance, measure_unit_id, status)
+VALUES (DEFAULT, 2, 12, null, 'Vaarikas "Golden Queen" 150g', 3.99, 200, 3, 'A');
+INSERT INTO public.product (id, company_id, type_id, image_id, name, price, stock_balance, measure_unit_id, status)
+VALUES (DEFAULT, 1, 16, null, 'Võisalat 200g', 2.50, 400, 3, 'A');
+INSERT INTO public.product (id, company_id, type_id, image_id, name, price, stock_balance, measure_unit_id, status)
+VALUES (DEFAULT, 1, 14, null, 'Kultuurmustikas"Tume musi" 500g', 4.50, 100, 3, 'A');
+INSERT INTO public.product (id, company_id, type_id, image_id, name, price, stock_balance, measure_unit_id, status)
+VALUES (DEFAULT, 1, 12, null, 'Vaarikas "Aita" 150g', 3.50, 150, 3, 'A');
+INSERT INTO public.product (id, company_id, type_id, image_id, name, price, stock_balance, measure_unit_id, status)
+VALUES (DEFAULT, 1, 11, null, 'Ploom "Golden plum"', 2.40, 50, 2, 'A');
+INSERT INTO public.product (id, company_id, type_id, image_id, name, price, stock_balance, measure_unit_id, status)
+VALUES (DEFAULT, 1, 10, null, 'Õun "Kuldrenett"', 2.10, 90, 2, 'A');
+INSERT INTO public.product (id, company_id, type_id, image_id, name, price, stock_balance, measure_unit_id, status)
+VALUES (DEFAULT, 1, 18, null, 'Tüümian 100g', 1.30, 50, 3, 'A');
+INSERT INTO public.product (id, company_id, type_id, image_id, name, price, stock_balance, measure_unit_id, status)
+VALUES (DEFAULT, 1, 13, null, 'Maasikas"Polka"', 5, 90, 30, 2, 'A');
+
 
 INSERT INTO public.transport (id, method, fee)
 VALUES (DEFAULT, 'DPD pakiautomaat', 3.50);
@@ -142,7 +163,11 @@ VALUES (DEFAULT, 3, 2, '6555788', 'Mikk', 'Jalg');
 INSERT INTO public.order (id, user_id, transport_id, payment_id, status, total, start_time, sent_time)
 VALUES (DEFAULT, 2, null, null, 'P', DEFAULT, '2019-01-21T05:47:29.886Z', null);
 
-INSERT INTO public.order_product (id, order_id, product_id, quantity) VALUES (DEFAULT, 1, 1, 3);
+INSERT INTO public.order_product (id, order_id, product_id, quantity)
+VALUES (DEFAULT, 1, 1, 3);
+
+INSERT INTO public.image (id, data)
+VALUES (DEFAULT,)
 
 
 

@@ -21,9 +21,6 @@ public class CompanyInfo implements Serializable {
     private String locationCountyName;
     private String locationAddress;
     private String locationPostalCode;
-    private String locationLongitude;
-    private String locationLatitude;
-    private byte[] logoImageData;
     @NotNull
     @Size(max = 255)
     private String companyName;
