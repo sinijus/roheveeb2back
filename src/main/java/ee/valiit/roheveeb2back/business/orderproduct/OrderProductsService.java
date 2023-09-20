@@ -7,6 +7,7 @@ import ee.valiit.roheveeb2back.domain.order.orderproduct.OrderProduct;
 import ee.valiit.roheveeb2back.domain.order.orderproduct.OrderProductService;
 import ee.valiit.roheveeb2back.business.product.dto.CartProductsInfo;
 import ee.valiit.roheveeb2back.domain.product.Product;
+import ee.valiit.roheveeb2back.domain.product.ProductMapper;
 import ee.valiit.roheveeb2back.domain.product.ProductService;
 import ee.valiit.roheveeb2back.validation.ValidationService;
 import jakarta.annotation.Resource;
@@ -26,6 +27,9 @@ public class OrderProductsService {
 
     @Resource
     private OrderProductService orderProductService;
+
+    @Resource
+    private ProductMapper productMapper;
 
 
     public void addProductToOrderProduct(OrderProductRequest request) {
