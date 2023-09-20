@@ -145,7 +145,7 @@ VALUES (DEFAULT, 1, 10, null, 'Õun "Kuldrenett"', 2.10, 90, 2, 'A');
 INSERT INTO public.product (id, company_id, type_id, image_id, name, price, stock_balance, measure_unit_id, status)
 VALUES (DEFAULT, 1, 18, null, 'Tüümian 100g', 1.30, 50, 3, 'A');
 INSERT INTO public.product (id, company_id, type_id, image_id, name, price, stock_balance, measure_unit_id, status)
-VALUES (DEFAULT, 1, 13, null, 'Maasikas"Polka"', 5, 90, 30, 2, 'A');
+VALUES (DEFAULT, 1, 13, null, 'Maasikas"Polka"', 5, 90, 2, 'A');
 
 
 INSERT INTO public.transport (id, method, fee)
@@ -166,8 +166,6 @@ VALUES (DEFAULT, 2, null, null, 'P', DEFAULT, '2019-01-21T05:47:29.886Z', null);
 INSERT INTO public.order_product (id, order_id, product_id, quantity)
 VALUES (DEFAULT, 1, 1, 3);
 
-INSERT INTO public.image (id, data)
-VALUES (DEFAULT,)
 
 
 
