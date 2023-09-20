@@ -1,6 +1,7 @@
 package ee.valiit.roheveeb2back.domain.order.orderproduct;
 
 import ee.valiit.roheveeb2back.business.orderproduct.dto.OrderProductRequest;
+import ee.valiit.roheveeb2back.validation.ValidationService;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
@@ -33,6 +34,12 @@ public class OrderProductService {
 
     public OrderProduct getOrderProductByProductId(Integer productId) {
         return orderProductRepository.findByProduct_Id(productId);
+    }
+
+    public List<OrderProduct> findAllOrderProducts(Integer orderId) {
+        List<OrderProduct> orderProducts = orderProductRepository.getOrderProductsBy(orderId);
+        ValidationService.validateAtLeastOneOrderProductExists(orderProducts);
+        return orderProducts;
     }
 }
 

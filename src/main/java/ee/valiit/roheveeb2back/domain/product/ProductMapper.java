@@ -5,6 +5,7 @@ import ee.valiit.roheveeb2back.business.product.dto.NewProduct;
 import ee.valiit.roheveeb2back.business.product.dto.ProductInfoDto;
 import ee.valiit.roheveeb2back.business.product.dto.UpdatedProduct;
 import ee.valiit.roheveeb2back.domain.image.Image;
+import ee.valiit.roheveeb2back.domain.order.orderproduct.dto.CartProductsInfo;
 import ee.valiit.roheveeb2back.util.ImageConverter;
 import org.mapstruct.*;
 
@@ -34,6 +35,7 @@ public interface ProductMapper {
     @Mapping(source = "name", target = "productName")
     @Mapping(source = "stockBalance", target = "productBalance")
     ProductInfoDto toProductInfoDto(Product product);
+
     List<ProductInfoDto> toProductInfoDtos(List<Product> products);
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
@@ -47,6 +49,29 @@ public interface ProductMapper {
 
     @Named("imageDataToImageByteArray")
     static Image imageDataToImageByteArray(String imageData) {
-       return ImageConverter.imageDataToImage(imageData);
+        return ImageConverter.imageDataToImage(imageData);
     }
+
+
+    @Mapping(source = "name", target = "productName")
+    @Mapping(source = "measureUnit.name", target = "measureUnitName")
+    @Mapping(source = "measureUnit.id", target = "measureUnitId")
+    @Mapping(source = "type.name", target = "typeName")
+    @Mapping(source = "type.category.name", target = "typeCategoryName")
+    @Mapping(source = "type.category.id", target = "typeCategoryId")
+    @Mapping(source = "type.id", target = "typeId")
+    @Mapping(source = "company.iban", target = "companyIban")
+    @Mapping(source = "company.registerCode", target = "companyRegisterCode")
+    @Mapping(source = "company.phoneNumber", target = "companyPhoneNumber")
+    @Mapping(source = "company.name", target = "companyName")
+    @Mapping(source = "company.location.address", target = "companyLocationAddress")
+    @Mapping(source = "company.location.county.name", target = "companyLocationCountyName")
+    @Mapping(source = "company.location.county.id", target = "companyLocationCountyId")
+    @Mapping(source = "company.location.id", target = "companyLocationId")
+    @Mapping(source = "company.id", target = "companyId")
+    CartProductsInfo toCartProductsInfo(Product product);
+
+    List<CartProductsInfo> toCartProductsInfos (List<Product> products);
+
 }
+
