@@ -47,7 +47,12 @@ public class ProductsService {
 
     public List<ProductInfoDto> findAllProducts() {
         List<Product> products = productService.findAllProducts();
-        return productMapper.toProductInfoDtos(products);
+        List<ProductInfoDto> productInfoDtos = productMapper.toProductInfoDtos(products);
+        for (int i = 0; i < products.size(); i++) {
+            String imageData = ImageConverter.imageToImageData(products.get(i).getImage());
+            productInfoDtos.get(i).setProductImageData(imageData);
+        }
+        return productInfoDtos;
     }
 
     @Transactional
@@ -58,6 +63,10 @@ public class ProductsService {
 
     private void createAndSaveProduct(NewProduct request) {
         Product product = createProduct(request);
+        if (request.getImageData() != null && request.getImageData().isEmpty()) {
+            Image image = ImageConverter.imageDataToImage(request.getImageData());
+            product.setImage(image);
+        }
         productService.saveProduct(product);
     }
 

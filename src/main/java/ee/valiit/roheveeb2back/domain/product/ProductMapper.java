@@ -31,21 +31,24 @@ public interface ProductMapper {
     @Mapping(source = "type.name", target = "productTypeName")
     @Mapping(source = "measureUnit.id", target = "measureUnitId")
     @Mapping(source = "measureUnit.name", target = "measureUnitName")
-    @Mapping(source = "image.id", target = "productImageId")
+    //@Mapping(source = "image.id", target = "productImageId")
+    //@Mapping(source = image, target = "productImageData", qualifiedByName = "imageToImageData")
     @Mapping(source = "name", target = "productName")
     @Mapping(source = "stockBalance", target = "productBalance")
     ProductInfoDto toProductInfoDto(Product product);
 
     List<ProductInfoDto> toProductInfoDtos(List<Product> products);
 
-    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    @Mapping(source = "productName", target = "name")
-    Product partialUpdate(UpdatedProduct newProduct, @MappingTarget Product product);
-
     @Named("imageToImageData")
     static String imageToImageData(Image image) {
         return ImageConverter.imageToImageData(image);
     }
+
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    @Mapping(source = "productName", target = "name")
+    Product partialUpdate(UpdatedProduct newProduct, @MappingTarget Product product);
+
+
 
     @Named("imageDataToImageByteArray")
     static Image imageDataToImageByteArray(String imageData) {
