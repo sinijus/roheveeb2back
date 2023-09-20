@@ -14,7 +14,8 @@ public enum Error {
     NOT_ENOUGH_PRODUCTS("Selline toote kogus ei ole enam saadaval", 777),
     EMAIL_UNAVAILABLE("Sellise emailiga kasutaja on meie süsteemis juba olemas", 777),
     ILLEGAL_INPUT("Illegaalne sisend", 999),
-    NO_ORDER_PRODUCT_FOUND("Ostukorvis ei leitud ühtegi lisatud toodet", 2222);
+    NO_ORDER_PRODUCT_FOUND("Ostukorvis ei leitud ühtegi lisatud toodet", 2222),
+    NO_COMPANY_FOUND("Company id-d ei leitud", 3333);
 
 
 

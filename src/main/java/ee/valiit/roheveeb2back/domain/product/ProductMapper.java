@@ -5,7 +5,7 @@ import ee.valiit.roheveeb2back.business.product.dto.NewProduct;
 import ee.valiit.roheveeb2back.business.product.dto.ProductInfoDto;
 import ee.valiit.roheveeb2back.business.product.dto.UpdatedProduct;
 import ee.valiit.roheveeb2back.domain.image.Image;
-import ee.valiit.roheveeb2back.domain.order.orderproduct.dto.CartProductsInfo;
+import ee.valiit.roheveeb2back.business.product.dto.CartProductsInfo;
 import ee.valiit.roheveeb2back.util.ImageConverter;
 import org.mapstruct.*;
 

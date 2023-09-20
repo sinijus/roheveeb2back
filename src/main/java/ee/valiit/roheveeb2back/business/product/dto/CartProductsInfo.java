@@ -1,4 +1,4 @@
-package ee.valiit.roheveeb2back.domain.order.orderproduct.dto;
+package ee.valiit.roheveeb2back.business.product.dto;
 
 import ee.valiit.roheveeb2back.domain.product.Product;
 import jakarta.validation.constraints.NotNull;

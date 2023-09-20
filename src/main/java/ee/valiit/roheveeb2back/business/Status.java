@@ -10,8 +10,6 @@ public enum Status {
     COMPLETED("C"),
     DELETED("D");
 
-
-
     private final String letter;
 
     Status(String letter) { this.letter = letter;}

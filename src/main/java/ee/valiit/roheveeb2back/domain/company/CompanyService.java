@@ -1,5 +1,6 @@
 package ee.valiit.roheveeb2back.domain.company;
 
+import ee.valiit.roheveeb2back.validation.ValidationService;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
@@ -23,5 +24,11 @@ public class CompanyService {
     public Company getCompanyInfo(Integer companyId) {
         return companyRepository.findById(companyId).get();
 
+    }
+
+    public Company findCompanyByUserId(Integer userId) {
+        Optional<Company> companyOptional = companyRepository.findCompanyBy(userId);
+        ValidationService.validateCompanyExists(companyOptional);
+        return companyOptional.get();
     }
 }

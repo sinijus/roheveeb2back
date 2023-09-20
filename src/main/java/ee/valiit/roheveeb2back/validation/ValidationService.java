@@ -1,5 +1,6 @@
 package ee.valiit.roheveeb2back.validation;
 
+import ee.valiit.roheveeb2back.domain.company.Company;
 import ee.valiit.roheveeb2back.domain.order.Order;
 import ee.valiit.roheveeb2back.domain.order.orderproduct.OrderProduct;
 import ee.valiit.roheveeb2back.domain.product.Product;
@@ -88,6 +89,12 @@ public class ValidationService {
     public static void validateAtLeastOneOrderProductExists(List<OrderProduct> orderProducts) {
         if (orderProducts.isEmpty()) {
             throw new BusinessException(NO_ORDER_PRODUCT_FOUND.getMessage(), NO_ORDER_PRODUCT_FOUND.getErrorCode());
+        }
+    }
+
+    public static void validateCompanyExists(Optional<Company> companyOptional) {
+        if (companyOptional.isEmpty()) {
+            throw new BusinessException(NO_COMPANY_FOUND.getMessage(), NO_COMPANY_FOUND.getErrorCode());
         }
     }
 }

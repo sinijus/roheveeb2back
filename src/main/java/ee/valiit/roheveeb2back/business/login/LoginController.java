@@ -32,4 +32,18 @@ public class LoginController {
     public LoginResponse login(@RequestParam String email, @RequestParam String password) {
         return loginService.login(email, password);
     }
+
+    @GetMapping("/company")
+    @Operation(summary = "Leia userId alusel companyId",
+            description = """
+                Süsteemist otsitakse userId alusel companyId-d.
+                Kui vastet ei leita visatakse viga errorCode'ga 3333""")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "OK"),
+            @ApiResponse(responseCode = "403", description = "message: Company id-d ei leitud. errorCode: 3333",
+                    content = @Content(schema = @Schema(implementation = ApiError.class)))})
+    public Integer getCompanyId(@RequestParam Integer userId) {
+        return loginService.findCompanyId(userId);
+
+    }
 }
