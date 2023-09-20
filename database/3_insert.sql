@@ -13,6 +13,8 @@ INSERT INTO public."user" (id, role_id, email, password, status)
 VALUES (DEFAULT, 2, 'talu', '123', 'A');
 INSERT INTO public."user" (id, role_id, email, password, status)
 VALUES (DEFAULT, 2, 'hiiu@talu.ee', '123', 'A');
+INSERT INTO public."user" (id, role_id, email, password, status)
+VALUES (DEFAULT, 2, 'mulgi@talu.ee', '123', 'A');
 
 INSERT INTO public.county (id, name)
 VALUES (DEFAULT, 'Harjumaa');
@@ -58,7 +60,7 @@ VALUES (DEFAULT, 8, 'Keskväljak 5A, Kärdla', '92414');
 INSERT INTO public.company (id, user_id, location_id, logo_image_id, name, phone_number, register_code, iban)
 VALUES (DEFAULT, 4, 1, null, 'Hiiu mahetalu', '55666777', '10125090', 'EE909999665544335567');
 INSERT INTO public.company (id, user_id, location_id, logo_image_id, name, phone_number, register_code, iban)
-VALUES (DEFAULT, 2, 2, null, 'Mulgi mahetalu', '52000111', '10127340', 'EE909999665000005567');
+VALUES (DEFAULT, 5, 2, null, 'Mulgi mahetalu', '52000111', '10127340', 'EE909999665000005567');
 INSERT INTO public.company (id, user_id, location_id, logo_image_id, name, phone_number, register_code, iban)
 VALUES (DEFAULT, 3, 2, null, 'talu', '52000111', '10127340', 'EE909999665000005567');
 
