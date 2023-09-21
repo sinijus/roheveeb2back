@@ -56,13 +56,12 @@ public class OrderProductsService {
 
     }
 
-    public void getCustomerCartContent(Integer orderId) {
+    public List<CartProductsInfo> getCustomerCartContent(Integer orderId) {
         List<OrderProduct> orderProducts = orderProductService.findAllOrderProducts(orderId);
         List<Product> products = new ArrayList<>();
         for (OrderProduct orderProduct : orderProducts) {
             products.add(productService.getProductsBy(orderProduct.getProduct().getId()));
         }
-        //todo: mapper
-        new CartProductsInfo();
+        return productMapper.toCartProductsInfos(products);
     }
 }

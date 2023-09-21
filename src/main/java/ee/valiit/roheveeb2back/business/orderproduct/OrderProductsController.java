@@ -1,6 +1,7 @@
 package ee.valiit.roheveeb2back.business.orderproduct;
 
 import ee.valiit.roheveeb2back.business.orderproduct.dto.OrderProductRequest;
+import ee.valiit.roheveeb2back.business.product.dto.CartProductsInfo;
 import ee.valiit.roheveeb2back.infrastructure.error.ApiError;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -10,6 +11,8 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.annotation.Resource;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class OrderProductsController {
@@ -41,13 +44,13 @@ public class OrderProductsController {
     @GetMapping("/cart")
     @Operation(summary = "Toob ära kogu ostukorvi sisu",
             description = " Toob ära toote nime, koguse, hinna, müüja nime ja -logo")
-//    @ApiResponses(value = {
-//            @ApiResponse(responseCode = "200", description = "OK"),
-//            @ApiResponse(responseCode = "403", description = "message: Selline toote kogus ei ole enam saadaval. errorCode: 777",
-//                    content = @Content(schema = @Schema(implementation = ApiError.class)))
-//    })
-    public void getCustomerCartContent(@RequestParam Integer orderId) {
-            orderProductsService.getCustomerCartContent(orderId);
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "OK"),
+            @ApiResponse(responseCode = "403", description = "message: Ostukorvis ei leitud ühtegi lisatud toodet. errorCode: 2222",
+                    content = @Content(schema = @Schema(implementation = ApiError.class)))
+    })
+    public List<CartProductsInfo> getCustomerCartContent(@RequestParam Integer orderId) {
+        return orderProductsService.getCustomerCartContent(orderId);
     }
 
 }
