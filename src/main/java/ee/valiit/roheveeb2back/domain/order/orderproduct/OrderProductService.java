@@ -36,7 +36,7 @@ public class OrderProductService {
         return orderProductRepository.findByProduct_Id(productId);
     }
 
-    public List<OrderProduct> findAllOrderProducts(Integer orderId) {
+    public List<OrderProduct> findAllOrderProductsBy(Integer orderId) {
         List<OrderProduct> orderProducts = orderProductRepository.getOrderProductsBy(orderId);
         ValidationService.validateAtLeastOneOrderProductExists(orderProducts);
         return orderProducts;

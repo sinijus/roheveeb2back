@@ -1,11 +1,13 @@
 package ee.valiit.roheveeb2back.business.orderproduct;
 
 import ee.valiit.roheveeb2back.business.orderproduct.dto.OrderProductRequest;
+import ee.valiit.roheveeb2back.business.product.dto.CartProductInfo;
+import ee.valiit.roheveeb2back.business.product.dto.CartResponse;
 import ee.valiit.roheveeb2back.domain.order.Order;
 import ee.valiit.roheveeb2back.domain.order.OrderService;
 import ee.valiit.roheveeb2back.domain.order.orderproduct.OrderProduct;
+import ee.valiit.roheveeb2back.domain.order.orderproduct.OrderProductMapper;
 import ee.valiit.roheveeb2back.domain.order.orderproduct.OrderProductService;
-import ee.valiit.roheveeb2back.business.product.dto.CartProductsInfo;
 import ee.valiit.roheveeb2back.domain.product.Product;
 import ee.valiit.roheveeb2back.domain.product.ProductMapper;
 import ee.valiit.roheveeb2back.domain.product.ProductService;
@@ -13,7 +15,7 @@ import ee.valiit.roheveeb2back.validation.ValidationService;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -30,6 +32,9 @@ public class OrderProductsService {
 
     @Resource
     private ProductMapper productMapper;
+
+    @Resource
+    private OrderProductMapper orderProductMapper;
 
 
     public void addProductToOrderProduct(OrderProductRequest request) {
@@ -56,19 +61,18 @@ public class OrderProductsService {
 
     }
 
-    public List<CartProductsInfo> getCustomerCartContent(Integer orderId) {
-        List<OrderProduct> orderProducts = orderProductService.findAllOrderProducts(orderId);
-        List<Product> products = new ArrayList<>();
-        for (OrderProduct orderProduct : orderProducts) {
-            products.add(productService.getProductsBy(orderProduct.getProduct().getId()));
+    public CartResponse getCustomerCartContent(Integer orderId) {
+        List<OrderProduct> orderProducts = orderProductService.findAllOrderProductsBy(orderId);
+        List<CartProductInfo> cartProductsInfos = orderProductMapper.toCartProductsInfos(orderProducts);
+        CartResponse cartResponse = new CartResponse();
+        cartResponse.setCartProducts(cartProductsInfos);
+
+        BigDecimal grandTotalSum = new BigDecimal(0);
+        for (CartProductInfo cartProductsInfo : cartProductsInfos) {
+            BigDecimal lineTotal = cartProductsInfo.getPrice().multiply(BigDecimal.valueOf(cartProductsInfo.getAmount()));
+            cartProductsInfo.setLineTotal(lineTotal);
+            grandTotalSum.add(grandTotalSum);
         }
-        List<CartProductsInfo> cartProductsInfos = productMapper.toCartProductsInfos(products);
-        for (CartProductsInfo cartProductsInfo : cartProductsInfos) {
-            for (OrderProduct orderProduct : orderProducts) {
-                cartProductsInfo.setAmount(orderProduct.getQuantity());
-                cartProductsInfo.setOrderProductId(orderProduct.getId());
-            }
-        }
-        return cartProductsInfos;
+        return cartResponse;
     }
 }

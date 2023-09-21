@@ -1,7 +1,8 @@
 package ee.valiit.roheveeb2back.business.orderproduct;
 
 import ee.valiit.roheveeb2back.business.orderproduct.dto.OrderProductRequest;
-import ee.valiit.roheveeb2back.business.product.dto.CartProductsInfo;
+import ee.valiit.roheveeb2back.business.product.dto.CartProductInfo;
+import ee.valiit.roheveeb2back.business.product.dto.CartResponse;
 import ee.valiit.roheveeb2back.infrastructure.error.ApiError;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -49,7 +50,7 @@ public class OrderProductsController {
             @ApiResponse(responseCode = "403", description = "message: Ostukorvis ei leitud ühtegi lisatud toodet. errorCode: 2222",
                     content = @Content(schema = @Schema(implementation = ApiError.class)))
     })
-    public List<CartProductsInfo> getCustomerCartContent(@RequestParam Integer orderId) {
+    public CartResponse getCustomerCartContent(@RequestParam Integer orderId) {
         return orderProductsService.getCustomerCartContent(orderId);
     }
 
