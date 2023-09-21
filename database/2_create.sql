@@ -49,7 +49,7 @@ CREATE TABLE user_contact (
                               location_id int  NOT NULL,
                               user_id int  NOT NULL,
                               phone_number varchar(255)  NOT NULL,
-                              first_name char(255)  NOT NULL,
+                              first_name varchar(255)  NOT NULL,
                               last_name varchar(255)  NOT NULL,
                               CONSTRAINT user_contact_pk PRIMARY KEY (id)
 );
