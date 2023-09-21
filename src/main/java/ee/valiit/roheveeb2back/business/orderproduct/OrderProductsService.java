@@ -62,6 +62,12 @@ public class OrderProductsService {
         for (OrderProduct orderProduct : orderProducts) {
             products.add(productService.getProductsBy(orderProduct.getProduct().getId()));
         }
-        return productMapper.toCartProductsInfos(products);
+        List<CartProductsInfo> cartProductsInfos = productMapper.toCartProductsInfos(products);
+        for (CartProductsInfo cartProductsInfo : cartProductsInfos) {
+            for (OrderProduct orderProduct : orderProducts) {
+                cartProductsInfo.setAmount(orderProduct.getQuantity());
+            }
+        }
+        return cartProductsInfos;
     }
 }

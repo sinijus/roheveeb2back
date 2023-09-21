@@ -38,4 +38,5 @@ public class CartProductsInfo implements Serializable {
     private String productName;
     @NotNull
     private BigDecimal price;
+    private Integer amount;
 }
