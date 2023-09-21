@@ -66,6 +66,7 @@ public class OrderProductsService {
         for (CartProductsInfo cartProductsInfo : cartProductsInfos) {
             for (OrderProduct orderProduct : orderProducts) {
                 cartProductsInfo.setAmount(orderProduct.getQuantity());
+                cartProductsInfo.setOrderProductId(orderProduct.getId());
             }
         }
         return cartProductsInfos;

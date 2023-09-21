@@ -56,6 +56,7 @@ public interface ProductMapper {
     }
 
 
+    @Mapping(source = "id", target = "productId")
     @Mapping(source = "name", target = "productName")
     @Mapping(source = "measureUnit.name", target = "measureUnitName")
     @Mapping(source = "measureUnit.id", target = "measureUnitId")

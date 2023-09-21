@@ -33,6 +33,8 @@ public class CartProductsInfo implements Serializable {
     private String typeName;
     private Integer measureUnitId;
     private String measureUnitName;
+    private Integer orderProductId;
+    private Integer productId;
     @NotNull
     @Size(max = 255)
     private String productName;

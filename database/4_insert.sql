@@ -153,7 +153,7 @@ VALUES (DEFAULT, 1, 13, 12, 'Maasikas"Polka"', 5, 90, 2, 'A');
 INSERT INTO public.transport (id, method, fee)
 VALUES (DEFAULT, 'DPD pakiautomaat', 3.50);
 INSERT INTO public.transport (id, method, fee) VALUES (DEFAULT, 'Omniva pakiautomaat', 3.20);
-INSERT INTO public.transport (id, method, fee) VALUES (DEFAULT, 'Kuller pakiautomaat', 8.40);
+INSERT INTO public.transport (id, method, fee) VALUES (DEFAULT, 'Kuller', 8.40);
 INSERT INTO public.transport (id, method, fee) VALUES (DEFAULT, 'Tulen ise järele', 0);
 
 INSERT INTO public.payment (id, method, bank_logo_id) VALUES (DEFAULT, 'LHV', NULL);
