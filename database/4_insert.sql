@@ -8,9 +8,9 @@ VALUES (DEFAULT, 'customer');
 INSERT INTO public."user" (id, role_id, email, password, status)
 VALUES (DEFAULT, 1, 'admin', '123', 'A');
 INSERT INTO public."user" (id, role_id, email, password, status)
-VALUES (DEFAULT, 3, 'klient', '123', 'A');
+VALUES (DEFAULT, 3, 'mikk@jalg.ee', '123', 'A');
 INSERT INTO public."user" (id, role_id, email, password, status)
-VALUES (DEFAULT, 2, 'talu', '123', 'A');
+VALUES (DEFAULT, 2, 'kiikri@talu.ee', '123', 'A');
 INSERT INTO public."user" (id, role_id, email, password, status)
 VALUES (DEFAULT, 2, 'hiiu@talu.ee', '123', 'A');
 INSERT INTO public."user" (id, role_id, email, password, status)
@@ -62,7 +62,7 @@ VALUES (DEFAULT, 4, 1, null, 'Hiiu mahetalu', '55666777', '10125090', 'EE9099996
 INSERT INTO public.company (id, user_id, location_id, logo_image_id, name, phone_number, register_code, iban)
 VALUES (DEFAULT, 5, 2, null, 'Mulgi mahetalu', '52000111', '10127340', 'EE909999665000005567');
 INSERT INTO public.company (id, user_id, location_id, logo_image_id, name, phone_number, register_code, iban)
-VALUES (DEFAULT, 3, 2, null, 'talu', '52000111', '10127340', 'EE909999665000005567');
+VALUES (DEFAULT, 3, 2, null, 'Kiikri mahetalu', '52000111', '10127340', 'EE909999665000005567');
 
 
 INSERT INTO public.category (id, name)
@@ -139,11 +139,11 @@ VALUES (DEFAULT, 1, 16, 6, 'Võisalat 200g', 2.50, 400, 3, 'A');
 INSERT INTO public.product (id, company_id, type_id, image_id, name, price, stock_balance, measure_unit_id, status)
 VALUES (DEFAULT, 1, 14, 7, 'Kultuurmustikas"Tume musi" 500g', 4.50, 100, 3, 'A');
 INSERT INTO public.product (id, company_id, type_id, image_id, name, price, stock_balance, measure_unit_id, status)
-VALUES (DEFAULT, 1, 12, 8, 'Vaarikas "Aita" 150g', 3.50, 150, 3, 'A');
+VALUES (DEFAULT, 2, 12, 8, 'Vaarikas "Aita" 150g', 3.50, 150, 3, 'A');
 INSERT INTO public.product (id, company_id, type_id, image_id, name, price, stock_balance, measure_unit_id, status)
 VALUES (DEFAULT, 1, 11, 9, 'Ploom "Golden plum"', 2.40, 50, 2, 'A');
 INSERT INTO public.product (id, company_id, type_id, image_id, name, price, stock_balance, measure_unit_id, status)
-VALUES (DEFAULT, 1, 10, 10, 'Õun "Kuldrenett"', 2.10, 90, 2, 'A');
+VALUES (DEFAULT, 2, 10, 10, 'Õun "Kuldrenett"', 2.10, 90, 2, 'A');
 INSERT INTO public.product (id, company_id, type_id, image_id, name, price, stock_balance, measure_unit_id, status)
 VALUES (DEFAULT, 1, 18, 11, 'Tüümian 100g', 1.30, 50, 3, 'A');
 INSERT INTO public.product (id, company_id, type_id, image_id, name, price, stock_balance, measure_unit_id, status)
